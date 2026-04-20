@@ -1,0 +1,331 @@
+{
+  "@@locale": "en",
+  "appName": "Fruits Time",
+  "@appName": {
+    "description": "The name of the application"
+  },
+  "splashTagline": "Delicious and natural juices",
+  "@splashTagline": {
+    "description": "Tagline shown on the splash screen"
+  },
+  "onboarding1Title": "Natural Juices",
+  "@onboarding1Title": {
+    "description": "Title for the first onboarding slide"
+  },
+  "onboarding1Description": "Fruit and vegetable natural juices, rich in vitamins and healthy drinks",
+  "@onboarding1Description": {
+    "description": "Description for the first onboarding slide"
+  },
+  "onboarding2Title": "Tasty Drinks",
+  "@onboarding2Title": {
+    "description": "Title for the second onboarding slide"
+  },
+  "onboarding2Description": "Delicious juices made from natural fruits and vegetables, healthy and rich in vitamins",
+  "@onboarding2Description": {
+    "description": "Description for the second onboarding slide"
+  },
+  "onboarding3Title": "Convenient App",
+  "@onboarding3Title": {
+    "description": "Title for the third onboarding slide"
+  },
+  "onboarding3Description": "A convenient interface, simple navigation and intuitive design",
+  "@onboarding3Description": {
+    "description": "Description for the third onboarding slide"
+  },
+  "continueButton": "Continue",
+  "@continueButton": {
+    "description": "Label for the continue button"
+  },
+  "skipButton": "Skip",
+  "@skipButton": {
+    "description": "Label for the skip button"
+  },
+  "selectLanguageTitle": "Select language",
+  "@selectLanguageTitle": {
+    "description": "Title on the language selection screen"
+  },
+  "selectLanguageDescription": "Choose a language that suits you to use the app",
+  "@selectLanguageDescription": {
+    "description": "Description on the language selection screen"
+  },
+  "localeUzbek": "🇺🇿 O'zbek",
+  "@localeUzbek": {
+    "description": "Uzbek locale display name"
+  },
+  "localeEnglish": "🇬🇧 English",
+  "@localeEnglish": {
+    "description": "English locale display name"
+  },
+  "localeRussian": "🇷🇺 Русский",
+  "@localeRussian": {
+    "description": "Russian locale display name"
+  },
+  "promptYes": "Yes",
+  "@promptYes": {
+    "description": "Affirmative answer in prompt dialogs"
+  },
+  "promptNo": "No",
+  "@promptNo": {
+    "description": "Negative answer in prompt dialogs"
+  },
+  "confirmButton": "Confirm",
+  "@confirmButton": {
+    "description": "Label for confirm button"
+  },
+  "confirmDialogTitle": "Confirm",
+  "@confirmDialogTitle": {
+    "description": "Title of confirmation dialog"
+  },
+  "navHome": "Home",
+  "@navHome": {
+    "description": "Bottom navigation home tab label"
+  },
+  "catalogTitle": "Catalog",
+  "@catalogTitle": {
+    "description": "Catalog section title and nav label"
+  },
+  "cartTitle": "Cart",
+  "@cartTitle": {
+    "description": "Cart section title and nav label"
+  },
+  "profileSection": "Profile",
+  "@profileSection": {
+    "description": "Profile section title and nav label"
+  },
+  "welcomeMessage": "Welcome 👋",
+  "@welcomeMessage": {
+    "description": "Welcome greeting on home screen"
+  },
+  "searchJuicesHint": "Search among juices...",
+  "@searchJuicesHint": {
+    "description": "Hint text for juice search field"
+  },
+  "showAllButton": "All",
+  "@showAllButton": {
+    "description": "Button to show all items in a section"
+  },
+  "specialOffersTitle": "Special Offers",
+  "@specialOffersTitle": {
+    "description": "Title for special offers section"
+  },
+  "aiAssistantTitle": "AI Assistant",
+  "@aiAssistantTitle": {
+    "description": "AI assistant card title"
+  },
+  "aiAssistantDescription": "Your personal assistant caring about your health",
+  "@aiAssistantDescription": {
+    "description": "AI assistant card description"
+  },
+  "goButton": "Go",
+  "@goButton": {
+    "description": "Short navigation button label"
+  },
+  "chatDoctorTitle": "Fruits Time Doctor",
+  "@chatDoctorTitle": {
+    "description": "Title in the chat/assistant header"
+  },
+  "chatInputHint": "Write your question...",
+  "@chatInputHint": {
+    "description": "Hint text for the chat input field"
+  },
+  "loginTitle": "Sign In",
+  "@loginTitle": {
+    "description": "Title of login screen and login button"
+  },
+  "loginSubtitle": "Enter your phone number and password",
+  "@loginSubtitle": {
+    "description": "Subtitle on login screen"
+  },
+  "signInButton": "SIGN IN",
+  "@signInButton": {
+    "description": "Label for the sign in submit button"
+  },
+  "haveAccountText": "Have an account? ",
+  "@haveAccountText": {
+    "description": "Prompt text on register screen linking to login"
+  },
+  "signInLink": "Sign in",
+  "@signInLink": {
+    "description": "Inline link text to navigate to sign in"
+  },
+  "noAccountText": "No account? ",
+  "@noAccountText": {
+    "description": "Prompt text on login screen linking to register"
+  },
+  "registerTitle": "Register",
+  "@registerTitle": {
+    "description": "Title of register screen and register link"
+  },
+  "nameLabel": "Name",
+  "@nameLabel": {
+    "description": "Label for name input field"
+  },
+  "nameValidationError": "Enter full name",
+  "@nameValidationError": {
+    "description": "Validation error for empty or short name"
+  },
+  "phoneLabel": "Phone number",
+  "@phoneLabel": {
+    "description": "Label for phone number input field"
+  },
+  "phoneValidationError": "Invalid phone number",
+  "@phoneValidationError": {
+    "description": "Validation error for invalid phone number"
+  },
+  "passwordLabel": "Password",
+  "@passwordLabel": {
+    "description": "Label for password input field"
+  },
+  "passwordValidationError": "Enter a stronger password",
+  "@passwordValidationError": {
+    "description": "Validation error for weak password on register"
+  },
+  "loginPasswordValidationError": "Enter correct password",
+  "@loginPasswordValidationError": {
+    "description": "Validation error for wrong password on login"
+  },
+  "hasReferralCode": "Have a referral code",
+  "@hasReferralCode": {
+    "description": "Checkbox label for referral code on register"
+  },
+  "referralCodeLabel": "Referral code",
+  "@referralCodeLabel": {
+    "description": "Label for referral code input field"
+  },
+  "enterAnotherPhone": "Enter another phone number",
+  "@enterAnotherPhone": {
+    "description": "Error message when phone number is already registered"
+  },
+  "confirmNumberTitle": "Confirm Number",
+  "@confirmNumberTitle": {
+    "description": "Title on OTP/number confirmation screen"
+  },
+  "enterOtpTitle": "Enter confirmation code",
+  "@enterOtpTitle": {
+    "description": "Instruction to enter the OTP code"
+  },
+  "otpSentMessage": "Sent to the following number\n+{phone}",
+  "@otpSentMessage": {
+    "description": "Message showing which number the OTP was sent to",
+    "placeholders": {
+      "phone": {
+        "type": "String"
+      }
+    }
+  },
+  "resendCountdown": "{seconds} seconds to resend",
+  "@resendCountdown": {
+    "description": "Countdown before the user can resend OTP",
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "resendButton": "Resend",
+  "@resendButton": {
+    "description": "Button to resend OTP code"
+  },
+  "settingsSection": "Settings",
+  "@settingsSection": {
+    "description": "Settings section title on profile page"
+  },
+  "languageSetting": "Language",
+  "@languageSetting": {
+    "description": "Language preference item label"
+  },
+  "termsOfUse": "Terms of Use",
+  "@termsOfUse": {
+    "description": "Terms of use preference item label"
+  },
+  "privacyPolicy": "Privacy Policy",
+  "@privacyPolicy": {
+    "description": "Privacy policy preference item value"
+  },
+  "versionLabel": "Version",
+  "@versionLabel": {
+    "description": "Version preference item label"
+  },
+  "accountSection": "Account",
+  "@accountSection": {
+    "description": "Account section title on profile page"
+  },
+  "logoutButton": "Sign out",
+  "@logoutButton": {
+    "description": "Label for logout preference item"
+  },
+  "logoutDescription": "Sign out of account",
+  "@logoutDescription": {
+    "description": "Description for logout preference item"
+  },
+  "logoutConfirmContent": "Do you want to sign out?",
+  "@logoutConfirmContent": {
+    "description": "Confirmation dialog body for logout"
+  },
+  "deleteAccountButton": "Delete",
+  "@deleteAccountButton": {
+    "description": "Label for delete account preference item"
+  },
+  "deleteAccountDescription": "Delete account",
+  "@deleteAccountDescription": {
+    "description": "Description for delete account preference item"
+  },
+  "ingredientsLabel": "Ingredients",
+  "@ingredientsLabel": {
+    "description": "Label for product ingredients section"
+  },
+  "totalLabel": "Total",
+  "@totalLabel": {
+    "description": "Label for total price in product sheet and cart summary"
+  },
+  "goToCartButton": "Go to cart",
+  "@goToCartButton": {
+    "description": "Button to navigate to cart from product screen"
+  },
+  "orderNoteHint": "Note for order",
+  "@orderNoteHint": {
+    "description": "Hint text for order note field in cart"
+  },
+  "cartEmpty": "Cart is empty",
+  "@cartEmpty": {
+    "description": "Message shown when cart has no items"
+  },
+  "goToPaymentButton": "Go to payment",
+  "@goToPaymentButton": {
+    "description": "Button to proceed to payment from cart"
+  },
+  "productCountLabel": "Number of products",
+  "@productCountLabel": {
+    "description": "Cart summary label for product count"
+  },
+  "productTypeLabel": "Product types",
+  "@productTypeLabel": {
+    "description": "Cart summary label for number of distinct product types"
+  },
+  "paymentTitle": "Payment",
+  "@paymentTitle": {
+    "description": "Title of payment sheet"
+  },
+  "totalWithPrice": "Total: {price} UZS",
+  "@totalWithPrice": {
+    "description": "Total price label in payment sheet",
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "showQrCodeMessage": "Show QR code to cashier",
+  "@showQrCodeMessage": {
+    "description": "Instruction to show QR code at checkout"
+  },
+  "catalogProductsCount": "{count} products",
+  "@catalogProductsCount": {
+    "description": "Products count label shown on each catalog grid item",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
+}

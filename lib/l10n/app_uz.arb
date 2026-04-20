@@ -1,0 +1,332 @@
+{
+  "@@locale": "uz",
+  "@@country": "O'zbek",
+  "appName": "Fruits Time",
+  "@appName": {
+    "description": "The name of the application"
+  },
+  "splashTagline": "Mazali va tabiiy sharbatlar",
+  "@splashTagline": {
+    "description": "Tagline shown on the splash screen"
+  },
+  "onboarding1Title": "Tabiiy Sharbatlar",
+  "@onboarding1Title": {
+    "description": "Title for the first onboarding slide"
+  },
+  "onboarding1Description": "Mevali va sabzavotli tabiiy sharbatlar, vitaminlarga boy va sog'lom ichimliklar",
+  "@onboarding1Description": {
+    "description": "Description for the first onboarding slide"
+  },
+  "onboarding2Title": "Mazali Ichimliklar",
+  "@onboarding2Title": {
+    "description": "Title for the second onboarding slide"
+  },
+  "onboarding2Description": "Mazali sharbatlar tabiiy meva va sabzavotlardan tayyorlanadi, sog'lom va vitaminlarga boy",
+  "@onboarding2Description": {
+    "description": "Description for the second onboarding slide"
+  },
+  "onboarding3Title": "Qulay Ilova",
+  "@onboarding3Title": {
+    "description": "Title for the third onboarding slide"
+  },
+  "onboarding3Description": "Ilovada qulay interfeys, sodda navigatsiya va intuitiv dizayn",
+  "@onboarding3Description": {
+    "description": "Description for the third onboarding slide"
+  },
+  "continueButton": "Davom etish",
+  "@continueButton": {
+    "description": "Label for the continue button"
+  },
+  "skipButton": "O'tkazib yuborish",
+  "@skipButton": {
+    "description": "Label for the skip button"
+  },
+  "selectLanguageTitle": "Tilni tanlang",
+  "@selectLanguageTitle": {
+    "description": "Title on the language selection screen"
+  },
+  "selectLanguageDescription": "Ilovadan foydalanish uchun o'zingizga mos tilni tanlang",
+  "@selectLanguageDescription": {
+    "description": "Description on the language selection screen"
+  },
+  "localeUzbek": "🇺🇿 O'zbek",
+  "@localeUzbek": {
+    "description": "Uzbek locale display name"
+  },
+  "localeEnglish": "🇬🇧 English",
+  "@localeEnglish": {
+    "description": "English locale display name"
+  },
+  "localeRussian": "🇷🇺 Русский",
+  "@localeRussian": {
+    "description": "Russian locale display name"
+  },
+  "promptYes": "Ha",
+  "@promptYes": {
+    "description": "Affirmative answer in prompt dialogs"
+  },
+  "promptNo": "Yo'q",
+  "@promptNo": {
+    "description": "Negative answer in prompt dialogs"
+  },
+  "confirmButton": "Tasdiqlash",
+  "@confirmButton": {
+    "description": "Label for confirm button"
+  },
+  "confirmDialogTitle": "Tasdiqlang",
+  "@confirmDialogTitle": {
+    "description": "Title of confirmation dialog"
+  },
+  "navHome": "Asosiy",
+  "@navHome": {
+    "description": "Bottom navigation home tab label"
+  },
+  "catalogTitle": "Katalog",
+  "@catalogTitle": {
+    "description": "Catalog section title and nav label"
+  },
+  "cartTitle": "Savat",
+  "@cartTitle": {
+    "description": "Cart section title and nav label"
+  },
+  "profileSection": "Profil",
+  "@profileSection": {
+    "description": "Profile section title and nav label"
+  },
+  "welcomeMessage": "Xush kelibsiz 👋",
+  "@welcomeMessage": {
+    "description": "Welcome greeting on home screen"
+  },
+  "searchJuicesHint": "Sharbatlar orasidan izlash...",
+  "@searchJuicesHint": {
+    "description": "Hint text for juice search field"
+  },
+  "showAllButton": "Hammasi",
+  "@showAllButton": {
+    "description": "Button to show all items in a section"
+  },
+  "specialOffersTitle": "Maxsus takliflar",
+  "@specialOffersTitle": {
+    "description": "Title for special offers section"
+  },
+  "aiAssistantTitle": "AI Yordamchi",
+  "@aiAssistantTitle": {
+    "description": "AI assistant card title"
+  },
+  "aiAssistantDescription": "Sog'ligingiz haqida qayg'uruvchi shaxsiy yordamchingiz",
+  "@aiAssistantDescription": {
+    "description": "AI assistant card description"
+  },
+  "goButton": "O'tish",
+  "@goButton": {
+    "description": "Short navigation button label"
+  },
+  "chatDoctorTitle": "Fruits Time doctor",
+  "@chatDoctorTitle": {
+    "description": "Title in the chat/assistant header"
+  },
+  "chatInputHint": "Savolingizni yozing...",
+  "@chatInputHint": {
+    "description": "Hint text for the chat input field"
+  },
+  "loginTitle": "Tizimga kirish",
+  "@loginTitle": {
+    "description": "Title of login screen and login button"
+  },
+  "loginSubtitle": "Telefon raqam va parolingizni kiriting",
+  "@loginSubtitle": {
+    "description": "Subtitle on login screen"
+  },
+  "signInButton": "KIRISH",
+  "@signInButton": {
+    "description": "Label for the sign in submit button"
+  },
+  "haveAccountText": "Akkaunt bormi? ",
+  "@haveAccountText": {
+    "description": "Prompt text on register screen linking to login"
+  },
+  "signInLink": "Kirish",
+  "@signInLink": {
+    "description": "Inline link text to navigate to sign in"
+  },
+  "noAccountText": "Akkaunt yo'qmi? ",
+  "@noAccountText": {
+    "description": "Prompt text on login screen linking to register"
+  },
+  "registerTitle": "Ro'yxatdan o'tish",
+  "@registerTitle": {
+    "description": "Title of register screen and register link"
+  },
+  "nameLabel": "Ism",
+  "@nameLabel": {
+    "description": "Label for name input field"
+  },
+  "nameValidationError": "Ismni to'liq kiriting",
+  "@nameValidationError": {
+    "description": "Validation error for empty or short name"
+  },
+  "phoneLabel": "Telefon raqam",
+  "@phoneLabel": {
+    "description": "Label for phone number input field"
+  },
+  "phoneValidationError": "Telefon raqam xato",
+  "@phoneValidationError": {
+    "description": "Validation error for invalid phone number"
+  },
+  "passwordLabel": "Parol",
+  "@passwordLabel": {
+    "description": "Label for password input field"
+  },
+  "passwordValidationError": "Murakkab parol kiriting",
+  "@passwordValidationError": {
+    "description": "Validation error for weak password on register"
+  },
+  "loginPasswordValidationError": "To'g'ri parol kiriting",
+  "@loginPasswordValidationError": {
+    "description": "Validation error for wrong password on login"
+  },
+  "hasReferralCode": "Referral kod bor",
+  "@hasReferralCode": {
+    "description": "Checkbox label for referral code on register"
+  },
+  "referralCodeLabel": "Referral kod",
+  "@referralCodeLabel": {
+    "description": "Label for referral code input field"
+  },
+  "enterAnotherPhone": "Boshqa telefon raqam kiriting",
+  "@enterAnotherPhone": {
+    "description": "Error message when phone number is already registered"
+  },
+  "confirmNumberTitle": "Raqamni tasdiqlash",
+  "@confirmNumberTitle": {
+    "description": "Title on OTP/number confirmation screen"
+  },
+  "enterOtpTitle": "Tasdiqlash kodini kiriting",
+  "@enterOtpTitle": {
+    "description": "Instruction to enter the OTP code"
+  },
+  "otpSentMessage": "Quyidagi telefon raqamga yuborildi\n+{phone}",
+  "@otpSentMessage": {
+    "description": "Message showing which number the OTP was sent to",
+    "placeholders": {
+      "phone": {
+        "type": "String"
+      }
+    }
+  },
+  "resendCountdown": "Qayta yuborish uchun {seconds} sekund",
+  "@resendCountdown": {
+    "description": "Countdown before the user can resend OTP",
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "resendButton": "Qayta yuborish",
+  "@resendButton": {
+    "description": "Button to resend OTP code"
+  },
+  "settingsSection": "Sozlamalar",
+  "@settingsSection": {
+    "description": "Settings section title on profile page"
+  },
+  "languageSetting": "Til",
+  "@languageSetting": {
+    "description": "Language preference item label"
+  },
+  "termsOfUse": "Foydalanish shartlari",
+  "@termsOfUse": {
+    "description": "Terms of use preference item label"
+  },
+  "privacyPolicy": "Maxfiylik siyosati",
+  "@privacyPolicy": {
+    "description": "Privacy policy preference item value"
+  },
+  "versionLabel": "Versiya",
+  "@versionLabel": {
+    "description": "Version preference item label"
+  },
+  "accountSection": "Hisob",
+  "@accountSection": {
+    "description": "Account section title on profile page"
+  },
+  "logoutButton": "Chiqish",
+  "@logoutButton": {
+    "description": "Label for logout preference item"
+  },
+  "logoutDescription": "Akkauntdan chiqish",
+  "@logoutDescription": {
+    "description": "Description for logout preference item"
+  },
+  "logoutConfirmContent": "Akkauntdan chiqishni xohlaysizmi?",
+  "@logoutConfirmContent": {
+    "description": "Confirmation dialog body for logout"
+  },
+  "deleteAccountButton": "O'chirish",
+  "@deleteAccountButton": {
+    "description": "Label for delete account preference item"
+  },
+  "deleteAccountDescription": "Akkauntni o'chirish",
+  "@deleteAccountDescription": {
+    "description": "Description for delete account preference item"
+  },
+  "ingredientsLabel": "Tarkibi",
+  "@ingredientsLabel": {
+    "description": "Label for product ingredients section"
+  },
+  "totalLabel": "Jami",
+  "@totalLabel": {
+    "description": "Label for total price in product sheet and cart summary"
+  },
+  "goToCartButton": "Savatga o'tish",
+  "@goToCartButton": {
+    "description": "Button to navigate to cart from product screen"
+  },
+  "orderNoteHint": "Buyurtma uchun izoh",
+  "@orderNoteHint": {
+    "description": "Hint text for order note field in cart"
+  },
+  "cartEmpty": "Savat bo'sh",
+  "@cartEmpty": {
+    "description": "Message shown when cart has no items"
+  },
+  "goToPaymentButton": "To'lovga o'tish",
+  "@goToPaymentButton": {
+    "description": "Button to proceed to payment from cart"
+  },
+  "productCountLabel": "Mahsulotlar soni",
+  "@productCountLabel": {
+    "description": "Cart summary label for product count"
+  },
+  "productTypeLabel": "Mahsulotlar turi",
+  "@productTypeLabel": {
+    "description": "Cart summary label for number of distinct product types"
+  },
+  "paymentTitle": "To'lov",
+  "@paymentTitle": {
+    "description": "Title of payment sheet"
+  },
+  "totalWithPrice": "Jami: {price} so'm",
+  "@totalWithPrice": {
+    "description": "Total price label in payment sheet",
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "showQrCodeMessage": "QR kodni kassirga ko'rsating",
+  "@showQrCodeMessage": {
+    "description": "Instruction to show QR code at checkout"
+  },
+  "catalogProductsCount": "{count} ta mahsulot",
+  "@catalogProductsCount": {
+    "description": "Products count label shown on each catalog grid item",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
+}

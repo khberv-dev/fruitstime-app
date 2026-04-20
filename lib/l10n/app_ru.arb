@@ -1,0 +1,331 @@
+{
+  "@@locale": "ru",
+  "appName": "Fruits Time",
+  "@appName": {
+    "description": "The name of the application"
+  },
+  "splashTagline": "Вкусные и натуральные соки",
+  "@splashTagline": {
+    "description": "Tagline shown on the splash screen"
+  },
+  "onboarding1Title": "Натуральные Соки",
+  "@onboarding1Title": {
+    "description": "Title for the first onboarding slide"
+  },
+  "onboarding1Description": "Фруктовые и овощные натуральные соки, богатые витаминами и полезные напитки",
+  "@onboarding1Description": {
+    "description": "Description for the first onboarding slide"
+  },
+  "onboarding2Title": "Вкусные Напитки",
+  "@onboarding2Title": {
+    "description": "Title for the second onboarding slide"
+  },
+  "onboarding2Description": "Вкусные соки готовятся из натуральных фруктов и овощей, полезные и богатые витаминами",
+  "@onboarding2Description": {
+    "description": "Description for the second onboarding slide"
+  },
+  "onboarding3Title": "Удобное Приложение",
+  "@onboarding3Title": {
+    "description": "Title for the third onboarding slide"
+  },
+  "onboarding3Description": "Удобный интерфейс, простая навигация и интуитивный дизайн",
+  "@onboarding3Description": {
+    "description": "Description for the third onboarding slide"
+  },
+  "continueButton": "Продолжить",
+  "@continueButton": {
+    "description": "Label for the continue button"
+  },
+  "skipButton": "Пропустить",
+  "@skipButton": {
+    "description": "Label for the skip button"
+  },
+  "selectLanguageTitle": "Выберите язык",
+  "@selectLanguageTitle": {
+    "description": "Title on the language selection screen"
+  },
+  "selectLanguageDescription": "Выберите подходящий язык для использования приложения",
+  "@selectLanguageDescription": {
+    "description": "Description on the language selection screen"
+  },
+  "localeUzbek": "🇺🇿 O'zbek",
+  "@localeUzbek": {
+    "description": "Uzbek locale display name"
+  },
+  "localeEnglish": "🇬🇧 English",
+  "@localeEnglish": {
+    "description": "English locale display name"
+  },
+  "localeRussian": "🇷🇺 Русский",
+  "@localeRussian": {
+    "description": "Russian locale display name"
+  },
+  "promptYes": "Да",
+  "@promptYes": {
+    "description": "Affirmative answer in prompt dialogs"
+  },
+  "promptNo": "Нет",
+  "@promptNo": {
+    "description": "Negative answer in prompt dialogs"
+  },
+  "confirmButton": "Подтвердить",
+  "@confirmButton": {
+    "description": "Label for confirm button"
+  },
+  "confirmDialogTitle": "Подтвердить",
+  "@confirmDialogTitle": {
+    "description": "Title of confirmation dialog"
+  },
+  "navHome": "Главная",
+  "@navHome": {
+    "description": "Bottom navigation home tab label"
+  },
+  "catalogTitle": "Каталог",
+  "@catalogTitle": {
+    "description": "Catalog section title and nav label"
+  },
+  "cartTitle": "Корзина",
+  "@cartTitle": {
+    "description": "Cart section title and nav label"
+  },
+  "profileSection": "Профиль",
+  "@profileSection": {
+    "description": "Profile section title and nav label"
+  },
+  "welcomeMessage": "Добро пожаловать 👋",
+  "@welcomeMessage": {
+    "description": "Welcome greeting on home screen"
+  },
+  "searchJuicesHint": "Поиск среди соков...",
+  "@searchJuicesHint": {
+    "description": "Hint text for juice search field"
+  },
+  "showAllButton": "Все",
+  "@showAllButton": {
+    "description": "Button to show all items in a section"
+  },
+  "specialOffersTitle": "Специальные предложения",
+  "@specialOffersTitle": {
+    "description": "Title for special offers section"
+  },
+  "aiAssistantTitle": "ИИ Помощник",
+  "@aiAssistantTitle": {
+    "description": "AI assistant card title"
+  },
+  "aiAssistantDescription": "Ваш личный помощник, заботящийся о вашем здоровье",
+  "@aiAssistantDescription": {
+    "description": "AI assistant card description"
+  },
+  "goButton": "Перейти",
+  "@goButton": {
+    "description": "Short navigation button label"
+  },
+  "chatDoctorTitle": "Fruits Time Doctor",
+  "@chatDoctorTitle": {
+    "description": "Title in the chat/assistant header"
+  },
+  "chatInputHint": "Напишите ваш вопрос...",
+  "@chatInputHint": {
+    "description": "Hint text for the chat input field"
+  },
+  "loginTitle": "Войти",
+  "@loginTitle": {
+    "description": "Title of login screen and login button"
+  },
+  "loginSubtitle": "Введите номер телефона и пароль",
+  "@loginSubtitle": {
+    "description": "Subtitle on login screen"
+  },
+  "signInButton": "ВОЙТИ",
+  "@signInButton": {
+    "description": "Label for the sign in submit button"
+  },
+  "haveAccountText": "Есть аккаунт? ",
+  "@haveAccountText": {
+    "description": "Prompt text on register screen linking to login"
+  },
+  "signInLink": "Войти",
+  "@signInLink": {
+    "description": "Inline link text to navigate to sign in"
+  },
+  "noAccountText": "Нет аккаунта? ",
+  "@noAccountText": {
+    "description": "Prompt text on login screen linking to register"
+  },
+  "registerTitle": "Зарегистрироваться",
+  "@registerTitle": {
+    "description": "Title of register screen and register link"
+  },
+  "nameLabel": "Имя",
+  "@nameLabel": {
+    "description": "Label for name input field"
+  },
+  "nameValidationError": "Введите полное имя",
+  "@nameValidationError": {
+    "description": "Validation error for empty or short name"
+  },
+  "phoneLabel": "Номер телефона",
+  "@phoneLabel": {
+    "description": "Label for phone number input field"
+  },
+  "phoneValidationError": "Неверный номер телефона",
+  "@phoneValidationError": {
+    "description": "Validation error for invalid phone number"
+  },
+  "passwordLabel": "Пароль",
+  "@passwordLabel": {
+    "description": "Label for password input field"
+  },
+  "passwordValidationError": "Введите более сложный пароль",
+  "@passwordValidationError": {
+    "description": "Validation error for weak password on register"
+  },
+  "loginPasswordValidationError": "Введите правильный пароль",
+  "@loginPasswordValidationError": {
+    "description": "Validation error for wrong password on login"
+  },
+  "hasReferralCode": "Есть реферальный код",
+  "@hasReferralCode": {
+    "description": "Checkbox label for referral code on register"
+  },
+  "referralCodeLabel": "Реферальный код",
+  "@referralCodeLabel": {
+    "description": "Label for referral code input field"
+  },
+  "enterAnotherPhone": "Введите другой номер телефона",
+  "@enterAnotherPhone": {
+    "description": "Error message when phone number is already registered"
+  },
+  "confirmNumberTitle": "Подтвердить номер",
+  "@confirmNumberTitle": {
+    "description": "Title on OTP/number confirmation screen"
+  },
+  "enterOtpTitle": "Введите код подтверждения",
+  "@enterOtpTitle": {
+    "description": "Instruction to enter the OTP code"
+  },
+  "otpSentMessage": "Отправлено на следующий номер\n+{phone}",
+  "@otpSentMessage": {
+    "description": "Message showing which number the OTP was sent to",
+    "placeholders": {
+      "phone": {
+        "type": "String"
+      }
+    }
+  },
+  "resendCountdown": "{seconds} секунд до повторной отправки",
+  "@resendCountdown": {
+    "description": "Countdown before the user can resend OTP",
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "resendButton": "Отправить снова",
+  "@resendButton": {
+    "description": "Button to resend OTP code"
+  },
+  "settingsSection": "Настройки",
+  "@settingsSection": {
+    "description": "Settings section title on profile page"
+  },
+  "languageSetting": "Язык",
+  "@languageSetting": {
+    "description": "Language preference item label"
+  },
+  "termsOfUse": "Условия использования",
+  "@termsOfUse": {
+    "description": "Terms of use preference item label"
+  },
+  "privacyPolicy": "Политика конфиденциальности",
+  "@privacyPolicy": {
+    "description": "Privacy policy preference item value"
+  },
+  "versionLabel": "Версия",
+  "@versionLabel": {
+    "description": "Version preference item label"
+  },
+  "accountSection": "Аккаунт",
+  "@accountSection": {
+    "description": "Account section title on profile page"
+  },
+  "logoutButton": "Выйти",
+  "@logoutButton": {
+    "description": "Label for logout preference item"
+  },
+  "logoutDescription": "Выйти из аккаунта",
+  "@logoutDescription": {
+    "description": "Description for logout preference item"
+  },
+  "logoutConfirmContent": "Вы хотите выйти из аккаунта?",
+  "@logoutConfirmContent": {
+    "description": "Confirmation dialog body for logout"
+  },
+  "deleteAccountButton": "Удалить",
+  "@deleteAccountButton": {
+    "description": "Label for delete account preference item"
+  },
+  "deleteAccountDescription": "Удалить аккаунт",
+  "@deleteAccountDescription": {
+    "description": "Description for delete account preference item"
+  },
+  "ingredientsLabel": "Состав",
+  "@ingredientsLabel": {
+    "description": "Label for product ingredients section"
+  },
+  "totalLabel": "Итого",
+  "@totalLabel": {
+    "description": "Label for total price in product sheet and cart summary"
+  },
+  "goToCartButton": "Перейти в корзину",
+  "@goToCartButton": {
+    "description": "Button to navigate to cart from product screen"
+  },
+  "orderNoteHint": "Примечание к заказу",
+  "@orderNoteHint": {
+    "description": "Hint text for order note field in cart"
+  },
+  "cartEmpty": "Корзина пуста",
+  "@cartEmpty": {
+    "description": "Message shown when cart has no items"
+  },
+  "goToPaymentButton": "Перейти к оплате",
+  "@goToPaymentButton": {
+    "description": "Button to proceed to payment from cart"
+  },
+  "productCountLabel": "Количество товаров",
+  "@productCountLabel": {
+    "description": "Cart summary label for product count"
+  },
+  "productTypeLabel": "Тип товаров",
+  "@productTypeLabel": {
+    "description": "Cart summary label for number of distinct product types"
+  },
+  "paymentTitle": "Оплата",
+  "@paymentTitle": {
+    "description": "Title of payment sheet"
+  },
+  "totalWithPrice": "Итого: {price} сум",
+  "@totalWithPrice": {
+    "description": "Total price label in payment sheet",
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "showQrCodeMessage": "Покажите QR-код кассиру",
+  "@showQrCodeMessage": {
+    "description": "Instruction to show QR code at checkout"
+  },
+  "catalogProductsCount": "{count} товаров",
+  "@catalogProductsCount": {
+    "description": "Products count label shown on each catalog grid item",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
+}
