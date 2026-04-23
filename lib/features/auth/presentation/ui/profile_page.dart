@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fruitstime/core/controller/app_locale.dart';
 import 'package:fruitstime/core/theme/app_spacing.dart';
@@ -12,7 +13,9 @@ import 'package:fruitstime/features/auth/presentation/ui/widget/preferences_grou
 import 'package:fruitstime/features/auth/presentation/ui/widget/profile_card.dart';
 import 'package:fruitstime/l10n/app_localizations.dart';
 import 'package:fruitstime/utils/lib.dart';
+import 'package:fruitstime/utils/messanger.dart';
 import 'package:go_router/go_router.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ProfilePage extends ConsumerWidget {
@@ -37,11 +40,19 @@ class ProfilePage extends ConsumerWidget {
       showDialog(context: context, builder: (_) => ChangeLocaleDialog());
     }
 
+    Future<String> getVersion() async {
+      final info = await PackageInfo.fromPlatform();
+
+      return info.version;
+    }
+
     void onLogoutClick() async {
       final bool confirm = await showDialog(
         context: context,
-        builder: (_) =>
-            PromptDialog(title: localization.confirmDialogTitle, content: localization.logoutConfirmContent),
+        builder: (_) => PromptDialog(
+          title: localization.confirmDialogTitle,
+          content: localization.logoutConfirmContent,
+        ),
       );
 
       if (confirm) {
@@ -54,6 +65,12 @@ class ProfilePage extends ConsumerWidget {
         Uri.parse('https://fruitstime.uz/web/privacy_policy.html'),
         mode: LaunchMode.inAppBrowserView,
       );
+    }
+
+    void onReferralClick() async {
+      await Clipboard.setData(ClipboardData(text: 'HXYUV384'));
+
+      showInfoMessage(context, "Referral kod nusxalandi");
     }
 
     return SingleChildScrollView(
@@ -95,10 +112,15 @@ class ProfilePage extends ConsumerWidget {
                     onPressed: onOpenPrivacyWebClick,
                   ),
                   Divider(height: 0),
-                  PreferenceItem(
-                    name: localization.versionLabel,
-                    value: '1.1.0',
-                    iconPath: 'assets/icons/info.svg',
+                  FutureBuilder(
+                    future: getVersion(),
+                    builder: (_, state) => state.hasData
+                        ? PreferenceItem(
+                            name: localization.versionLabel,
+                            value: state.data!,
+                            iconPath: 'assets/icons/info.svg',
+                          )
+                        : SizedBox.shrink(),
                   ),
                 ],
               ),
@@ -113,7 +135,7 @@ class ProfilePage extends ConsumerWidget {
                           name: localization.referralCodeLabel,
                           value: 'HXYUV384',
                           iconPath: 'assets/icons/copy.svg',
-                          onPressed: onSelectLanguageClick,
+                          onPressed: onReferralClick,
                         ),
                         Divider(height: 0),
                         PreferenceItem(

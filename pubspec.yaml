@@ -3,7 +3,7 @@ description: "FruitsTime mobile app"
 
 publish_to: 'none'
 
-version: 1.1.1+21
+version: 1.1.2+22
 
 environment:
   sdk: ^3.11.4
@@ -26,6 +26,7 @@ dependencies:
   pretty_qr_code: ^3.6.0
   lottie: ^3.3.3
   url_launcher: ^6.3.2
+  package_info_plus: ^10.1.0
 
 dev_dependencies:
   flutter_test:

@@ -6,6 +6,7 @@ import 'package:fruitstime/core/theme/app_spacing.dart';
 import 'package:fruitstime/features/init/domain/usecase/save_locale.dart';
 import 'package:fruitstime/features/init/presentation/ui/splash_screen.dart';
 import 'package:fruitstime/features/init/presentation/ui/widget/locale_select.dart';
+import 'package:fruitstime/l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
 
 class ChangeLocaleDialog extends ConsumerWidget {
@@ -13,6 +14,7 @@ class ChangeLocaleDialog extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final localization = AppLocalizations.of(context)!;
     final availableLocales = ref.read(availableLocalesProvider);
     final saveLocale = ref.read(saveLocaleProvider);
     final localeNotifier = ref.read(appLocaleProvider.notifier);
@@ -34,7 +36,7 @@ class ChangeLocaleDialog extends ConsumerWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              "Tilni tanlang",
+              localization.selectLanguageTitle,
               style: Theme.of(
                 context,
               ).textTheme.bodyLarge!.copyWith(fontSize: 20, fontWeight: FontWeight.w900),

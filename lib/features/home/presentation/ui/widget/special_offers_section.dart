@@ -3,6 +3,7 @@ import 'package:fruitstime/core/theme/app_spacing.dart';
 import 'package:fruitstime/core/ui/widget/dot_progress.dart';
 import 'package:fruitstime/features/banner/domain/entity/banner_entity.dart';
 import 'package:fruitstime/features/home/presentation/ui/widget/banner_carousel_item.dart';
+import 'package:fruitstime/l10n/app_localizations.dart';
 
 class SpecialOffersSection extends StatefulWidget {
   final List<BannerEntity> banners;
@@ -30,11 +31,13 @@ class _SpecialOffersSectionState extends State<SpecialOffersSection> {
 
   @override
   Widget build(BuildContext context) {
+    final localization = AppLocalizations.of(context)!;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "Maxsus takliflar",
+          localization.specialOffersTitle,
           style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.w900),
         ),
         SizedBox(height: AppSpacing.md),
