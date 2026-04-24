@@ -414,5 +414,21 @@
   "onlineStatus": "• Онлайн",
   "@onlineStatus": {
     "description": "Online status indicator text in chat header"
+  },
+  "genderLabel": "Пол",
+  "@genderLabel": {
+    "description": "Label for gender preference item on profile page"
+  },
+  "genderMale": "Мужской",
+  "@genderMale": {
+    "description": "Male gender option label"
+  },
+  "genderFemale": "Женский",
+  "@genderFemale": {
+    "description": "Female gender option label"
+  },
+  "setGenderTitle": "Выберите пол",
+  "@setGenderTitle": {
+    "description": "Title on the set gender modal"
   }
 }

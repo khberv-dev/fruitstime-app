@@ -36,7 +36,7 @@ class _SummaryItemsPrice extends StatelessWidget {
             ).textTheme.bodySmall!.copyWith(color: Theme.of(context).colorScheme.onSecondary),
           ),
           Text(
-            "${formatNumber(value)} so'm",
+            localization.priceText(formatNumber(value)),
             style: Theme.of(context).textTheme.bodyMedium!.copyWith(
               color: Theme.of(context).colorScheme.onSecondary,
               fontWeight: FontWeight.w900,
@@ -113,7 +113,7 @@ class ProductViewSheet extends ConsumerWidget {
                 style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.w900),
               ),
               Text(
-                "${formatNumber(product.price)} so'm",
+                localization.priceText(formatNumber(product.price)),
                 style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                   color: Theme.of(context).colorScheme.secondary,
                   fontWeight: FontWeight.w900,

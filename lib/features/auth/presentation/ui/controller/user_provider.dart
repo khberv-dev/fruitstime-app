@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fruitstime/core/data/network/request_state.dart';
+import 'package:fruitstime/features/auth/data/enum/gender.dart';
 import 'package:fruitstime/features/auth/domain/entity/user_entity.dart';
 import 'package:fruitstime/features/auth/domain/usecase/get_me.dart';
 import 'package:fruitstime/features/auth/domain/usecase/logout.dart';
@@ -24,16 +25,16 @@ class _UserNotifier extends Notifier<RequestState<UserEntity>> {
     }
   }
 
-  Future<void> updateProfile({String? birthday, int? weight, int? height}) async {
+  Future<void> updateProfile({String? birthday, int? weight, int? height, Gender? gender}) async {
     try {
       await ref
           .read(updateProfileProvider)
-          .call(birthday: birthday, weight: weight, height: height);
+          .call(birthday: birthday, weight: weight, height: height, gender: gender);
       final data = await ref.read(getMeProvider).call();
 
       state = RequestState.data(data);
     } on DioException catch (e) {
-      state = RequestState.error(e.message);
+      // state = RequestState.error(e.message);
     }
   }
 

@@ -6,6 +6,7 @@ import 'package:fruitstime/core/theme/app_spacing.dart';
 import 'package:fruitstime/core/ui/widget/item_counter.dart';
 import 'package:fruitstime/features/product/domain/entity/product_entity.dart';
 import 'package:fruitstime/features/product/presentation/ui/widget/add_cart_button.dart';
+import 'package:fruitstime/l10n/app_localizations.dart';
 import 'package:fruitstime/utils/lib.dart';
 
 class ProductListItem extends StatelessWidget {
@@ -28,6 +29,8 @@ class ProductListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final localization = AppLocalizations.of(context)!;
+
     return GestureDetector(
       onTap: () => onPressed(product),
       child: Container(
@@ -68,7 +71,7 @@ class ProductListItem extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    "${formatNumber(product.price)} so'm",
+                    localization.priceText(formatNumber(product.price)),
                     style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                       color: Theme.of(context).colorScheme.secondary,
                       fontWeight: FontWeight.w900,

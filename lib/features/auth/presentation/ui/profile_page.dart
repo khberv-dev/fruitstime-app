@@ -4,10 +4,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fruitstime/core/controller/app_locale.dart';
 import 'package:fruitstime/core/theme/app_spacing.dart';
 import 'package:fruitstime/core/ui/prompt_dialog.dart';
+import 'package:fruitstime/features/auth/data/enum/gender.dart';
 import 'package:fruitstime/features/auth/presentation/ui/change_locale_dialog.dart';
 import 'package:fruitstime/features/auth/presentation/ui/controller/user_provider.dart';
 import 'package:fruitstime/features/auth/presentation/ui/login_screen.dart';
 import 'package:fruitstime/features/auth/presentation/ui/set_birthday_modal.dart';
+import 'package:fruitstime/features/auth/presentation/ui/set_gender_modal.dart';
 import 'package:fruitstime/features/auth/presentation/ui/set_height_modal.dart';
 import 'package:fruitstime/features/auth/presentation/ui/set_weight_modal.dart';
 import 'package:fruitstime/features/auth/presentation/ui/widget/login_profile_card.dart';
@@ -30,6 +32,9 @@ class ProfilePage extends ConsumerWidget {
     final locales = ref.read(availableLocalesProvider);
     final currentLocale = ref.watch(appLocaleProvider);
     final user = ref.watch(userProvider);
+    final gender = user.data?.gender == Gender.male
+        ? localization.genderMale
+        : localization.genderFemale;
 
     final currentLocaleName = locales
         .firstWhere((locale) => locale.localeCode == currentLocale.languageCode)
@@ -100,6 +105,10 @@ class ProfilePage extends ConsumerWidget {
       );
     }
 
+    void onSetGenderClick() {
+      showModalBottomSheet(context: context, builder: (_) => SetGenderModal());
+    }
+
     return SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: AppSpacing.md),
@@ -123,7 +132,9 @@ class ProfilePage extends ConsumerWidget {
                         Divider(height: 0),
                         PreferenceItem(
                           name: localization.birthdayLabel,
-                          value: user.data!.birthday?.format(pattern: 'dd-MM-yyyy') ?? localization.setPlaceholder,
+                          value:
+                              user.data!.birthday?.format(pattern: 'dd-MM-yyyy') ??
+                              localization.setPlaceholder,
                           iconPath: 'assets/icons/cake.svg',
                           onPressed: onSetBirthdayClick,
                         ),
@@ -144,6 +155,13 @@ class ProfilePage extends ConsumerWidget {
                               : localization.setPlaceholder,
                           iconPath: 'assets/icons/ruler.svg',
                           onPressed: onSetHeightClick,
+                        ),
+                        Divider(height: 0),
+                        PreferenceItem(
+                          name: localization.genderLabel,
+                          value: user.data?.gender != null ? gender : localization.setPlaceholder,
+                          iconPath: 'assets/icons/profile.svg',
+                          onPressed: onSetGenderClick,
                         ),
                       ],
                     ),

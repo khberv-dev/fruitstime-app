@@ -1,3 +1,4 @@
+import 'package:fruitstime/features/auth/data/enum/gender.dart';
 import 'package:fruitstime/features/auth/domain/entity/user_entity.dart';
 import 'package:jiffy/jiffy.dart';
 
@@ -8,6 +9,7 @@ class UserDto {
   final Jiffy? birthday;
   final int? weight;
   final int? height;
+  final Gender? gender;
 
   UserDto({
     required this.id,
@@ -16,6 +18,7 @@ class UserDto {
     this.birthday,
     this.weight,
     this.height,
+    this.gender,
   });
 
   factory UserDto.parse(Map<String, dynamic> data) => UserDto(
@@ -25,6 +28,7 @@ class UserDto {
     birthday: data['birthday'] != null ? Jiffy.parse(data['birthday']) : null,
     weight: data['weight'],
     height: data['height'],
+    gender: data['gender'] != null ? Gender.values.byName(data['gender']) : null,
   );
 
   UserEntity toEntity() => UserEntity(
@@ -34,5 +38,6 @@ class UserDto {
     birthday: birthday,
     weight: weight,
     height: height,
+    gender: gender,
   );
 }

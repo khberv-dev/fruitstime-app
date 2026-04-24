@@ -1,3 +1,4 @@
+import 'package:fruitstime/features/auth/data/enum/gender.dart';
 import 'package:jiffy/jiffy.dart';
 
 class UserEntity {
@@ -7,6 +8,7 @@ class UserEntity {
   final Jiffy? birthday;
   final int? weight;
   final int? height;
+  final Gender? gender;
 
   UserEntity({
     required this.id,
@@ -15,5 +17,6 @@ class UserEntity {
     this.birthday,
     this.weight,
     this.height,
+    this.gender,
   });
 }

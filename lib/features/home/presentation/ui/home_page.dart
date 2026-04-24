@@ -5,6 +5,9 @@ import 'package:fruitstime/features/app/presentation/controller/bottom_navbar_pr
 import 'package:fruitstime/features/assistant/presentation/ui/chat_screen.dart';
 import 'package:fruitstime/features/auth/presentation/ui/controller/user_provider.dart';
 import 'package:fruitstime/features/auth/presentation/ui/set_birthday_modal.dart';
+import 'package:fruitstime/features/auth/presentation/ui/set_gender_modal.dart';
+import 'package:fruitstime/features/auth/presentation/ui/set_height_modal.dart';
+import 'package:fruitstime/features/auth/presentation/ui/set_weight_modal.dart';
 import 'package:fruitstime/features/banner/presentation/controller/banners_provider.dart';
 import 'package:fruitstime/features/catalog/domain/entity/catalog_entity.dart';
 import 'package:fruitstime/features/catalog/presentation/controller/catalogs_provider.dart';
@@ -28,7 +31,10 @@ class HomePage extends ConsumerWidget {
     final catalogs = ref.watch(catalogsProvider);
     final user = ref.watch(userProvider);
     final bool isProfileFilled =
-        user.data?.birthday != null && user.data?.weight != null && user.data?.height != null;
+        user.data?.birthday != null &&
+        user.data?.weight != null &&
+        user.data?.height != null &&
+        user.data?.gender != null;
 
     void onShowCatalogsClick() {
       ref.read(bottomNavbarProvider.notifier).state = 1;
@@ -50,14 +56,18 @@ class HomePage extends ConsumerWidget {
     void onFillProfileClick() {
       ref.read(bottomNavbarProvider.notifier).state = 3;
 
-      var modalWidget = SetBirthdayModal();
+      Widget modalWidget = SetGenderModal();
 
       if (user.data?.weight == null) {
-        // modalWidget =
+        modalWidget = SetWeightModal();
       }
 
       if (user.data?.height == null) {
-        // modalWidget =
+        modalWidget = SetHeightModal();
+      }
+
+      if (user.data?.birthday == null) {
+        modalWidget = SetBirthdayModal();
       }
 
       showModalBottomSheet(context: context, isScrollControlled: true, builder: (_) => modalWidget);
@@ -74,7 +84,7 @@ class HomePage extends ConsumerWidget {
             SizedBox(height: AppSpacing.xl),
             GoSearchCard(onPressed: onGotoSearchClick),
             SizedBox(height: AppSpacing.lg),
-            if (!isProfileFilled) ...[
+            if (!isProfileFilled && user.data != null) ...[
               RequestFillProfileCard(onClick: onFillProfileClick),
               SizedBox(height: AppSpacing.lg),
             ],

@@ -415,5 +415,21 @@
   "onlineStatus": "• Online",
   "@onlineStatus": {
     "description": "Online status indicator text in chat header"
+  },
+  "genderLabel": "Jins",
+  "@genderLabel": {
+    "description": "Label for gender preference item on profile page"
+  },
+  "genderMale": "Erkak",
+  "@genderMale": {
+    "description": "Male gender option label"
+  },
+  "genderFemale": "Ayol",
+  "@genderFemale": {
+    "description": "Female gender option label"
+  },
+  "setGenderTitle": "Jinsni tanlash",
+  "@setGenderTitle": {
+    "description": "Title on the set gender modal"
   }
 }
