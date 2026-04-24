@@ -30,7 +30,7 @@ class LoginProfileCard extends StatelessWidget {
         ),
         SizedBox(height: AppSpacing.md),
         Text(
-          "Fruits Time",
+          localization.appName,
           style: Theme.of(
             context,
           ).textTheme.bodyLarge!.copyWith(fontSize: 20, fontWeight: FontWeight.w900),

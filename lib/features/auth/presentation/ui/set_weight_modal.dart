@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fruitstime/core/theme/app_radius.dart';
 import 'package:fruitstime/core/theme/app_spacing.dart';
 import 'package:fruitstime/features/auth/presentation/ui/controller/user_provider.dart';
+import 'package:fruitstime/l10n/app_localizations.dart';
 import 'package:fruitstime/utils/messanger.dart';
 import 'package:go_router/go_router.dart';
 
@@ -47,6 +48,8 @@ class _SetWeightModalState extends ConsumerState<SetWeightModal> {
       }
     });
 
+    final localization = AppLocalizations.of(context)!;
+
     return Container(
       width: double.infinity,
       height: height,
@@ -58,21 +61,21 @@ class _SetWeightModalState extends ConsumerState<SetWeightModal> {
       child: Column(
         children: [
           Text(
-            "Vazningizni kiriting",
+            localization.setWeightTitle,
             style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.w900),
           ),
           SizedBox(height: AppSpacing.lg),
           TextField(
             controller: weightInputController,
             keyboardType: TextInputType.number,
-            decoration: InputDecoration(suffixText: "kg"),
+            decoration: InputDecoration(suffixText: localization.weightUnit),
           ),
           SizedBox(height: AppSpacing.md),
           SizedBox(
             width: double.infinity,
             child: FilledButton(
               onPressed: weight > 10 ? onSaveClick : null,
-              child: Text("Saqlash"),
+              child: Text(localization.saveButton),
             ),
           ),
         ],

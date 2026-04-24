@@ -48,7 +48,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
                 BubbleIcon(color: Colors.white, iconPath: 'assets/icons/brand.svg'),
                 SizedBox(height: AppSpacing.lg),
                 Text(
-                  "Fruits Time",
+                  localization.appName,
                   style: Theme.of(context).textTheme.headlineMedium!.copyWith(
                     color: Colors.white,
                     fontWeight: FontWeight.w900,

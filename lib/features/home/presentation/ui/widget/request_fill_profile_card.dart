@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fruitstime/core/theme/app_radius.dart';
 import 'package:fruitstime/core/theme/app_spacing.dart';
+import 'package:fruitstime/l10n/app_localizations.dart';
 
 class RequestFillProfileCard extends StatelessWidget {
   final VoidCallback onClick;
@@ -10,6 +11,8 @@ class RequestFillProfileCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final localization = AppLocalizations.of(context)!;
+
     return GestureDetector(
       onTap: onClick,
       child: Container(
@@ -26,14 +29,14 @@ class RequestFillProfileCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "To'liq imkoniyatlarni ochish",
+                    localization.unlockFeaturesTitle,
                     style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                       color: Theme.of(context).colorScheme.onPrimary,
                       fontWeight: FontWeight.w900,
                     ),
                   ),
                   Text(
-                    "Ma'lumotlaringizni to'ldiring",
+                    localization.fillProfileSubtitle,
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                       color: Theme.of(context).colorScheme.onPrimary.withAlpha(200),
                     ),

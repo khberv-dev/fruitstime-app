@@ -85,7 +85,7 @@ class SummaryCard extends StatelessWidget {
                 style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.w900),
               ),
               Text(
-                "${formatNumber(totalCartPrice)} so'm",
+                localization.priceText(formatNumber(totalCartPrice)),
                 style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                   color: Theme.of(context).colorScheme.secondary,
                   fontWeight: FontWeight.w900,

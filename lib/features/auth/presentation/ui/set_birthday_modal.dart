@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fruitstime/core/theme/app_radius.dart';
 import 'package:fruitstime/core/theme/app_spacing.dart';
 import 'package:fruitstime/features/auth/presentation/ui/controller/user_provider.dart';
+import 'package:fruitstime/l10n/app_localizations.dart';
 import 'package:fruitstime/utils/messanger.dart';
 import 'package:go_router/go_router.dart';
 import 'package:jiffy/jiffy.dart';
@@ -47,6 +48,8 @@ class _SetBirthdayModalState extends ConsumerState<SetBirthdayModal> {
       }
     });
 
+    final localization = AppLocalizations.of(context)!;
+
     return Container(
       width: double.infinity,
       height: height,
@@ -58,7 +61,7 @@ class _SetBirthdayModalState extends ConsumerState<SetBirthdayModal> {
       child: Column(
         children: [
           Text(
-            "Tu'g'ilgan kuningizni kiriting",
+            localization.setBirthdayTitle,
             style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.w900),
           ),
           SizedBox(height: AppSpacing.lg),
@@ -68,7 +71,7 @@ class _SetBirthdayModalState extends ConsumerState<SetBirthdayModal> {
             width: double.infinity,
             child: FilledButton(
               onPressed: birthday != null ? onSaveClick : null,
-              child: Text("Saqlash"),
+              child: Text(localization.saveButton),
             ),
           ),
         ],

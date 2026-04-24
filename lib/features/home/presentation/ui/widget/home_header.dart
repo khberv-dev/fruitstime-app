@@ -27,7 +27,7 @@ class HomeHeader extends StatelessWidget {
                 ),
               ),
               Text(
-                userFirstName != null ? userFirstName! : "Fruits Time",
+                userFirstName != null ? userFirstName! : localization.appName,
                 style: Theme.of(
                   context,
                 ).textTheme.headlineSmall!.copyWith(fontWeight: FontWeight.w900),

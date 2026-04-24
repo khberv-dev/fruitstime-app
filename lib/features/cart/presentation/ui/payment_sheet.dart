@@ -5,6 +5,7 @@ import 'package:fruitstime/core/theme/app_radius.dart';
 import 'package:fruitstime/core/theme/app_spacing.dart';
 import 'package:fruitstime/core/ui/widget/label_badge.dart';
 import 'package:fruitstime/features/cart/presentation/controller/cart_provider.dart';
+import 'package:fruitstime/l10n/app_localizations.dart';
 import 'package:fruitstime/utils/lib.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
@@ -14,6 +15,7 @@ class PaymentSheet extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final localization = AppLocalizations.of(context)!;
     final cart = ref.watch(cartProvider);
     final cartPrice = ref.read(cartProvider.notifier).totalProductsPrice();
 
@@ -31,7 +33,7 @@ class PaymentSheet extends ConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "To'lov",
+                localization.paymentTitle,
                 style: Theme.of(
                   context,
                 ).textTheme.bodyLarge!.copyWith(fontSize: 20, fontWeight: FontWeight.w900),
@@ -64,14 +66,14 @@ class PaymentSheet extends ConsumerWidget {
           ),
           SizedBox(height: AppSpacing.md),
           Text(
-            "Buyurtma: #123456",
+            localization.orderNumberLabel("123456"),
             style: Theme.of(
               context,
             ).textTheme.bodyMedium!.copyWith(color: Theme.of(context).colorScheme.onSurfaceVariant),
           ),
           SizedBox(height: AppSpacing.md),
           Text(
-            "Jami: ${formatNumber(cartPrice)} so'm",
+            localization.totalWithPrice(formatNumber(cartPrice)),
             style: Theme.of(
               context,
             ).textTheme.bodyLarge!.copyWith(fontSize: 20, fontWeight: FontWeight.w900),
@@ -92,7 +94,7 @@ class PaymentSheet extends ConsumerWidget {
           ),
           Spacer(),
           LabelBadge(
-            text: "QR kodni kassirga ko'rsating",
+            text: localization.showQrCodeMessage,
             color: Theme.of(context).colorScheme.primary,
           ),
           SizedBox(height: AppSpacing.sm),

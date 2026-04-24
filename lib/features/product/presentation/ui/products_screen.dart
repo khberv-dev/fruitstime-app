@@ -10,6 +10,7 @@ import 'package:fruitstime/features/product/presentation/ui/product_view_sheet.d
 import 'package:fruitstime/features/product/presentation/ui/widget/goto_cart_button.dart';
 import 'package:fruitstime/features/product/presentation/ui/widget/product_list.dart';
 import 'package:fruitstime/features/product/presentation/ui/widget/products_header.dart';
+import 'package:fruitstime/l10n/app_localizations.dart';
 import 'package:fruitstime/utils/lib.dart';
 import 'package:go_router/go_router.dart';
 
@@ -35,6 +36,7 @@ class _ProductsScreenState extends ConsumerState<ProductsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final localization = AppLocalizations.of(context)!;
     final catalog = ref.watch(selectedCatalogProvider)!;
     final products = ref.watch(productsProvider);
     final cart = ref.watch(cartProvider);
@@ -117,13 +119,13 @@ class _ProductsScreenState extends ConsumerState<ProductsScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "$cartCount ta mahsulot",
+                                localization.cartItemsCount(cartCount),
                                 style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                                   color: Theme.of(context).colorScheme.onSurfaceVariant,
                                 ),
                               ),
                               Text(
-                                "${formatNumber(cartPrice)} so'm",
+                                localization.priceText(formatNumber(cartPrice)),
                                 style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                                   fontSize: 20,
                                   fontWeight: FontWeight.w900,

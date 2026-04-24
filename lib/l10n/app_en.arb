@@ -327,5 +327,92 @@
         "type": "int"
       }
     }
+  },
+  "referralCopied": "Referral code copied",
+  "@referralCopied": {
+    "description": "Message when referral code is copied to clipboard"
+  },
+  "birthdayLabel": "Birthday",
+  "@birthdayLabel": {
+    "description": "Label for birthday preference item on profile page"
+  },
+  "setPlaceholder": "Set",
+  "@setPlaceholder": {
+    "description": "Placeholder shown when a profile field has not been set"
+  },
+  "weightLabel": "Weight",
+  "@weightLabel": {
+    "description": "Label for weight preference item on profile page"
+  },
+  "heightLabel": "Height",
+  "@heightLabel": {
+    "description": "Label for height preference item on profile page"
+  },
+  "weightUnit": "kg",
+  "@weightUnit": {
+    "description": "Weight measurement unit abbreviation"
+  },
+  "heightUnit": "cm",
+  "@heightUnit": {
+    "description": "Height measurement unit abbreviation"
+  },
+  "setBirthdayTitle": "Enter your birthday",
+  "@setBirthdayTitle": {
+    "description": "Title on the set birthday modal"
+  },
+  "saveButton": "Save",
+  "@saveButton": {
+    "description": "Label for the save button in modals"
+  },
+  "setHeightTitle": "Enter your height",
+  "@setHeightTitle": {
+    "description": "Title on the set height modal"
+  },
+  "setWeightTitle": "Enter your weight",
+  "@setWeightTitle": {
+    "description": "Title on the set weight modal"
+  },
+  "unlockFeaturesTitle": "Unlock full features",
+  "@unlockFeaturesTitle": {
+    "description": "Title on the request fill profile card on home screen"
+  },
+  "fillProfileSubtitle": "Fill in your data",
+  "@fillProfileSubtitle": {
+    "description": "Subtitle on the request fill profile card on home screen"
+  },
+  "cartItemsCount": "{count} items",
+  "@cartItemsCount": {
+    "description": "Cart items count shown on the products screen bottom bar",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "priceText": "{price} UZS",
+  "@priceText": {
+    "description": "Price formatted with currency suffix",
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "orderNumberLabel": "Order: #{number}",
+  "@orderNumberLabel": {
+    "description": "Order number label in payment sheet",
+    "placeholders": {
+      "number": {
+        "type": "String"
+      }
+    }
+  },
+  "chatAssistantTitle": "Dietitian",
+  "@chatAssistantTitle": {
+    "description": "Title shown for the AI chat assistant in chat header"
+  },
+  "onlineStatus": "• Online",
+  "@onlineStatus": {
+    "description": "Online status indicator text in chat header"
   }
 }

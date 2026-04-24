@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fruitstime/core/theme/app_radius.dart';
 import 'package:fruitstime/core/theme/app_spacing.dart';
+import 'package:fruitstime/l10n/app_localizations.dart';
 
 class ChatHeader extends StatelessWidget {
   final VoidCallback onCloseClick;
@@ -10,6 +11,8 @@ class ChatHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final localization = AppLocalizations.of(context)!;
+
     return Container(
       height: 72,
       padding: EdgeInsets.symmetric(horizontal: AppSpacing.md),
@@ -36,13 +39,13 @@ class ChatHeader extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Dietolog",
+                  localization.chatAssistantTitle,
                   style: Theme.of(
                     context,
                   ).textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.w900),
                 ),
                 Text(
-                  "• Online",
+                  localization.onlineStatus,
                   style: Theme.of(
                     context,
                   ).textTheme.bodySmall!.copyWith(color: Theme.of(context).colorScheme.secondary),

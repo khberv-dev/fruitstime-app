@@ -9,6 +9,7 @@ import 'package:fruitstime/features/assistant/presentation/ui/widget/chat_header
 import 'package:fruitstime/features/assistant/presentation/ui/widget/chat_message.dart';
 import 'package:fruitstime/features/product/domain/entity/product_entity.dart';
 import 'package:fruitstime/features/product/presentation/ui/product_view_sheet.dart';
+import 'package:fruitstime/l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 
@@ -28,6 +29,7 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final localization = AppLocalizations.of(context)!;
     final chatAskState = ref.watch(chatAskStateProvider);
 
     void onCloseClick() {
@@ -108,7 +110,7 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
                   Expanded(
                     child: TextField(
                       controller: inputMessageController,
-                      decoration: InputDecoration(hintText: "Savolingizni yozing..."),
+                      decoration: InputDecoration(hintText: localization.chatInputHint),
                     ),
                   ),
                   SizedBox(width: AppSpacing.sm),

@@ -73,7 +73,7 @@ class ProfilePage extends ConsumerWidget {
     void onReferralClick() async {
       await Clipboard.setData(ClipboardData(text: 'HXYUV384'));
 
-      showInfoMessage(context, "Referral kod nusxalandi");
+      showInfoMessage(context, localization.referralCopied);
     }
 
     void onSetBirthdayClick() {
@@ -122,26 +122,26 @@ class ProfilePage extends ConsumerWidget {
                         ),
                         Divider(height: 0),
                         PreferenceItem(
-                          name: "Tug'ilgan kun",
-                          value: user.data!.birthday?.format(pattern: 'dd-MM-yyyy') ?? "Belgilash",
+                          name: localization.birthdayLabel,
+                          value: user.data!.birthday?.format(pattern: 'dd-MM-yyyy') ?? localization.setPlaceholder,
                           iconPath: 'assets/icons/cake.svg',
                           onPressed: onSetBirthdayClick,
                         ),
                         Divider(height: 0),
                         PreferenceItem(
-                          name: "Vazn",
+                          name: localization.weightLabel,
                           value: user.data!.weight != null
-                              ? "${user.data!.weight} kg"
-                              : "Belgilash",
+                              ? "${user.data!.weight} ${localization.weightUnit}"
+                              : localization.setPlaceholder,
                           iconPath: 'assets/icons/weight.svg',
                           onPressed: onSetWeightClick,
                         ),
                         Divider(height: 0),
                         PreferenceItem(
-                          name: "Bo'y",
+                          name: localization.heightLabel,
                           value: user.data!.height != null
-                              ? "${user.data!.height} sm"
-                              : "Belgilash",
+                              ? "${user.data!.height} ${localization.heightUnit}"
+                              : localization.setPlaceholder,
                           iconPath: 'assets/icons/ruler.svg',
                           onPressed: onSetHeightClick,
                         ),

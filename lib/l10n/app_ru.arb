@@ -327,5 +327,92 @@
         "type": "int"
       }
     }
+  },
+  "referralCopied": "Реферальный код скопирован",
+  "@referralCopied": {
+    "description": "Message when referral code is copied to clipboard"
+  },
+  "birthdayLabel": "День рождения",
+  "@birthdayLabel": {
+    "description": "Label for birthday preference item on profile page"
+  },
+  "setPlaceholder": "Установить",
+  "@setPlaceholder": {
+    "description": "Placeholder shown when a profile field has not been set"
+  },
+  "weightLabel": "Вес",
+  "@weightLabel": {
+    "description": "Label for weight preference item on profile page"
+  },
+  "heightLabel": "Рост",
+  "@heightLabel": {
+    "description": "Label for height preference item on profile page"
+  },
+  "weightUnit": "кг",
+  "@weightUnit": {
+    "description": "Weight measurement unit abbreviation"
+  },
+  "heightUnit": "см",
+  "@heightUnit": {
+    "description": "Height measurement unit abbreviation"
+  },
+  "setBirthdayTitle": "Введите дату рождения",
+  "@setBirthdayTitle": {
+    "description": "Title on the set birthday modal"
+  },
+  "saveButton": "Сохранить",
+  "@saveButton": {
+    "description": "Label for the save button in modals"
+  },
+  "setHeightTitle": "Введите ваш рост",
+  "@setHeightTitle": {
+    "description": "Title on the set height modal"
+  },
+  "setWeightTitle": "Введите ваш вес",
+  "@setWeightTitle": {
+    "description": "Title on the set weight modal"
+  },
+  "unlockFeaturesTitle": "Разблокировать все возможности",
+  "@unlockFeaturesTitle": {
+    "description": "Title on the request fill profile card on home screen"
+  },
+  "fillProfileSubtitle": "Заполните ваши данные",
+  "@fillProfileSubtitle": {
+    "description": "Subtitle on the request fill profile card on home screen"
+  },
+  "cartItemsCount": "{count} товаров",
+  "@cartItemsCount": {
+    "description": "Cart items count shown on the products screen bottom bar",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "priceText": "{price} сум",
+  "@priceText": {
+    "description": "Price formatted with currency suffix",
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "orderNumberLabel": "Заказ: #{number}",
+  "@orderNumberLabel": {
+    "description": "Order number label in payment sheet",
+    "placeholders": {
+      "number": {
+        "type": "String"
+      }
+    }
+  },
+  "chatAssistantTitle": "Диетолог",
+  "@chatAssistantTitle": {
+    "description": "Title shown for the AI chat assistant in chat header"
+  },
+  "onlineStatus": "• Онлайн",
+  "@onlineStatus": {
+    "description": "Online status indicator text in chat header"
   }
 }
