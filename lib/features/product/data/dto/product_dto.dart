@@ -1,4 +1,5 @@
 import 'package:fruitstime/core/data/network/config.dart';
+import 'package:fruitstime/features/product/data/enum/product_type.dart';
 import 'package:fruitstime/features/product/domain/entity/product_entity.dart';
 
 class ProductDto {
@@ -8,6 +9,7 @@ class ProductDto {
   final String image;
   final List<String> compound;
   final int price;
+  final ProductType type;
 
   ProductDto({
     required this.id,
@@ -16,6 +18,7 @@ class ProductDto {
     required this.image,
     required this.compound,
     required this.price,
+    required this.type,
   });
 
   factory ProductDto.parse(Map<String, dynamic> data) => ProductDto(
@@ -25,6 +28,7 @@ class ProductDto {
     image: data['image'],
     compound: List.from(data['compound']),
     price: data['price'],
+    type: ProductType.values.byName(data['type']),
   );
 
   ProductEntity toEntity() => ProductEntity(
@@ -34,5 +38,6 @@ class ProductDto {
     imageUrl: '$baseCdnUrl/product/$image',
     compound: compound,
     price: price,
+    type: type,
   );
 }

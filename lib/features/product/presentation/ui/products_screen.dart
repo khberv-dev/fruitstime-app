@@ -6,7 +6,7 @@ import 'package:fruitstime/features/cart/presentation/controller/cart_provider.d
 import 'package:fruitstime/features/catalog/presentation/controller/selected_catalog_provider.dart';
 import 'package:fruitstime/features/product/domain/entity/product_entity.dart';
 import 'package:fruitstime/features/product/presentation/controller/products_provider.dart';
-import 'package:fruitstime/features/product/presentation/ui/product_view_sheet.dart';
+import 'package:fruitstime/features/product/presentation/ui/product_view_modal.dart';
 import 'package:fruitstime/features/product/presentation/ui/widget/goto_cart_button.dart';
 import 'package:fruitstime/features/product/presentation/ui/widget/product_list.dart';
 import 'package:fruitstime/features/product/presentation/ui/widget/products_header.dart';
@@ -64,7 +64,7 @@ class _ProductsScreenState extends ConsumerState<ProductsScreen> {
       showModalBottomSheet(
         context: context,
         isScrollControlled: true,
-        builder: (context) => ProductViewSheet(product: product),
+        builder: (context) => ProductViewModal(product: product),
       );
     }
 

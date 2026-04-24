@@ -1,13 +1,39 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fruitstime/core/theme/app_radius.dart';
 import 'package:fruitstime/core/theme/app_spacing.dart';
 import 'package:fruitstime/core/ui/widget/item_counter.dart';
+import 'package:fruitstime/features/product/data/enum/product_type.dart';
 import 'package:fruitstime/features/product/domain/entity/product_entity.dart';
 import 'package:fruitstime/features/product/presentation/ui/widget/add_cart_button.dart';
 import 'package:fruitstime/l10n/app_localizations.dart';
 import 'package:fruitstime/utils/lib.dart';
+
+class _ProductBadge extends StatelessWidget {
+  final Color color;
+  final String iconPath;
+
+  const _ProductBadge({super.key, required this.color, required this.iconPath});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 24,
+      height: 24,
+      padding: EdgeInsets.all(6),
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.only(topRight: Radius.circular(AppRadius.sm)),
+      ),
+      child: SvgPicture.asset(
+        iconPath,
+        colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
+      ),
+    );
+  }
+}
 
 class ProductListItem extends StatelessWidget {
   final ProductEntity product;
@@ -43,14 +69,28 @@ class ProductListItem extends StatelessWidget {
         child: Row(
           children: [
             Container(
+              width: 96,
+              height: 104,
               clipBehavior: Clip.hardEdge,
               decoration: BoxDecoration(borderRadius: BorderRadius.circular(AppRadius.md)),
-              child: FadeInImage(
-                placeholder: AssetImage('assets/images/placeholder.png'),
-                image: NetworkImage(product.imageUrl),
-                width: 96,
-                height: 104,
-                fit: BoxFit.cover,
+              child: Stack(
+                children: [
+                  Positioned.fill(
+                    child: FadeInImage(
+                      placeholder: AssetImage('assets/images/placeholder.png'),
+                      image: NetworkImage(product.imageUrl),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  if (product.type == ProductType.vitamin)
+                    Positioned(
+                      bottom: 0,
+                      child: _ProductBadge(
+                        color: Theme.of(context).colorScheme.primary,
+                        iconPath: 'assets/icons/pill.svg',
+                      ),
+                    ),
+                ],
               ),
             ),
             SizedBox(width: AppSpacing.md),

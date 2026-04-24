@@ -1,3 +1,5 @@
+import 'package:fruitstime/features/product/data/enum/product_type.dart';
+
 class ProductEntity {
   final String id;
   final String title;
@@ -5,6 +7,7 @@ class ProductEntity {
   final String imageUrl;
   final List<String> compound;
   final int price;
+  final ProductType type;
 
   ProductEntity({
     required this.id,
@@ -13,6 +16,7 @@ class ProductEntity {
     required this.imageUrl,
     required this.compound,
     required this.price,
+    required this.type,
   });
 
   @override

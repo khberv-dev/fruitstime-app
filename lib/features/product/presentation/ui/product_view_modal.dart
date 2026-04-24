@@ -6,11 +6,33 @@ import 'package:fruitstime/core/theme/app_spacing.dart';
 import 'package:fruitstime/core/ui/widget/item_counter.dart';
 import 'package:fruitstime/core/ui/widget/label_badge.dart';
 import 'package:fruitstime/features/cart/presentation/controller/cart_provider.dart';
+import 'package:fruitstime/features/product/data/enum/product_type.dart';
 import 'package:fruitstime/features/product/domain/entity/product_entity.dart';
 import 'package:fruitstime/features/product/presentation/ui/widget/add_cart_button.dart';
 import 'package:fruitstime/l10n/app_localizations.dart';
 import 'package:fruitstime/utils/lib.dart';
 import 'package:go_router/go_router.dart';
+
+class _ProductBadge extends StatelessWidget {
+  final Color color;
+  final String iconPath;
+
+  const _ProductBadge({super.key, required this.color, required this.iconPath});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 24,
+      height: 24,
+      padding: EdgeInsets.all(6),
+      decoration: BoxDecoration(
+        color: Theme.of(context).scaffoldBackgroundColor,
+        borderRadius: BorderRadius.circular(AppRadius.sm),
+      ),
+      child: SvgPicture.asset(iconPath, colorFilter: ColorFilter.mode(color, BlendMode.srcIn)),
+    );
+  }
+}
 
 class _SummaryItemsPrice extends StatelessWidget {
   final int value;
@@ -48,10 +70,10 @@ class _SummaryItemsPrice extends StatelessWidget {
   }
 }
 
-class ProductViewSheet extends ConsumerWidget {
+class ProductViewModal extends ConsumerWidget {
   final ProductEntity product;
 
-  const ProductViewSheet({super.key, required this.product});
+  const ProductViewModal({super.key, required this.product});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -108,9 +130,22 @@ class ProductViewSheet extends ConsumerWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                product.title,
-                style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.w900),
+              Row(
+                children: [
+                  Text(
+                    product.title,
+                    style: Theme.of(
+                      context,
+                    ).textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.w900),
+                  ),
+                  if (product.type == ProductType.vitamin) ...[
+                    SizedBox(width: AppSpacing.md),
+                    _ProductBadge(
+                      color: Theme.of(context).colorScheme.primary,
+                      iconPath: 'assets/icons/pill.svg',
+                    ),
+                  ],
+                ],
               ),
               Text(
                 localization.priceText(formatNumber(product.price)),

@@ -8,7 +8,7 @@ import 'package:fruitstime/features/assistant/presentation/controller/chat_ask_p
 import 'package:fruitstime/features/assistant/presentation/ui/widget/chat_header.dart';
 import 'package:fruitstime/features/assistant/presentation/ui/widget/chat_message.dart';
 import 'package:fruitstime/features/product/domain/entity/product_entity.dart';
-import 'package:fruitstime/features/product/presentation/ui/product_view_sheet.dart';
+import 'package:fruitstime/features/product/presentation/ui/product_view_modal.dart';
 import 'package:fruitstime/l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
@@ -56,7 +56,7 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
       showModalBottomSheet(
         context: context,
         isScrollControlled: true,
-        builder: (context) => ProductViewSheet(product: product),
+        builder: (context) => ProductViewModal(product: product),
       );
     }
 
