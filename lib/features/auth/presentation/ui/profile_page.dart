@@ -7,6 +7,9 @@ import 'package:fruitstime/core/ui/prompt_dialog.dart';
 import 'package:fruitstime/features/auth/presentation/ui/change_locale_dialog.dart';
 import 'package:fruitstime/features/auth/presentation/ui/controller/user_provider.dart';
 import 'package:fruitstime/features/auth/presentation/ui/login_screen.dart';
+import 'package:fruitstime/features/auth/presentation/ui/set_birthday_modal.dart';
+import 'package:fruitstime/features/auth/presentation/ui/set_height_modal.dart';
+import 'package:fruitstime/features/auth/presentation/ui/set_weight_modal.dart';
 import 'package:fruitstime/features/auth/presentation/ui/widget/login_profile_card.dart';
 import 'package:fruitstime/features/auth/presentation/ui/widget/preference_item.dart';
 import 'package:fruitstime/features/auth/presentation/ui/widget/preferences_group.dart';
@@ -73,6 +76,30 @@ class ProfilePage extends ConsumerWidget {
       showInfoMessage(context, "Referral kod nusxalandi");
     }
 
+    void onSetBirthdayClick() {
+      showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        builder: (_) => SetBirthdayModal(),
+      );
+    }
+
+    void onSetWeightClick() {
+      showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        builder: (_) => SetWeightModal(),
+      );
+    }
+
+    void onSetHeightClick() {
+      showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        builder: (_) => SetHeightModal(),
+      );
+    }
+
     return SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: AppSpacing.md),
@@ -86,10 +113,39 @@ class ProfilePage extends ConsumerWidget {
             user.data != null
                 ? PreferencesGroup(
                     text: localization.profileSection,
-                    child: PreferenceItem(
-                      name: localization.phoneLabel,
-                      value: "+${formatPhoneNumber(user.data!.phoneNumber)}",
-                      iconPath: 'assets/icons/phone.svg',
+                    child: Column(
+                      children: [
+                        PreferenceItem(
+                          name: localization.phoneLabel,
+                          value: "+${formatPhoneNumber(user.data!.phoneNumber)}",
+                          iconPath: 'assets/icons/phone.svg',
+                        ),
+                        Divider(height: 0),
+                        PreferenceItem(
+                          name: "Tug'ilgan kun",
+                          value: user.data!.birthday?.format(pattern: 'dd-MM-yyyy') ?? "Belgilash",
+                          iconPath: 'assets/icons/cake.svg',
+                          onPressed: onSetBirthdayClick,
+                        ),
+                        Divider(height: 0),
+                        PreferenceItem(
+                          name: "Vazn",
+                          value: user.data!.weight != null
+                              ? "${user.data!.weight} kg"
+                              : "Belgilash",
+                          iconPath: 'assets/icons/weight.svg',
+                          onPressed: onSetWeightClick,
+                        ),
+                        Divider(height: 0),
+                        PreferenceItem(
+                          name: "Bo'y",
+                          value: user.data!.height != null
+                              ? "${user.data!.height} sm"
+                              : "Belgilash",
+                          iconPath: 'assets/icons/ruler.svg',
+                          onPressed: onSetHeightClick,
+                        ),
+                      ],
                     ),
                   )
                 : SizedBox.shrink(),

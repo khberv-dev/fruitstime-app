@@ -15,4 +15,8 @@ class UserRepository {
 
     return UserDto.parse(response.data);
   }
+
+  Future<void> updateProfile({String? birthday, int? weight, int? height}) async {
+    await _client.put('user/me', data: {'birthday': birthday, 'weight': weight, 'height': height});
+  }
 }

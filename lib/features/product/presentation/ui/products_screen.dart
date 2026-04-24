@@ -10,7 +10,6 @@ import 'package:fruitstime/features/product/presentation/ui/product_view_sheet.d
 import 'package:fruitstime/features/product/presentation/ui/widget/goto_cart_button.dart';
 import 'package:fruitstime/features/product/presentation/ui/widget/product_list.dart';
 import 'package:fruitstime/features/product/presentation/ui/widget/products_header.dart';
-import 'package:fruitstime/l10n/app_localizations.dart';
 import 'package:fruitstime/utils/lib.dart';
 import 'package:go_router/go_router.dart';
 

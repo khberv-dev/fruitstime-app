@@ -47,8 +47,11 @@ class ApiClientInterceptor extends Interceptor {
       }
     }
 
-    if (err.response?.data['message'] != null) {
-      return handler.next(err.copyWith(message: err.response?.data['message']));
+    final message = err.response?.data['message'];
+
+    if (message != null) {
+      final errorMessage = message is List<dynamic> ? message.join(', ') : message;
+      return handler.next(err.copyWith(message: errorMessage));
     }
 
     return handler.next(err);

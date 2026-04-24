@@ -38,6 +38,7 @@ class PreferenceItem extends StatelessWidget {
                 children: [
                   SvgPicture.asset(
                     iconPath,
+                    width: 20,
                     colorFilter: ColorFilter.mode(color.withAlpha(alpha), BlendMode.srcIn),
                   ),
                   SizedBox(width: AppSpacing.md),
