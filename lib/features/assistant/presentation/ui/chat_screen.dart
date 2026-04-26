@@ -7,6 +7,7 @@ import 'package:fruitstime/features/assistant/domain/enum/message_sender.dart';
 import 'package:fruitstime/features/assistant/presentation/controller/chat_ask_provider.dart';
 import 'package:fruitstime/features/assistant/presentation/ui/widget/chat_header.dart';
 import 'package:fruitstime/features/assistant/presentation/ui/widget/chat_message.dart';
+import 'package:fruitstime/features/auth/presentation/ui/controller/user_provider.dart';
 import 'package:fruitstime/features/product/domain/entity/product_entity.dart';
 import 'package:fruitstime/features/product/presentation/ui/product_view_modal.dart';
 import 'package:fruitstime/l10n/app_localizations.dart';
@@ -40,15 +41,18 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
       if (inputMessageController.text.trim().isEmpty || chatAskState.isLoading) return;
 
       setState(() {
-        final newMessage = MessageEntity(
-          text: inputMessageController.text,
-          from: MessageSender.me,
-          suggestedProducts: [],
-        );
-        messages = [newMessage, ...messages];
+        messages = [
+          MessageEntity(
+            text: inputMessageController.text,
+            from: MessageSender.me,
+            suggestedProducts: [],
+          ),
+          ...messages,
+        ];
       });
 
       ref.read(chatAskStateProvider.notifier).ask(inputMessageController.text);
+
       inputMessageController.text = '';
     }
 
@@ -64,6 +68,7 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
       if (state.data != null) {
         setState(() {
           final newMessage = state.data!;
+
           messages = [newMessage, ...messages];
         });
       }
