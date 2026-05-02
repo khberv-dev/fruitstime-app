@@ -12,10 +12,12 @@ import 'package:fruitstime/features/auth/presentation/ui/set_birthday_modal.dart
 import 'package:fruitstime/features/auth/presentation/ui/set_gender_modal.dart';
 import 'package:fruitstime/features/auth/presentation/ui/set_height_modal.dart';
 import 'package:fruitstime/features/auth/presentation/ui/set_weight_modal.dart';
+import 'package:fruitstime/features/auth/presentation/ui/status_info_modal.dart';
 import 'package:fruitstime/features/auth/presentation/ui/widget/login_profile_card.dart';
 import 'package:fruitstime/features/auth/presentation/ui/widget/preference_item.dart';
 import 'package:fruitstime/features/auth/presentation/ui/widget/preferences_group.dart';
 import 'package:fruitstime/features/auth/presentation/ui/widget/profile_card.dart';
+import 'package:fruitstime/features/auth/presentation/ui/widget/status_tier_card.dart';
 import 'package:fruitstime/l10n/app_localizations.dart';
 import 'package:fruitstime/utils/lib.dart';
 import 'package:fruitstime/utils/messanger.dart';
@@ -111,6 +113,14 @@ class ProfilePage extends ConsumerWidget {
       showModalBottomSheet(context: context, builder: (_) => SetGenderModal());
     }
 
+    void onStatusInfoClick() {
+      showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        builder: (_) => StatusInfoModal(),
+      );
+    }
+
     return SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: AppSpacing.md),
@@ -121,6 +131,15 @@ class ProfilePage extends ConsumerWidget {
                 ? ProfileCard(user: user.data!)
                 : LoginProfileCard(onGotoLoginClick: onGotoLoginClick),
             SizedBox(height: AppSpacing.lg),
+            user.data != null
+                ? Padding(
+                    padding: EdgeInsets.only(bottom: AppSpacing.md),
+                    child: StatusTierCard(
+                      tier: user.data!.tier,
+                      onInfoPressed: onStatusInfoClick,
+                    ),
+                  )
+                : SizedBox.shrink(),
             user.data != null
                 ? PreferencesGroup(
                     text: localization.profileSection,

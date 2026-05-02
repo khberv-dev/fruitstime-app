@@ -1,4 +1,5 @@
 import 'package:fruitstime/features/auth/data/enum/gender.dart';
+import 'package:fruitstime/features/auth/data/enum/tier.dart';
 import 'package:fruitstime/features/auth/domain/entity/user_entity.dart';
 import 'package:jiffy/jiffy.dart';
 
@@ -12,6 +13,7 @@ class UserDto {
   final Gender? gender;
   final String? referralCode;
   final String role;
+  final Tier tier;
   final Jiffy createdAt;
   final Jiffy updatedAt;
 
@@ -25,6 +27,7 @@ class UserDto {
     this.gender,
     this.referralCode,
     required this.role,
+    required this.tier,
     required this.createdAt,
     required this.updatedAt,
   });
@@ -39,6 +42,7 @@ class UserDto {
     gender: data['gender'] != null ? Gender.values.byName(data['gender']) : null,
     referralCode: data['referralCode'],
     role: data['role'],
+    tier: data['status'] != null ? Tier.values.byName(data['status']) : Tier.silver,
     createdAt: Jiffy.parse(data['createdAt']),
     updatedAt: Jiffy.parse(data['updatedAt']),
   );
@@ -53,6 +57,7 @@ class UserDto {
     gender: gender,
     referralCode: referralCode,
     role: role,
+    tier: tier,
     createdAt: createdAt,
     updatedAt: updatedAt,
   );

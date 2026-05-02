@@ -431,5 +431,75 @@
   "setGenderTitle": "Jinsni tanlash",
   "@setGenderTitle": {
     "description": "Title on the set gender modal"
+  },
+  "statusTierLabel": "Maqom darajasi",
+  "@statusTierLabel": {
+    "description": "Label shown above the tier name on the status tier card"
+  },
+  "statusInfoTitle": "A'zo maqomi",
+  "@statusInfoTitle": {
+    "description": "Title of the status tiers info modal"
+  },
+  "statusInfoSubtitle": "Darajangizni oshirish uchun referallar to'plang",
+  "@statusInfoSubtitle": {
+    "description": "Subtitle below the status info modal title explaining how tiers are earned"
+  },
+  "tierSilver": "Kumush",
+  "@tierSilver": {
+    "description": "Silver tier name"
+  },
+  "tierGold": "Oltin",
+  "@tierGold": {
+    "description": "Gold tier name"
+  },
+  "tierVip": "VIP",
+  "@tierVip": {
+    "description": "VIP tier name"
+  },
+  "tierSilverDescription": "Boshlang'ich daraja",
+  "@tierSilverDescription": {
+    "description": "Subtitle for the Silver tier shown on the status card"
+  },
+  "tierGoldDescription": "Ko'proq imtiyozlar uchun rivojlaning",
+  "@tierGoldDescription": {
+    "description": "Subtitle for the Gold tier shown on the status card"
+  },
+  "tierVipDescription": "Yuqori daraja — eksklyuziv imtiyozlar",
+  "@tierVipDescription": {
+    "description": "Subtitle for the VIP tier shown on the status card"
+  },
+  "statusSilverHeading": "Kumush a'zo",
+  "@statusSilverHeading": {
+    "description": "Heading for the Silver tier on the status card"
+  },
+  "statusGoldHeading": "Oltin a'zo",
+  "@statusGoldHeading": {
+    "description": "Heading for the Gold tier on the status card"
+  },
+  "statusVipHeading": "VIP a'zo",
+  "@statusVipHeading": {
+    "description": "Heading for the VIP tier on the status card"
+  },
+  "earnReferrals": "{count} referal to'plang",
+  "@earnReferrals": {
+    "description": "Label showing how many referrals are needed to reach a tier",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "referralCountShort": "{count} ref.",
+  "@referralCountShort": {
+    "description": "Short referral count shown on the tier pill in the status info modal",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "currentDiscount": "Joriy chegirma",
+  "@currentDiscount": {
+    "description": "Label for the current discount row on the status card"
   }
 }
