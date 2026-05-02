@@ -76,9 +76,11 @@ class ProfilePage extends ConsumerWidget {
     }
 
     void onReferralClick() async {
-      await Clipboard.setData(ClipboardData(text: 'HXYUV384'));
+      if (user.data?.referralCode != null) {
+        await Clipboard.setData(ClipboardData(text: user.data!.referralCode!));
 
-      showInfoMessage(context, localization.referralCopied);
+        showInfoMessage(context, localization.referralCopied);
+      }
     }
 
     void onSetBirthdayClick() {
@@ -207,7 +209,7 @@ class ProfilePage extends ConsumerWidget {
                       children: [
                         PreferenceItem(
                           name: localization.referralCodeLabel,
-                          value: 'HXYUV384',
+                          value: user.data?.referralCode ?? 'N/A',
                           iconPath: 'assets/icons/copy.svg',
                           onPressed: onReferralClick,
                         ),

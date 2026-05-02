@@ -9,6 +9,10 @@ class UserEntity {
   final int? weight;
   final int? height;
   final Gender? gender;
+  final String? referralCode;
+  final String role;
+  final Jiffy createdAt;
+  final Jiffy updatedAt;
 
   UserEntity({
     required this.id,
@@ -18,5 +22,9 @@ class UserEntity {
     this.weight,
     this.height,
     this.gender,
+    this.referralCode,
+    required this.role,
+    required this.createdAt,
+    required this.updatedAt,
   });
 }

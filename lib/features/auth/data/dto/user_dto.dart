@@ -10,6 +10,10 @@ class UserDto {
   final int? weight;
   final int? height;
   final Gender? gender;
+  final String? referralCode;
+  final String role;
+  final Jiffy createdAt;
+  final Jiffy updatedAt;
 
   UserDto({
     required this.id,
@@ -19,6 +23,10 @@ class UserDto {
     this.weight,
     this.height,
     this.gender,
+    this.referralCode,
+    required this.role,
+    required this.createdAt,
+    required this.updatedAt,
   });
 
   factory UserDto.parse(Map<String, dynamic> data) => UserDto(
@@ -29,6 +37,10 @@ class UserDto {
     weight: data['weight'],
     height: data['height'],
     gender: data['gender'] != null ? Gender.values.byName(data['gender']) : null,
+    referralCode: data['referralCode'],
+    role: data['role'],
+    createdAt: Jiffy.parse(data['createdAt']),
+    updatedAt: Jiffy.parse(data['updatedAt']),
   );
 
   UserEntity toEntity() => UserEntity(
@@ -39,5 +51,9 @@ class UserDto {
     weight: weight,
     height: height,
     gender: gender,
+    referralCode: referralCode,
+    role: role,
+    createdAt: createdAt,
+    updatedAt: updatedAt,
   );
 }

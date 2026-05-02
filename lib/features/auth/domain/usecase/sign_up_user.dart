@@ -19,6 +19,7 @@ class SignUpUser {
       firstName: session.firstName,
       phoneNumber: session.phoneNumber,
       password: session.password,
+      referralCode: session.referralCode,
     );
 
     _cache.setAccessToken(data['accessToken']);

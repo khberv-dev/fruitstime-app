@@ -13,10 +13,16 @@ class AuthRepository {
     required String firstName,
     required String phoneNumber,
     required String password,
+    String? referralCode,
   }) async {
     final response = await _client.post(
       'auth/sign-up',
-      data: {'firstName': firstName, 'phoneNumber': phoneNumber, 'password': password},
+      data: {
+        'firstName': firstName,
+        'phoneNumber': phoneNumber,
+        'password': password,
+        if (referralCode != null) 'referralCode': referralCode,
+      },
     );
 
     return response.data as Map<String, dynamic>;

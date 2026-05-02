@@ -66,11 +66,14 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
       }
 
       if (state.data != null) {
+        final referralCode = referralController.text.trim();
+
         ref.read(registerSessionProvider.notifier).state = RegisterSession(
           sessionId: state.data!,
           firstName: firstNameController.text.trim(),
           phoneNumber: '998${extractDigits(phoneNumberController.text)}',
           password: passwordController.text,
+          referralCode: hasReferral && referralCode.isNotEmpty ? referralCode : null,
         );
 
         context.push(OtpScreen.path);
