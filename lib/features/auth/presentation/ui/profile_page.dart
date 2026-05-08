@@ -18,6 +18,8 @@ import 'package:fruitstime/features/auth/presentation/ui/widget/preference_item.
 import 'package:fruitstime/features/auth/presentation/ui/widget/preferences_group.dart';
 import 'package:fruitstime/features/auth/presentation/ui/widget/profile_card.dart';
 import 'package:fruitstime/features/auth/presentation/ui/widget/status_tier_card.dart';
+import 'package:fruitstime/features/order/presentation/ui/orders_screen.dart';
+import 'package:fruitstime/features/order/presentation/ui/widget/my_orders_tile.dart';
 import 'package:fruitstime/l10n/app_localizations.dart';
 import 'package:fruitstime/utils/lib.dart';
 import 'package:fruitstime/utils/messanger.dart';
@@ -121,6 +123,10 @@ class ProfilePage extends ConsumerWidget {
       );
     }
 
+    void onMyOrdersClick() {
+      context.push(OrdersScreen.path);
+    }
+
     return SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: AppSpacing.md),
@@ -134,10 +140,13 @@ class ProfilePage extends ConsumerWidget {
             user.data != null
                 ? Padding(
                     padding: EdgeInsets.only(bottom: AppSpacing.md),
-                    child: StatusTierCard(
-                      tier: user.data!.tier,
-                      onInfoPressed: onStatusInfoClick,
-                    ),
+                    child: StatusTierCard(tier: user.data!.tier, onInfoPressed: onStatusInfoClick),
+                  )
+                : SizedBox.shrink(),
+            user.data != null
+                ? Padding(
+                    padding: EdgeInsets.only(bottom: AppSpacing.md),
+                    child: MyOrdersTile(onPressed: onMyOrdersClick),
                   )
                 : SizedBox.shrink(),
             user.data != null

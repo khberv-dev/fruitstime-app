@@ -82,20 +82,14 @@ class StatusInfoModal extends StatelessWidget {
           ),
           SizedBox(height: AppSpacing.xs),
           Padding(
-            padding: EdgeInsets.fromLTRB(
-              AppSpacing.xl,
-              0,
-              AppSpacing.xl,
-              AppSpacing.lg,
-            ),
+            padding: EdgeInsets.fromLTRB(AppSpacing.xl, 0, AppSpacing.xl, AppSpacing.lg),
             child: Center(
               child: Text(
                 localization.statusInfoSubtitle,
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                  color: scheme.onSurfaceVariant,
-                  fontSize: 13,
-                ),
+                style: Theme.of(
+                  context,
+                ).textTheme.bodySmall!.copyWith(color: scheme.onSurfaceVariant, fontSize: 13),
               ),
             ),
           ),
@@ -181,18 +175,16 @@ class _TierRow extends StatelessWidget {
               children: [
                 Text(
                   label,
-                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w700,
-                  ),
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodyMedium!.copyWith(fontSize: 14, fontWeight: FontWeight.w700),
                 ),
                 const SizedBox(height: 2),
                 Text(
                   localization.earnReferrals(count),
-                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                    color: scheme.onSurfaceVariant,
-                    fontSize: 12,
-                  ),
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodySmall!.copyWith(color: scheme.onSurfaceVariant, fontSize: 12),
                 ),
               ],
             ),

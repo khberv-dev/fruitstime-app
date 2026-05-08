@@ -55,4 +55,8 @@ class _CartNotifier extends Notifier<Map<ProductEntity, int>> {
 
     return price;
   }
+
+  void clear() {
+    state = {};
+  }
 }

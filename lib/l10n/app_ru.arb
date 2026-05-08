@@ -500,5 +500,86 @@
   "currentDiscount": "Текущая скидка",
   "@currentDiscount": {
     "description": "Label for the current discount row on the status card"
+  },
+  "myOrdersLabel": "Мои заказы",
+  "@myOrdersLabel": {
+    "description": "Title of the My Orders tile in the profile"
+  },
+  "myOrdersDescription": "Посмотреть историю заказов",
+  "@myOrdersDescription": {
+    "description": "Subtitle of the My Orders tile in the profile"
+  },
+  "ordersTitle": "Мои заказы",
+  "@ordersTitle": {
+    "description": "Header title of the orders screen"
+  },
+  "ordersEmptyTitle": "Заказов пока нет",
+  "@ordersEmptyTitle": {
+    "description": "Title shown on the orders empty state"
+  },
+  "ordersEmptySubtitle": "Здесь появятся ваши будущие заказы.\nДавайте сделаем первый.",
+  "@ordersEmptySubtitle": {
+    "description": "Subtitle shown on the orders empty state"
+  },
+  "ordersEmptyBrowseButton": "Перейти к сокам",
+  "@ordersEmptyBrowseButton": {
+    "description": "CTA on the orders empty state that takes the user to the catalog"
+  },
+  "orderItemsCount": "{count} товаров",
+  "@orderItemsCount": {
+    "description": "Items count shown on each order card",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "orderStatusCreated": "В ожидании",
+  "@orderStatusCreated": {
+    "description": "Created/pending order status label"
+  },
+  "orderStatusReady": "Готов к выдаче",
+  "@orderStatusReady": {
+    "description": "Ready-for-pickup order status label"
+  },
+  "orderStatusDone": "Завершён",
+  "@orderStatusDone": {
+    "description": "Done/completed order status label"
+  },
+  "orderStatusCanceled": "Отменён",
+  "@orderStatusCanceled": {
+    "description": "Canceled order status label"
+  },
+  "orderConfirmedTitle": "Заказ подтверждён",
+  "@orderConfirmedTitle": {
+    "description": "Header title on the order detail screen"
+  },
+  "orderThankYou": "Спасибо за заказ!",
+  "@orderThankYou": {
+    "description": "Hero message on the order detail screen"
+  },
+  "orderNumberSmallLabel": "НОМЕР ЗАКАЗА",
+  "@orderNumberSmallLabel": {
+    "description": "Small label above the order number on the hero card"
+  },
+  "orderDetailsTitle": "Детали заказа",
+  "@orderDetailsTitle": {
+    "description": "Title of the details card on the order detail screen"
+  },
+  "subtotalLabel": "Стоимость товаров",
+  "@subtotalLabel": {
+    "description": "Subtotal row label on the order details card"
+  },
+  "loyaltyDiscountLabel": "Скидка лояльности",
+  "@loyaltyDiscountLabel": {
+    "description": "Loyalty discount row label on the order details card"
+  },
+  "totalPaidLabel": "Итого к оплате",
+  "@totalPaidLabel": {
+    "description": "Total paid row label on the order details card"
+  },
+  "doneButton": "Готово",
+  "@doneButton": {
+    "description": "Done CTA on the order detail screen"
   }
 }

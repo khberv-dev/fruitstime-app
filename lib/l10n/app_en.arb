@@ -500,5 +500,86 @@
   "currentDiscount": "Current discount",
   "@currentDiscount": {
     "description": "Label for the current discount row on the status card"
+  },
+  "myOrdersLabel": "My Orders",
+  "@myOrdersLabel": {
+    "description": "Title of the My Orders tile in the profile"
+  },
+  "myOrdersDescription": "View order history",
+  "@myOrdersDescription": {
+    "description": "Subtitle of the My Orders tile in the profile"
+  },
+  "ordersTitle": "My Orders",
+  "@ordersTitle": {
+    "description": "Header title of the orders screen"
+  },
+  "ordersEmptyTitle": "No orders yet",
+  "@ordersEmptyTitle": {
+    "description": "Title shown on the orders empty state"
+  },
+  "ordersEmptySubtitle": "Your future orders will live here.\nLet's pour your first one.",
+  "@ordersEmptySubtitle": {
+    "description": "Subtitle shown on the orders empty state"
+  },
+  "ordersEmptyBrowseButton": "Browse Juices",
+  "@ordersEmptyBrowseButton": {
+    "description": "CTA on the orders empty state that takes the user to the catalog"
+  },
+  "orderItemsCount": "{count} items",
+  "@orderItemsCount": {
+    "description": "Items count shown on each order card",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "orderStatusCreated": "Pending",
+  "@orderStatusCreated": {
+    "description": "Created/pending order status label"
+  },
+  "orderStatusReady": "Ready for pickup",
+  "@orderStatusReady": {
+    "description": "Ready-for-pickup order status label"
+  },
+  "orderStatusDone": "Completed",
+  "@orderStatusDone": {
+    "description": "Done/completed order status label"
+  },
+  "orderStatusCanceled": "Canceled",
+  "@orderStatusCanceled": {
+    "description": "Canceled order status label"
+  },
+  "orderConfirmedTitle": "Order Confirmed",
+  "@orderConfirmedTitle": {
+    "description": "Header title on the order detail screen"
+  },
+  "orderThankYou": "Thank you for your order!",
+  "@orderThankYou": {
+    "description": "Hero message on the order detail screen"
+  },
+  "orderNumberSmallLabel": "ORDER NUMBER",
+  "@orderNumberSmallLabel": {
+    "description": "Small label above the order number on the hero card"
+  },
+  "orderDetailsTitle": "Order Details",
+  "@orderDetailsTitle": {
+    "description": "Title of the details card on the order detail screen"
+  },
+  "subtotalLabel": "Subtotal",
+  "@subtotalLabel": {
+    "description": "Subtotal row label on the order details card"
+  },
+  "loyaltyDiscountLabel": "Loyalty discount",
+  "@loyaltyDiscountLabel": {
+    "description": "Loyalty discount row label on the order details card"
+  },
+  "totalPaidLabel": "Total paid",
+  "@totalPaidLabel": {
+    "description": "Total paid row label on the order details card"
+  },
+  "doneButton": "Done",
+  "@doneButton": {
+    "description": "Done CTA on the order detail screen"
   }
 }

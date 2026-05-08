@@ -2,14 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fruitstime/core/theme/app_spacing.dart';
 import 'package:fruitstime/features/cart/presentation/controller/cart_provider.dart';
-import 'package:fruitstime/features/cart/presentation/ui/payment_sheet.dart';
 import 'package:fruitstime/features/cart/presentation/ui/widget/cart_header.dart';
 import 'package:fruitstime/features/cart/presentation/ui/widget/cart_items_list.dart';
 import 'package:fruitstime/features/cart/presentation/ui/widget/empty_cart.dart';
 import 'package:fruitstime/features/cart/presentation/ui/widget/goto_pay_button.dart';
 import 'package:fruitstime/features/cart/presentation/ui/widget/summary_card.dart';
+import 'package:fruitstime/features/order/presentation/controller/create_order_provider.dart';
+import 'package:fruitstime/features/order/presentation/controller/selected_order_provider.dart';
+import 'package:fruitstime/features/order/presentation/ui/order_detail_screen.dart';
 import 'package:fruitstime/features/product/domain/entity/product_entity.dart';
 import 'package:fruitstime/l10n/app_localizations.dart';
+import 'package:fruitstime/utils/messanger.dart';
+import 'package:go_router/go_router.dart';
 
 class CartPage extends ConsumerWidget {
   const CartPage({super.key});
@@ -21,6 +25,7 @@ class CartPage extends ConsumerWidget {
     final cartCount = ref.read(cartProvider.notifier).totalProductsCount();
     final cartTypesCount = ref.read(cartProvider.notifier).totalProductsTypesCount();
     final cartPrice = ref.read(cartProvider.notifier).totalProductsPrice();
+    final createOrderState = ref.watch(createOrderControllerProvider);
 
     void onAddProductCartClick(ProductEntity product) {
       ref.read(cartProvider.notifier).addProduct(product);
@@ -31,8 +36,22 @@ class CartPage extends ConsumerWidget {
     }
 
     void onPaymentClick() {
-      showModalBottomSheet(context: context, builder: (_) => PaymentSheet());
+      ref.read(createOrderControllerProvider.notifier).create(cart);
     }
+
+    ref.listen(createOrderControllerProvider, (_, state) {
+      if (state.error != null) {
+        showErrorMessage(context, state.error!);
+        ref.read(createOrderControllerProvider.notifier).reset();
+      }
+
+      if (state.data != null) {
+        ref.read(selectedOrderProvider.notifier).select(state.data);
+        ref.read(cartProvider.notifier).clear();
+        ref.read(createOrderControllerProvider.notifier).reset();
+        context.push(OrderDetailScreen.path);
+      }
+    });
 
     return Padding(
       padding: EdgeInsets.all(AppSpacing.md),
@@ -61,7 +80,9 @@ class CartPage extends ConsumerWidget {
                           totalCartPrice: cartPrice,
                         ),
                         SizedBox(height: AppSpacing.lg),
-                        GotoPayButton(onPressed: onPaymentClick),
+                        GotoPayButton(
+                          onPressed: createOrderState.isLoading ? null : onPaymentClick,
+                        ),
                       ],
                     ),
                   )

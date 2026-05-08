@@ -4,7 +4,7 @@ import 'package:fruitstime/core/theme/app_spacing.dart';
 import 'package:fruitstime/l10n/app_localizations.dart';
 
 class GotoPayButton extends StatelessWidget {
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
 
   const GotoPayButton({super.key, required this.onPressed});
 
@@ -18,7 +18,7 @@ class GotoPayButton extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SvgPicture.asset(
-            'assets/icons/qr.svg',
+            'assets/icons/bill.svg',
             colorFilter: ColorFilter.mode(Theme.of(context).colorScheme.onPrimary, BlendMode.srcIn),
           ),
           SizedBox(width: AppSpacing.md),

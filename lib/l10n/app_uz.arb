@@ -501,5 +501,86 @@
   "currentDiscount": "Joriy chegirma",
   "@currentDiscount": {
     "description": "Label for the current discount row on the status card"
+  },
+  "myOrdersLabel": "Buyurtmalarim",
+  "@myOrdersLabel": {
+    "description": "Title of the My Orders tile in the profile"
+  },
+  "myOrdersDescription": "Buyurtmalar tarixini ko'rish",
+  "@myOrdersDescription": {
+    "description": "Subtitle of the My Orders tile in the profile"
+  },
+  "ordersTitle": "Buyurtmalarim",
+  "@ordersTitle": {
+    "description": "Header title of the orders screen"
+  },
+  "ordersEmptyTitle": "Hali buyurtmalar yo'q",
+  "@ordersEmptyTitle": {
+    "description": "Title shown on the orders empty state"
+  },
+  "ordersEmptySubtitle": "Kelajakdagi buyurtmalaringiz shu yerda bo'ladi.\nKeling, birinchisini buyurtma qilamiz.",
+  "@ordersEmptySubtitle": {
+    "description": "Subtitle shown on the orders empty state"
+  },
+  "ordersEmptyBrowseButton": "Sharbatlarga o'tish",
+  "@ordersEmptyBrowseButton": {
+    "description": "CTA on the orders empty state that takes the user to the catalog"
+  },
+  "orderItemsCount": "{count} ta mahsulot",
+  "@orderItemsCount": {
+    "description": "Items count shown on each order card",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "orderStatusCreated": "Kutilmoqda",
+  "@orderStatusCreated": {
+    "description": "Created/pending order status label"
+  },
+  "orderStatusReady": "Olib ketish uchun tayyor",
+  "@orderStatusReady": {
+    "description": "Ready-for-pickup order status label"
+  },
+  "orderStatusDone": "Yakunlandi",
+  "@orderStatusDone": {
+    "description": "Done/completed order status label"
+  },
+  "orderStatusCanceled": "Bekor qilindi",
+  "@orderStatusCanceled": {
+    "description": "Canceled order status label"
+  },
+  "orderConfirmedTitle": "Buyurtma tasdiqlandi",
+  "@orderConfirmedTitle": {
+    "description": "Header title on the order detail screen"
+  },
+  "orderThankYou": "Buyurtmangiz uchun rahmat!",
+  "@orderThankYou": {
+    "description": "Hero message on the order detail screen"
+  },
+  "orderNumberSmallLabel": "BUYURTMA RAQAMI",
+  "@orderNumberSmallLabel": {
+    "description": "Small label above the order number on the hero card"
+  },
+  "orderDetailsTitle": "Buyurtma tafsilotlari",
+  "@orderDetailsTitle": {
+    "description": "Title of the details card on the order detail screen"
+  },
+  "subtotalLabel": "Mahsulotlar narxi",
+  "@subtotalLabel": {
+    "description": "Subtotal row label on the order details card"
+  },
+  "loyaltyDiscountLabel": "Sodiqlik chegirmasi",
+  "@loyaltyDiscountLabel": {
+    "description": "Loyalty discount row label on the order details card"
+  },
+  "totalPaidLabel": "To'langan summa",
+  "@totalPaidLabel": {
+    "description": "Total paid row label on the order details card"
+  },
+  "doneButton": "Tayyor",
+  "@doneButton": {
+    "description": "Done CTA on the order detail screen"
   }
 }
