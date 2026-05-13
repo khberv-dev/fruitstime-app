@@ -92,7 +92,7 @@ class OrderDetailScreen extends ConsumerWidget {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      _HeroCard(number: order.number),
+                      _HeroCard(posId: order.posId),
                       SizedBox(height: AppSpacing.md),
                       _DetailsCard(
                         order: order,
@@ -127,9 +127,9 @@ class OrderDetailScreen extends ConsumerWidget {
 }
 
 class _HeroCard extends StatelessWidget {
-  final int number;
+  final int? posId;
 
-  const _HeroCard({required this.number});
+  const _HeroCard({required this.posId});
 
   @override
   Widget build(BuildContext context) {
@@ -183,7 +183,7 @@ class _HeroCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 2),
                 Text(
-                  '#$number',
+                  '#${posId ?? '—'}',
                   style: Theme.of(context).textTheme.headlineLarge!.copyWith(
                     fontSize: 30,
                     fontWeight: FontWeight.w900,

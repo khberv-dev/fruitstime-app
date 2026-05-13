@@ -10,12 +10,9 @@ class OrderRepository {
 
   OrderRepository(this._client);
 
-  Future<List<OrderDto>> getMine({int page = 1, int pageSize = 20}) async {
-    final response = await _client.get(
-      'order',
-      queryParameters: {'page': page, 'pageSize': pageSize},
-    );
-    final data = response.data['orders'] as List<dynamic>;
+  Future<List<OrderDto>> getMine() async {
+    final response = await _client.get('order');
+    final data = response.data as List<dynamic>;
 
     return data.map((e) => OrderDto.parse(e)).toList();
   }

@@ -2,6 +2,7 @@ import 'package:fruitstime/features/product/data/enum/product_type.dart';
 
 class ProductEntity {
   final String id;
+  final int? posId;
   final String title;
   final String description;
   final String imageUrl;
@@ -11,6 +12,7 @@ class ProductEntity {
 
   ProductEntity({
     required this.id,
+    this.posId,
     required this.title,
     required this.description,
     required this.imageUrl,

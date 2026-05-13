@@ -4,6 +4,7 @@ import 'package:fruitstime/features/product/domain/entity/product_entity.dart';
 
 class ProductDto {
   final String id;
+  final int? posId;
   final String title;
   final String description;
   final String image;
@@ -13,6 +14,7 @@ class ProductDto {
 
   ProductDto({
     required this.id,
+    this.posId,
     required this.title,
     required this.description,
     required this.image,
@@ -23,6 +25,7 @@ class ProductDto {
 
   factory ProductDto.parse(Map<String, dynamic> data) => ProductDto(
     id: data['id'],
+    posId: data['posId'],
     title: data['title'],
     description: data['description'],
     image: data['image'],
@@ -33,6 +36,7 @@ class ProductDto {
 
   ProductEntity toEntity() => ProductEntity(
     id: id,
+    posId: posId,
     title: title,
     description: description,
     imageUrl: '$baseCdnUrl/product/$image',

@@ -564,6 +564,10 @@
   "@orderStatusReady": {
     "description": "Ready-for-pickup order status label"
   },
+  "orderStatusDelivered": "Yetkazib berildi",
+  "@orderStatusDelivered": {
+    "description": "Delivered order status label"
+  },
   "orderStatusDone": "Yakunlandi",
   "@orderStatusDone": {
     "description": "Done/completed order status label"

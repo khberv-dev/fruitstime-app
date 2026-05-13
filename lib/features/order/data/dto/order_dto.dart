@@ -23,7 +23,7 @@ class OrderItemDto {
 
 class OrderDto {
   final String id;
-  final int number;
+  final int? posId;
   final OrderStatus status;
   final List<OrderItemDto> items;
   final Jiffy createdAt;
@@ -31,7 +31,7 @@ class OrderDto {
 
   OrderDto({
     required this.id,
-    required this.number,
+    this.posId,
     required this.status,
     required this.items,
     required this.createdAt,
@@ -40,7 +40,7 @@ class OrderDto {
 
   factory OrderDto.parse(Map<String, dynamic> data) => OrderDto(
     id: data['id'],
-    number: data['orderId'],
+    posId: data['posId'],
     status: OrderStatus.values.firstWhere(
       (s) => s.name == data['status'],
       orElse: () => OrderStatus.created,
@@ -52,7 +52,7 @@ class OrderDto {
 
   OrderEntity toEntity() => OrderEntity(
     id: id,
-    number: number,
+    posId: posId,
     status: status,
     items: items.map((e) => e.toEntity()).toList(),
     createdAt: createdAt,

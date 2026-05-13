@@ -559,6 +559,10 @@
   "@orderStatusCreated": {
     "description": "Created/pending order status label"
   },
+  "orderStatusDelivered": "Delivered",
+  "@orderStatusDelivered": {
+    "description": "Delivered order status label"
+  },
   "orderStatusReady": "Ready for pickup",
   "@orderStatusReady": {
     "description": "Ready-for-pickup order status label"

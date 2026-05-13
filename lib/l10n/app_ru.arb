@@ -563,6 +563,10 @@
   "@orderStatusReady": {
     "description": "Ready-for-pickup order status label"
   },
+  "orderStatusDelivered": "Доставлен",
+  "@orderStatusDelivered": {
+    "description": "Delivered order status label"
+  },
   "orderStatusDone": "Завершён",
   "@orderStatusDone": {
     "description": "Done/completed order status label"

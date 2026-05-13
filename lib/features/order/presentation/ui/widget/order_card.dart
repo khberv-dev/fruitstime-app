@@ -14,6 +14,7 @@ class OrderCard extends StatelessWidget {
   String _statusLabel(AppLocalizations l) => switch (order.status) {
     OrderStatus.created => l.orderStatusCreated,
     OrderStatus.ready => l.orderStatusReady,
+    OrderStatus.delivered => l.orderStatusDelivered,
     OrderStatus.done => l.orderStatusDone,
     OrderStatus.canceled => l.orderStatusCanceled,
   };
@@ -25,6 +26,7 @@ class OrderCard extends StatelessWidget {
 
     final (statusBg, statusFg, dotColor) = switch (order.status) {
       OrderStatus.ready => (scheme.primary, scheme.onPrimary, scheme.onPrimary),
+      OrderStatus.delivered => (scheme.secondary.withAlpha(30), scheme.secondary, scheme.secondary),
       OrderStatus.done => (scheme.secondary.withAlpha(30), scheme.secondary, scheme.secondary),
       OrderStatus.canceled => (scheme.error.withAlpha(30), scheme.error, scheme.error),
       OrderStatus.created => (
@@ -49,7 +51,7 @@ class OrderCard extends StatelessWidget {
             child: Row(
               children: [
                 Text(
-                  '#${order.number}',
+                  '#${order.posId ?? '—'}',
                   style: Theme.of(
                     context,
                   ).textTheme.bodyMedium!.copyWith(fontSize: 15, fontWeight: FontWeight.w900),

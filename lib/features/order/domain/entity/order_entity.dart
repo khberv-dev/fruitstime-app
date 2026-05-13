@@ -4,7 +4,7 @@ import 'package:jiffy/jiffy.dart';
 
 class OrderEntity {
   final String id;
-  final int number;
+  final int? posId;
   final OrderStatus status;
   final List<OrderItemEntity> items;
   final Jiffy createdAt;
@@ -12,7 +12,7 @@ class OrderEntity {
 
   OrderEntity({
     required this.id,
-    required this.number,
+    this.posId,
     required this.status,
     required this.items,
     required this.createdAt,
