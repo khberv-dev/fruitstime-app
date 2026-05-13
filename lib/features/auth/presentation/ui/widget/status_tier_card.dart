@@ -7,38 +7,44 @@ import 'package:fruitstime/l10n/app_localizations.dart';
 
 class StatusTierCard extends StatelessWidget {
   final Tier tier;
+  final int? referralCount;
   final VoidCallback? onInfoPressed;
 
-  const StatusTierCard({super.key, required this.tier, this.onInfoPressed});
+  const StatusTierCard({super.key, required this.tier, this.referralCount, this.onInfoPressed});
 
   Color _color() => switch (tier) {
     Tier.silver => const Color(0xff94a3b8),
     Tier.gold => const Color(0xfff5bd1f),
     Tier.vip => const Color(0xff8b5cf6),
+    Tier.premium => const Color(0xff0ea5e9),
   };
 
   String _iconPath() => switch (tier) {
     Tier.silver => 'assets/icons/star.svg',
     Tier.gold => 'assets/icons/trophy.svg',
     Tier.vip => 'assets/icons/crown.svg',
+    Tier.premium => 'assets/icons/crown.svg',
   };
 
   String _heading(AppLocalizations l) => switch (tier) {
     Tier.silver => l.statusSilverHeading,
     Tier.gold => l.statusGoldHeading,
     Tier.vip => l.statusVipHeading,
+    Tier.premium => l.statusPremiumHeading,
   };
 
   String _subtitle(AppLocalizations l) => switch (tier) {
     Tier.silver => l.tierSilverDescription,
     Tier.gold => l.tierGoldDescription,
     Tier.vip => l.tierVipDescription,
+    Tier.premium => l.tierPremiumDescription,
   };
 
   String? _discount() => switch (tier) {
     Tier.silver => null,
     Tier.gold => '5%',
     Tier.vip => '7%',
+    Tier.premium => '10%',
   };
 
   @override
@@ -100,6 +106,17 @@ class StatusTierCard extends StatelessWidget {
                           fontSize: 12,
                         ),
                       ),
+                      if (referralCount != null) ...[
+                        const SizedBox(height: 6),
+                        Text(
+                          localization.yourReferralCount(referralCount!),
+                          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                            color: scheme.onSurface,
+                            fontSize: 13,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ],
                     ],
                   ),
                 ),

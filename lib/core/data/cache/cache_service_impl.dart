@@ -21,13 +21,13 @@ class CacheServiceImpl implements CacheService {
   }
 
   @override
-  void setAccessToken(String token) {
-    _sharedPreferences.setString(accessTokenKey, token);
+  Future<void> setAccessToken(String token) async {
+    await _sharedPreferences.setString(accessTokenKey, token);
   }
 
   @override
-  void setRefreshToken(String token) {
-    _sharedPreferences.setString(refreshTokenKey, token);
+  Future<void> setRefreshToken(String token) async {
+    await _sharedPreferences.setString(refreshTokenKey, token);
   }
 
   @override
@@ -51,8 +51,8 @@ class CacheServiceImpl implements CacheService {
   }
 
   @override
-  void clearTokens() {
-    _sharedPreferences.remove(accessTokenKey);
-    _sharedPreferences.remove(refreshTokenKey);
+  Future<void> clearTokens() async {
+    await _sharedPreferences.remove(accessTokenKey);
+    await _sharedPreferences.remove(refreshTokenKey);
   }
 }

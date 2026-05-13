@@ -12,36 +12,28 @@ class StatusInfoModal extends StatelessWidget {
     Tier.silver => l.tierSilver,
     Tier.gold => l.tierGold,
     Tier.vip => l.tierVip,
+    Tier.premium => l.tierPremium,
   };
 
   String _iconPath(Tier tier) => switch (tier) {
     Tier.silver => 'assets/icons/star.svg',
     Tier.gold => 'assets/icons/trophy.svg',
     Tier.vip => 'assets/icons/crown.svg',
+    Tier.premium => 'assets/icons/crown.svg',
   };
 
   Color _badgeColor(Tier tier) => switch (tier) {
     Tier.silver => const Color(0xff94a3b8),
     Tier.gold => const Color(0xfff5bd1f),
     Tier.vip => const Color(0xff8b5cf6),
-  };
-
-  Color _pillBg(Tier tier) => switch (tier) {
-    Tier.silver => const Color(0xfff1f5f9),
-    Tier.gold => const Color(0xfffff3cc),
-    Tier.vip => const Color(0xfff3e8ff),
-  };
-
-  Color _pillFg(Tier tier) => switch (tier) {
-    Tier.silver => const Color(0xff64748b),
-    Tier.gold => const Color(0xffd4a017),
-    Tier.vip => const Color(0xff7c3aed),
+    Tier.premium => const Color(0xff0ea5e9),
   };
 
   int _referrals(Tier tier) => switch (tier) {
-    Tier.silver => 5,
-    Tier.gold => 10,
-    Tier.vip => 15,
+    Tier.silver => 0,
+    Tier.gold => 1,
+    Tier.vip => 6,
+    Tier.premium => 11,
   };
 
   @override
@@ -108,8 +100,6 @@ class StatusInfoModal extends StatelessWidget {
                     label: _label(tier, localization),
                     iconPath: _iconPath(tier),
                     badgeColor: _badgeColor(tier),
-                    pillBg: _pillBg(tier),
-                    pillFg: _pillFg(tier),
                     count: _referrals(tier),
                   ),
                   if (tier != Tier.values.last) SizedBox(height: AppSpacing.sm),
@@ -127,16 +117,12 @@ class _TierRow extends StatelessWidget {
   final String label;
   final String iconPath;
   final Color badgeColor;
-  final Color pillBg;
-  final Color pillFg;
   final int count;
 
   const _TierRow({
     required this.label,
     required this.iconPath,
     required this.badgeColor,
-    required this.pillBg,
-    required this.pillFg,
     required this.count,
   });
 
@@ -180,28 +166,16 @@ class _TierRow extends StatelessWidget {
                   ).textTheme.bodyMedium!.copyWith(fontSize: 14, fontWeight: FontWeight.w700),
                 ),
                 const SizedBox(height: 2),
-                Text(
-                  localization.earnReferrals(count),
-                  style: Theme.of(
-                    context,
-                  ).textTheme.bodySmall!.copyWith(color: scheme.onSurfaceVariant, fontSize: 12),
-                ),
+                count > 0
+                    ? Text(
+                        localization.earnReferrals(count),
+                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                          color: scheme.onSurfaceVariant,
+                          fontSize: 12,
+                        ),
+                      )
+                    : SizedBox.shrink(),
               ],
-            ),
-          ),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-            decoration: BoxDecoration(
-              color: pillBg,
-              borderRadius: BorderRadius.circular(AppRadius.round),
-            ),
-            child: Text(
-              localization.referralCountShort(count),
-              style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                color: pillFg,
-                fontSize: 11,
-                fontWeight: FontWeight.w600,
-              ),
             ),
           ),
         ],

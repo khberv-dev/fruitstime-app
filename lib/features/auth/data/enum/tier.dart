@@ -1,1 +1,1 @@
-enum Tier { silver, gold, vip }
+enum Tier { silver, gold, vip, premium }

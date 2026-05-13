@@ -79,10 +79,9 @@ class OrderDetailScreen extends ConsumerWidget {
                     child: Text(
                       localization.orderConfirmedTitle,
                       textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w900,
-                      ),
+                      style: Theme.of(
+                        context,
+                      ).textTheme.bodyLarge!.copyWith(fontSize: 18, fontWeight: FontWeight.w900),
                     ),
                   ),
                   const SizedBox(width: 40),
@@ -233,10 +232,9 @@ class _DetailsCard extends StatelessWidget {
             children: [
               Text(
                 localization.orderDetailsTitle,
-                style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w900,
-                ),
+                style: Theme.of(
+                  context,
+                ).textTheme.bodyMedium!.copyWith(fontSize: 15, fontWeight: FontWeight.w900),
               ),
               const Spacer(),
               Text(

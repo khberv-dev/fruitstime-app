@@ -12,6 +12,7 @@ class UserDto {
   final int? height;
   final Gender? gender;
   final String? referralCode;
+  final int referralCount;
   final String role;
   final Tier tier;
   final Jiffy createdAt;
@@ -26,6 +27,7 @@ class UserDto {
     this.height,
     this.gender,
     this.referralCode,
+    required this.referralCount,
     required this.role,
     required this.tier,
     required this.createdAt,
@@ -41,6 +43,7 @@ class UserDto {
     height: data['height'],
     gender: data['gender'] != null ? Gender.values.byName(data['gender']) : null,
     referralCode: data['referralCode'],
+    referralCount: data['referralCount'] ?? 0,
     role: data['role'],
     tier: data['status'] != null ? Tier.values.byName(data['status']) : Tier.silver,
     createdAt: Jiffy.parse(data['createdAt']),
@@ -56,6 +59,7 @@ class UserDto {
     height: height,
     gender: gender,
     referralCode: referralCode,
+    referralCount: referralCount,
     role: role,
     tier: tier,
     createdAt: createdAt,

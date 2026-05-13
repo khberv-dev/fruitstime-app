@@ -22,7 +22,7 @@ class SignUpUser {
       referralCode: session.referralCode,
     );
 
-    _cache.setAccessToken(data['accessToken']);
-    _cache.setRefreshToken(data['refreshToken']);
+    await _cache.setAccessToken(data['accessToken']);
+    await _cache.setRefreshToken(data['refreshToken']);
   }
 }

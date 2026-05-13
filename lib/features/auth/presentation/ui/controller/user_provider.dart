@@ -38,8 +38,8 @@ class _UserNotifier extends Notifier<RequestState<UserEntity>> {
     }
   }
 
-  void logout() {
-    ref.read(logoutProvider).call();
+  Future<void> logout() async {
+    await ref.read(logoutProvider).call();
     state = RequestState.idle();
   }
 }

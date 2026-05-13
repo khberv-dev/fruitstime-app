@@ -68,7 +68,7 @@ class ProfilePage extends ConsumerWidget {
       );
 
       if (confirm) {
-        ref.read(userProvider.notifier).logout();
+        await ref.read(userProvider.notifier).logout();
       }
     }
 
@@ -140,7 +140,11 @@ class ProfilePage extends ConsumerWidget {
             user.data != null
                 ? Padding(
                     padding: EdgeInsets.only(bottom: AppSpacing.md),
-                    child: StatusTierCard(tier: user.data!.tier, onInfoPressed: onStatusInfoClick),
+                    child: StatusTierCard(
+                      tier: user.data!.tier,
+                      referralCount: user.data!.referralCount,
+                      onInfoPressed: onStatusInfoClick,
+                    ),
                   )
                 : SizedBox.shrink(),
             user.data != null

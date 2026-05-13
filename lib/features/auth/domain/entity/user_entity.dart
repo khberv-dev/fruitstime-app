@@ -11,6 +11,7 @@ class UserEntity {
   final int? height;
   final Gender? gender;
   final String? referralCode;
+  final int referralCount;
   final String role;
   final Tier tier;
   final Jiffy createdAt;
@@ -25,6 +26,7 @@ class UserEntity {
     this.height,
     this.gender,
     this.referralCode,
+    required this.referralCount,
     required this.role,
     required this.tier,
     required this.createdAt,

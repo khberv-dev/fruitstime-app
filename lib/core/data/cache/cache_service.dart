@@ -7,11 +7,11 @@ abstract interface class CacheService {
 
   bool getPassOnboarding();
 
-  void setAccessToken(String token);
+  Future<void> setAccessToken(String token);
 
-  void setRefreshToken(String token);
+  Future<void> setRefreshToken(String token);
 
-  void clearTokens();
+  Future<void> clearTokens();
 
   void setLocale(String localeCode);
 

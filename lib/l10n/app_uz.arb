@@ -444,6 +444,15 @@
   "@statusInfoSubtitle": {
     "description": "Subtitle below the status info modal title explaining how tiers are earned"
   },
+  "yourReferralCount": "Sizda {count} ta referal",
+  "@yourReferralCount": {
+    "description": "Shows the current number of referrals the user has",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "tierSilver": "Kumush",
   "@tierSilver": {
     "description": "Silver tier name"
@@ -456,7 +465,11 @@
   "@tierVip": {
     "description": "VIP tier name"
   },
-  "tierSilverDescription": "Boshlang'ich daraja",
+  "tierPremium": "Premium",
+  "@tierPremium": {
+    "description": "Premium tier name"
+  },
+  "tierSilverDescription": "Boshlang'ich bosqich",
   "@tierSilverDescription": {
     "description": "Subtitle for the Silver tier shown on the status card"
   },
@@ -467,6 +480,10 @@
   "tierVipDescription": "Yuqori daraja — eksklyuziv imtiyozlar",
   "@tierVipDescription": {
     "description": "Subtitle for the VIP tier shown on the status card"
+  },
+  "tierPremiumDescription": "Elita — eng yuqori imtiyozlar",
+  "@tierPremiumDescription": {
+    "description": "Subtitle for the Premium tier shown on the status card"
   },
   "statusSilverHeading": "Kumush a'zo",
   "@statusSilverHeading": {
@@ -479,6 +496,10 @@
   "statusVipHeading": "VIP a'zo",
   "@statusVipHeading": {
     "description": "Heading for the VIP tier on the status card"
+  },
+  "statusPremiumHeading": "Premium a'zo",
+  "@statusPremiumHeading": {
+    "description": "Heading for the Premium tier on the status card"
   },
   "earnReferrals": "{count} referal to'plang",
   "@earnReferrals": {

@@ -16,7 +16,7 @@ class SignInUser {
   Future<void> call({required String phoneNumber, required String password}) async {
     final data = await _repository.login(phoneNumber: phoneNumber, password: password);
 
-    _cache.setAccessToken(data['accessToken']);
-    _cache.setRefreshToken(data['refreshToken']);
+    await _cache.setAccessToken(data['accessToken']);
+    await _cache.setRefreshToken(data['refreshToken']);
   }
 }

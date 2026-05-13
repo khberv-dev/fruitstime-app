@@ -9,7 +9,7 @@ class Logout {
 
   Logout(this._cache);
 
-  void call() {
-    _cache.clearTokens();
+  Future<void> call() async {
+    await _cache.clearTokens();
   }
 }

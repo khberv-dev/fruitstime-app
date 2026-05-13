@@ -443,6 +443,15 @@
   "@statusInfoSubtitle": {
     "description": "Subtitle below the status info modal title explaining how tiers are earned"
   },
+  "yourReferralCount": "You have {count} referrals",
+  "@yourReferralCount": {
+    "description": "Shows the current number of referrals the user has",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "tierSilver": "Silver",
   "@tierSilver": {
     "description": "Silver tier name"
@@ -454,6 +463,10 @@
   "tierVip": "VIP",
   "@tierVip": {
     "description": "VIP tier name"
+  },
+  "tierPremium": "Premium",
+  "@tierPremium": {
+    "description": "Premium tier name"
   },
   "tierSilverDescription": "Starting tier",
   "@tierSilverDescription": {
@@ -467,6 +480,10 @@
   "@tierVipDescription": {
     "description": "Subtitle for the VIP tier shown on the status card"
   },
+  "tierPremiumDescription": "Elite — maximum benefits",
+  "@tierPremiumDescription": {
+    "description": "Subtitle for the Premium tier shown on the status card"
+  },
   "statusSilverHeading": "Silver Member",
   "@statusSilverHeading": {
     "description": "Heading for the Silver tier on the status card"
@@ -478,6 +495,10 @@
   "statusVipHeading": "VIP Member",
   "@statusVipHeading": {
     "description": "Heading for the VIP tier on the status card"
+  },
+  "statusPremiumHeading": "Premium Member",
+  "@statusPremiumHeading": {
+    "description": "Heading for the Premium tier on the status card"
   },
   "earnReferrals": "Earn {count} referrals",
   "@earnReferrals": {

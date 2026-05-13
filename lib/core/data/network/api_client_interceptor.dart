@@ -34,8 +34,8 @@ class ApiClientInterceptor extends Interceptor {
         final data = response.data as Map<String, dynamic>;
         final accessToken = data['accessToken'];
 
-        _cache.setAccessToken(accessToken);
-        _cache.setRefreshToken(data['refreshToken']);
+        await _cache.setAccessToken(accessToken);
+        await _cache.setRefreshToken(data['refreshToken']);
 
         final retryResponse = await _client.fetch(
           err.requestOptions..headers['Authorization'] = 'Bearer $accessToken',
