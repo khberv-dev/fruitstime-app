@@ -23,11 +23,6 @@ class BranchDto {
     isActive: data['isActive'],
   );
 
-  BranchEntity toEntity() => BranchEntity(
-    id: id,
-    posId: posId,
-    name: name,
-    address: address,
-    isActive: isActive,
-  );
+  BranchEntity toEntity() =>
+      BranchEntity(id: id, posId: posId, name: name, address: address, isActive: isActive);
 }

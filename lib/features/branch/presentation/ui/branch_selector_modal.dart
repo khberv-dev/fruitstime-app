@@ -46,14 +46,16 @@ class BranchSelectorModal extends ConsumerWidget {
               ),
             ),
             const SizedBox(height: AppSpacing.sm),
-            ...branches.map((branch) => _BranchOptionTile(
-              branch: branch,
-              isSelected: selected?.id == branch.id,
-              onTap: () {
-                ref.read(selectedBranchProvider.notifier).select(branch);
-                Navigator.of(context).pop();
-              },
-            )),
+            ...branches.map(
+              (branch) => _BranchOptionTile(
+                branch: branch,
+                isSelected: selected?.id == branch.id,
+                onTap: () {
+                  ref.read(selectedBranchProvider.notifier).select(branch);
+                  Navigator.of(context).pop();
+                },
+              ),
+            ),
           ],
         ),
       ),
@@ -66,24 +68,17 @@ class _BranchOptionTile extends StatelessWidget {
   final bool isSelected;
   final VoidCallback onTap;
 
-  const _BranchOptionTile({
-    required this.branch,
-    required this.isSelected,
-    required this.onTap,
-  });
+  const _BranchOptionTile({required this.branch, required this.isSelected, required this.onTap});
 
   @override
-  Widget build(BuildContext context, ) {
+  Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
     return GestureDetector(
       onTap: onTap,
       child: Container(
         margin: const EdgeInsets.only(bottom: AppSpacing.xs),
-        padding: const EdgeInsets.symmetric(
-          horizontal: AppSpacing.md,
-          vertical: AppSpacing.md - 2,
-        ),
+        padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.md - 2),
         decoration: BoxDecoration(
           color: isSelected ? theme.colorScheme.primary.withAlpha(30) : Colors.transparent,
           borderRadius: BorderRadius.circular(AppRadius.md),
@@ -93,9 +88,7 @@ class _BranchOptionTile extends StatelessWidget {
             Icon(
               Icons.store_outlined,
               size: 20,
-              color: isSelected
-                  ? theme.colorScheme.primary
-                  : theme.colorScheme.onSurfaceVariant,
+              color: isSelected ? theme.colorScheme.primary : theme.colorScheme.onSurfaceVariant,
             ),
             const SizedBox(width: AppSpacing.md),
             Expanded(
@@ -104,9 +97,7 @@ class _BranchOptionTile extends StatelessWidget {
                 children: [
                   Text(
                     branch.name,
-                    style: theme.textTheme.bodyMedium!.copyWith(
-                      fontWeight: FontWeight.w700,
-                    ),
+                    style: theme.textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.w700),
                   ),
                   const SizedBox(height: 2),
                   Text(
@@ -119,8 +110,7 @@ class _BranchOptionTile extends StatelessWidget {
                 ],
               ),
             ),
-            if (isSelected)
-              Icon(Icons.check, size: 20, color: theme.colorScheme.primary),
+            if (isSelected) Icon(Icons.check, size: 20, color: theme.colorScheme.primary),
           ],
         ),
       ),
