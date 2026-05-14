@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fruitstime/core/data/network/request_state.dart';
+import 'package:fruitstime/features/branch/presentation/controller/branches_provider.dart';
 import 'package:fruitstime/features/order/domain/entity/order_entity.dart';
 import 'package:fruitstime/features/order/domain/usecase/create_order.dart';
 import 'package:fruitstime/features/product/domain/entity/product_entity.dart';
@@ -15,7 +16,8 @@ class _CreateOrderNotifier extends Notifier<RequestState<OrderEntity>> {
     try {
       state = RequestState.loading();
 
-      final order = await ref.read(createOrderProvider).call(cart);
+      final branchId = ref.read(selectedBranchProvider)?.id;
+      final order = await ref.read(createOrderProvider).call(cart, branchId: branchId);
 
       state = RequestState.data(order);
     } on DioException catch (e) {

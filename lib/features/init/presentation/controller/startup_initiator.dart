@@ -2,6 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fruitstime/core/data/network/request_state.dart';
 import 'package:fruitstime/features/auth/presentation/ui/controller/user_provider.dart';
 import 'package:fruitstime/features/banner/presentation/controller/banners_provider.dart';
+import 'package:fruitstime/features/branch/presentation/controller/branches_provider.dart';
 import 'package:fruitstime/features/catalog/presentation/controller/catalogs_provider.dart';
 
 class _StartupNotifier extends Notifier<RequestState<bool>> {
@@ -15,6 +16,7 @@ class _StartupNotifier extends Notifier<RequestState<bool>> {
 
     await ref.read(bannersProvider.notifier).getAll();
     await ref.read(catalogsProvider.notifier).getAll();
+    await ref.read(branchesProvider.notifier).getAll();
     await ref.read(userProvider.notifier).getMe();
 
     state = RequestState.data(true);

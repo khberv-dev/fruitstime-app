@@ -17,8 +17,10 @@ class OrderRepository {
     return data.map((e) => OrderDto.parse(e)).toList();
   }
 
-  Future<OrderDto> create(List<Map<String, dynamic>> items) async {
-    final response = await _client.post('order', data: {'items': items});
+  Future<OrderDto> create(List<Map<String, dynamic>> items, {String? branchId}) async {
+    // ignore: use_null_aware_elements
+    final body = {'items': items, if (branchId != null) 'branchId': branchId};
+    final response = await _client.post('order', data: body);
 
     return OrderDto.parse(response.data);
   }

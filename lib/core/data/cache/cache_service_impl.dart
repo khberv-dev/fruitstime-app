@@ -55,4 +55,14 @@ class CacheServiceImpl implements CacheService {
     await _sharedPreferences.remove(accessTokenKey);
     await _sharedPreferences.remove(refreshTokenKey);
   }
+
+  @override
+  String? getSelectedBranchId() {
+    return _sharedPreferences.getString(selectedBranchIdKey);
+  }
+
+  @override
+  void setSelectedBranchId(String id) {
+    _sharedPreferences.setString(selectedBranchIdKey, id);
+  }
 }

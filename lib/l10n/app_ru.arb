@@ -606,5 +606,9 @@
   "doneButton": "Готово",
   "@doneButton": {
     "description": "Done CTA on the order detail screen"
+  },
+  "pickUpFrom": "САМОВЫВОЗ ИЗ",
+  "@pickUpFrom": {
+    "description": "Label above the branch selector in the home header"
   }
 }

@@ -9,6 +9,8 @@ import 'package:fruitstime/features/auth/presentation/ui/set_gender_modal.dart';
 import 'package:fruitstime/features/auth/presentation/ui/set_height_modal.dart';
 import 'package:fruitstime/features/auth/presentation/ui/set_weight_modal.dart';
 import 'package:fruitstime/features/banner/presentation/controller/banners_provider.dart';
+import 'package:fruitstime/features/branch/presentation/controller/branches_provider.dart';
+import 'package:fruitstime/features/branch/presentation/ui/branch_selector_modal.dart';
 import 'package:fruitstime/features/catalog/domain/entity/catalog_entity.dart';
 import 'package:fruitstime/features/catalog/presentation/controller/catalogs_provider.dart';
 import 'package:fruitstime/features/catalog/presentation/controller/selected_catalog_provider.dart';
@@ -30,6 +32,7 @@ class HomePage extends ConsumerWidget {
     final banners = ref.watch(bannersProvider);
     final catalogs = ref.watch(catalogsProvider);
     final user = ref.watch(userProvider);
+    final selectedBranch = ref.watch(selectedBranchProvider);
     final bool isProfileFilled =
         user.data?.birthday != null &&
         user.data?.weight != null &&
@@ -80,7 +83,13 @@ class HomePage extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            HomeHeader(userFirstName: user.data?.firstName),
+            HomeHeader(
+              branchName: selectedBranch?.name,
+              onBranchTap: () => showModalBottomSheet(
+                context: context,
+                builder: (_) => const BranchSelectorModal(),
+              ),
+            ),
             SizedBox(height: AppSpacing.xl),
             GoSearchCard(onPressed: onGotoSearchClick),
             SizedBox(height: AppSpacing.lg),

@@ -7,6 +7,8 @@ import 'package:fruitstime/features/cart/presentation/ui/widget/cart_items_list.
 import 'package:fruitstime/features/cart/presentation/ui/widget/empty_cart.dart';
 import 'package:fruitstime/features/cart/presentation/ui/widget/goto_pay_button.dart';
 import 'package:fruitstime/features/cart/presentation/ui/widget/summary_card.dart';
+import 'package:fruitstime/features/auth/presentation/ui/controller/user_provider.dart';
+import 'package:fruitstime/features/auth/presentation/ui/login_screen.dart';
 import 'package:fruitstime/features/order/presentation/controller/create_order_provider.dart';
 import 'package:fruitstime/features/order/presentation/controller/selected_order_provider.dart';
 import 'package:fruitstime/features/order/presentation/ui/order_detail_screen.dart';
@@ -36,6 +38,10 @@ class CartPage extends ConsumerWidget {
     }
 
     void onPaymentClick() {
+      if (ref.read(userProvider).data == null) {
+        context.push(LoginScreen.path);
+        return;
+      }
       ref.read(createOrderControllerProvider.notifier).create(cart);
     }
 

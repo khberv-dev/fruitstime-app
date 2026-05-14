@@ -10,10 +10,10 @@ class CreateOrder {
 
   CreateOrder(this._repository);
 
-  Future<OrderEntity> call(Map<ProductEntity, int> cart) async {
+  Future<OrderEntity> call(Map<ProductEntity, int> cart, {String? branchId}) async {
     final items = cart.entries.map((e) => {'productId': e.key.id, 'quantity': e.value}).toList();
 
-    final dto = await _repository.create(items);
+    final dto = await _repository.create(items, branchId: branchId);
 
     return dto.toEntity();
   }

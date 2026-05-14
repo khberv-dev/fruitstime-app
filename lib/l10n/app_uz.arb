@@ -607,5 +607,9 @@
   "doneButton": "Tayyor",
   "@doneButton": {
     "description": "Done CTA on the order detail screen"
+  },
+  "pickUpFrom": "OLISH JOYI",
+  "@pickUpFrom": {
+    "description": "Label above the branch selector in the home header"
   }
 }

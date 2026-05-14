@@ -16,4 +16,8 @@ abstract interface class CacheService {
   void setLocale(String localeCode);
 
   void passOnboarding();
+
+  String? getSelectedBranchId();
+
+  void setSelectedBranchId(String id);
 }
