@@ -4,6 +4,7 @@ import 'package:fruitstime/core/theme/app_spacing.dart';
 import 'package:fruitstime/features/auth/presentation/ui/controller/user_provider.dart';
 import 'package:fruitstime/features/auth/presentation/ui/login_screen.dart';
 import 'package:fruitstime/features/cart/presentation/controller/cart_provider.dart';
+import 'package:fruitstime/features/cart/presentation/ui/widget/cart_branch_selector.dart';
 import 'package:fruitstime/features/cart/presentation/ui/widget/cart_header.dart';
 import 'package:fruitstime/features/cart/presentation/ui/widget/cart_items_list.dart';
 import 'package:fruitstime/features/cart/presentation/ui/widget/empty_cart.dart';
@@ -75,6 +76,8 @@ class CartPage extends ConsumerWidget {
                           onAddCartClick: onAddProductCartClick,
                           onPopCartClick: onPopProductCartClick,
                         ),
+                        SizedBox(height: AppSpacing.lg),
+                        CartBranchSelector(),
                         SizedBox(height: AppSpacing.lg),
                         TextField(
                           decoration: InputDecoration(labelText: localization.orderNoteHint),
