@@ -143,6 +143,7 @@ class ProfilePage extends ConsumerWidget {
                     child: StatusTierCard(
                       tier: user.data!.tier,
                       referralCount: user.data!.referralCount,
+                      discountPercent: user.data!.discountPercent,
                       onInfoPressed: onStatusInfoClick,
                     ),
                   )

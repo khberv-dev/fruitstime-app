@@ -4,8 +4,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fruitstime/core/theme/app_radius.dart';
 import 'package:fruitstime/core/theme/app_spacing.dart';
 import 'package:fruitstime/features/app/presentation/ui/app_screen.dart';
-import 'package:fruitstime/features/auth/data/enum/tier.dart';
-import 'package:fruitstime/features/auth/presentation/ui/controller/user_provider.dart';
 import 'package:fruitstime/features/order/domain/entity/order_entity.dart';
 import 'package:fruitstime/features/order/domain/entity/order_item_entity.dart';
 import 'package:fruitstime/features/order/presentation/controller/selected_order_provider.dart';
@@ -18,18 +16,11 @@ class OrderDetailScreen extends ConsumerWidget {
 
   const OrderDetailScreen({super.key});
 
-  int _discountPercent(Tier? tier) => switch (tier) {
-    Tier.gold => 5,
-    Tier.vip => 7,
-    _ => 0,
-  };
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final localization = AppLocalizations.of(context)!;
     final scheme = Theme.of(context).colorScheme;
     final order = ref.watch(selectedOrderProvider);
-    final user = ref.watch(userProvider);
 
     void onBackClick() => context.pop();
 
@@ -57,10 +48,9 @@ class OrderDetailScreen extends ConsumerWidget {
       );
     }
 
-    final subtotal = order.totalPrice;
-    final discountPercent = _discountPercent(user.data?.tier);
-    final discount = subtotal * discountPercent ~/ 100;
-    final totalPaid = subtotal - discount;
+    final subtotal = order.subtotal;
+    final discount = order.discount;
+    final totalPaid = order.totalPrice;
 
     return Scaffold(
       body: SafeArea(
@@ -296,7 +286,7 @@ class _ItemRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final localization = AppLocalizations.of(context)!;
-    final lineTotal = item.product.price * item.quantity;
+    final lineTotal = item.actualPrice;
 
     return Row(
       children: [

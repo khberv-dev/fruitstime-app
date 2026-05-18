@@ -7,18 +7,38 @@ import 'package:jiffy/jiffy.dart';
 class OrderItemDto {
   final String id;
   final int quantity;
+  final int price;
+  final int actualPrice;
   final ProductDto product;
 
-  OrderItemDto({required this.id, required this.quantity, required this.product});
+  OrderItemDto({
+    required this.id,
+    required this.quantity,
+    required this.price,
+    required this.actualPrice,
+    required this.product,
+  });
 
-  factory OrderItemDto.parse(Map<String, dynamic> data) => OrderItemDto(
-    id: data['id'],
-    quantity: data['quantity'] ?? 1,
-    product: ProductDto.parse(data['product']),
+  factory OrderItemDto.parse(Map<String, dynamic> data) {
+    final product = ProductDto.parse(data['product']);
+    final quantity = data['quantity'] ?? 1;
+    final fallback = product.price * (quantity as int);
+    return OrderItemDto(
+      id: data['id'],
+      quantity: quantity,
+      price: data['price'] ?? fallback,
+      actualPrice: data['actualPrice'] ?? fallback,
+      product: product,
+    );
+  }
+
+  OrderItemEntity toEntity() => OrderItemEntity(
+    id: id,
+    quantity: quantity,
+    price: price,
+    actualPrice: actualPrice,
+    product: product.toEntity(),
   );
-
-  OrderItemEntity toEntity() =>
-      OrderItemEntity(id: id, quantity: quantity, product: product.toEntity());
 }
 
 class OrderDto {

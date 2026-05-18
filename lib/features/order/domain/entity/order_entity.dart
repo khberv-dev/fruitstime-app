@@ -23,5 +23,9 @@ class OrderEntity {
 
   int get itemsCount => items.fold<int>(0, (sum, e) => sum + e.quantity);
 
-  int get totalPrice => items.fold<int>(0, (sum, e) => sum + e.product.price * e.quantity);
+  int get subtotal => items.fold<int>(0, (sum, e) => sum + e.actualPrice);
+
+  int get totalPrice => items.fold<int>(0, (sum, e) => sum + e.price);
+
+  int get discount => subtotal - totalPrice;
 }

@@ -15,6 +15,7 @@ class UserDto {
   final int referralCount;
   final String role;
   final Tier tier;
+  final int discountPercent;
   final Jiffy createdAt;
   final Jiffy updatedAt;
 
@@ -30,6 +31,7 @@ class UserDto {
     required this.referralCount,
     required this.role,
     required this.tier,
+    required this.discountPercent,
     required this.createdAt,
     required this.updatedAt,
   });
@@ -46,6 +48,7 @@ class UserDto {
     referralCount: data['referralCount'] ?? 0,
     role: data['role'],
     tier: data['status'] != null ? Tier.values.byName(data['status']) : Tier.silver,
+    discountPercent: data['discountPercent'] ?? 0,
     createdAt: Jiffy.parse(data['createdAt']),
     updatedAt: Jiffy.parse(data['updatedAt']),
   );
@@ -62,6 +65,7 @@ class UserDto {
     referralCount: referralCount,
     role: role,
     tier: tier,
+    discountPercent: discountPercent,
     createdAt: createdAt,
     updatedAt: updatedAt,
   );

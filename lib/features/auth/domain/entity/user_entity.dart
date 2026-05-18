@@ -14,6 +14,7 @@ class UserEntity {
   final int referralCount;
   final String role;
   final Tier tier;
+  final int discountPercent;
   final Jiffy createdAt;
   final Jiffy updatedAt;
 
@@ -29,6 +30,7 @@ class UserEntity {
     required this.referralCount,
     required this.role,
     required this.tier,
+    required this.discountPercent,
     required this.createdAt,
     required this.updatedAt,
   });

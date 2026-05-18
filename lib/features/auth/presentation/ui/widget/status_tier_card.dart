@@ -8,9 +8,16 @@ import 'package:fruitstime/l10n/app_localizations.dart';
 class StatusTierCard extends StatelessWidget {
   final Tier tier;
   final int? referralCount;
+  final int? discountPercent;
   final VoidCallback? onInfoPressed;
 
-  const StatusTierCard({super.key, required this.tier, this.referralCount, this.onInfoPressed});
+  const StatusTierCard({
+    super.key,
+    required this.tier,
+    this.referralCount,
+    this.discountPercent,
+    this.onInfoPressed,
+  });
 
   Color _color() => switch (tier) {
     Tier.silver => const Color(0xff94a3b8),
@@ -40,19 +47,12 @@ class StatusTierCard extends StatelessWidget {
     Tier.premium => l.tierPremiumDescription,
   };
 
-  String? _discount() => switch (tier) {
-    Tier.silver => null,
-    Tier.gold => '5%',
-    Tier.vip => '7%',
-    Tier.premium => '10%',
-  };
-
   @override
   Widget build(BuildContext context) {
     final localization = AppLocalizations.of(context)!;
     final scheme = Theme.of(context).colorScheme;
     final color = _color();
-    final discount = _discount();
+    final discount = (discountPercent != null && discountPercent! > 0) ? '$discountPercent%' : null;
 
     return Container(
       width: double.infinity,
