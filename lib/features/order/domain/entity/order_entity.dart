@@ -1,4 +1,6 @@
 import 'package:fruitstime/features/order/data/enum/order_status.dart';
+import 'package:fruitstime/features/order/data/enum/order_type.dart';
+import 'package:fruitstime/features/order/domain/entity/order_address_entity.dart';
 import 'package:fruitstime/features/order/domain/entity/order_item_entity.dart';
 import 'package:jiffy/jiffy.dart';
 
@@ -6,6 +8,8 @@ class OrderEntity {
   final String id;
   final int? posId;
   final OrderStatus status;
+  final OrderType type;
+  final OrderAddressEntity? address;
   final List<OrderItemEntity> items;
   final Jiffy createdAt;
   final Jiffy updatedAt;
@@ -14,6 +18,8 @@ class OrderEntity {
     required this.id,
     this.posId,
     required this.status,
+    required this.type,
+    this.address,
     required this.items,
     required this.createdAt,
     required this.updatedAt,

@@ -29,6 +29,11 @@ dependencies:
   package_info_plus: ^10.1.0
   jiffy: ^6.4.4
   birth_picker: ^1.2.0
+  # Full SDK (includes the Search/geocoding module — reuses the MapKit key).
+  # iOS only: 4.36.0's Android native artifact (maps.mobile:4.36.0-full-flutter)
+  # is NOT on Maven Central, so Android builds won't resolve it. Pin to
+  # 4.30.0-beta if Android support is needed.
+  yandex_maps_mapkit: 4.36.0
 
 dev_dependencies:
   flutter_test:

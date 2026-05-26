@@ -610,5 +610,37 @@
   "pickUpFrom": "САМОВЫВОЗ ИЗ",
   "@pickUpFrom": {
     "description": "Label above the branch selector in the home header"
+  },
+  "pickupOption": "Самовывоз",
+  "@pickupOption": {
+    "description": "Fulfillment option label for picking up the order at a branch"
+  },
+  "deliveryOption": "Доставка",
+  "@deliveryOption": {
+    "description": "Fulfillment option label for having the order delivered"
+  },
+  "sendOrderButton": "Отправить заказ",
+  "@sendOrderButton": {
+    "description": "Cart CTA when fulfillment is delivery"
+  },
+  "deliverTo": "ДОСТАВИТЬ ПО АДРЕСУ",
+  "@deliverTo": {
+    "description": "Label above the delivery address selector"
+  },
+  "selectDeliveryAddress": "Выберите адрес доставки",
+  "@selectDeliveryAddress": {
+    "description": "Placeholder when no delivery address has been picked yet"
+  },
+  "selectLocationTitle": "Выберите местоположение",
+  "@selectLocationTitle": {
+    "description": "Title of the map location picker screen"
+  },
+  "confirmLocationButton": "Подтвердить адрес",
+  "@confirmLocationButton": {
+    "description": "Button to confirm the picked location on the map"
+  },
+  "resolvingAddress": "Определяем адрес…",
+  "@resolvingAddress": {
+    "description": "Placeholder shown while reverse-geocoding the picked map location"
   }
 }

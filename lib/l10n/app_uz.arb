@@ -611,5 +611,37 @@
   "pickUpFrom": "OLISH JOYI",
   "@pickUpFrom": {
     "description": "Label above the branch selector in the home header"
+  },
+  "pickupOption": "Olib ketish",
+  "@pickupOption": {
+    "description": "Fulfillment option label for picking up the order at a branch"
+  },
+  "deliveryOption": "Yetkazib berish",
+  "@deliveryOption": {
+    "description": "Fulfillment option label for having the order delivered"
+  },
+  "sendOrderButton": "Buyurtma berish",
+  "@sendOrderButton": {
+    "description": "Cart CTA when fulfillment is delivery"
+  },
+  "deliverTo": "YETKAZISH MANZILI",
+  "@deliverTo": {
+    "description": "Label above the delivery address selector"
+  },
+  "selectDeliveryAddress": "Yetkazish manzilini tanlang",
+  "@selectDeliveryAddress": {
+    "description": "Placeholder when no delivery address has been picked yet"
+  },
+  "selectLocationTitle": "Manzilni tanlang",
+  "@selectLocationTitle": {
+    "description": "Title of the map location picker screen"
+  },
+  "confirmLocationButton": "Manzilni tasdiqlash",
+  "@confirmLocationButton": {
+    "description": "Button to confirm the picked location on the map"
+  },
+  "resolvingAddress": "Manzil aniqlanmoqda…",
+  "@resolvingAddress": {
+    "description": "Placeholder shown while reverse-geocoding the picked map location"
   }
 }

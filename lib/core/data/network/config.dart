@@ -1,5 +1,3 @@
-import 'package:flutter/foundation.dart';
-
 final mainHostUrl = 'https://fruitstime.uz';
 final testHostUrl = 'http://192.168.0.2:8000';
 

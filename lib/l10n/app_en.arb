@@ -610,5 +610,37 @@
   "pickUpFrom": "PICK UP FROM",
   "@pickUpFrom": {
     "description": "Label above the branch selector in the home header"
+  },
+  "pickupOption": "Pickup",
+  "@pickupOption": {
+    "description": "Fulfillment option label for picking up the order at a branch"
+  },
+  "deliveryOption": "Delivery",
+  "@deliveryOption": {
+    "description": "Fulfillment option label for having the order delivered"
+  },
+  "sendOrderButton": "Send order",
+  "@sendOrderButton": {
+    "description": "Cart CTA when fulfillment is delivery"
+  },
+  "deliverTo": "DELIVER TO",
+  "@deliverTo": {
+    "description": "Label above the delivery address selector"
+  },
+  "selectDeliveryAddress": "Select delivery address",
+  "@selectDeliveryAddress": {
+    "description": "Placeholder when no delivery address has been picked yet"
+  },
+  "selectLocationTitle": "Select location",
+  "@selectLocationTitle": {
+    "description": "Title of the map location picker screen"
+  },
+  "confirmLocationButton": "Confirm location",
+  "@confirmLocationButton": {
+    "description": "Button to confirm the picked location on the map"
+  },
+  "resolvingAddress": "Determining address…",
+  "@resolvingAddress": {
+    "description": "Placeholder shown while reverse-geocoding the picked map location"
   }
 }

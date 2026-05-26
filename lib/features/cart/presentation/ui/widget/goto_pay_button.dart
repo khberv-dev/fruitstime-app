@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fruitstime/core/theme/app_spacing.dart';
-import 'package:fruitstime/l10n/app_localizations.dart';
 
 class GotoPayButton extends StatelessWidget {
   final VoidCallback? onPressed;
+  final String label;
 
-  const GotoPayButton({super.key, required this.onPressed});
+  const GotoPayButton({super.key, required this.onPressed, required this.label});
 
   @override
   Widget build(BuildContext context) {
-    final localization = AppLocalizations.of(context)!;
-
     return FilledButton(
       onPressed: onPressed,
       child: Row(
@@ -23,7 +21,7 @@ class GotoPayButton extends StatelessWidget {
           ),
           SizedBox(width: AppSpacing.md),
           Text(
-            localization.goToPaymentButton,
+            label,
             style: Theme.of(context).textTheme.bodyMedium!.copyWith(
               fontWeight: FontWeight.w900,
               color: Theme.of(context).colorScheme.onPrimary,
