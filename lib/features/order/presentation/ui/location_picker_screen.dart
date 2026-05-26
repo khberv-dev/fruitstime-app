@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fruitstime/core/theme/app_radius.dart';
 import 'package:fruitstime/core/theme/app_spacing.dart';
+import 'package:fruitstime/features/geocoding/domain/usecase/get_current_position.dart';
 import 'package:fruitstime/features/geocoding/domain/usecase/reverse_geocode.dart';
 import 'package:fruitstime/features/order/domain/entity/order_address_entity.dart';
 import 'package:fruitstime/l10n/app_localizations.dart';
+import 'package:fruitstime/utils/messanger.dart';
 import 'package:go_router/go_router.dart';
 import 'package:yandex_maps_mapkit/mapkit.dart' as ymk;
 import 'package:yandex_maps_mapkit/mapkit_factory.dart';
@@ -33,6 +35,7 @@ class _LocationPickerScreenState extends ConsumerState<LocationPickerScreen> {
 
   String? _addressName;
   bool _resolving = false;
+  bool _locating = false;
 
   @override
   void initState() {
@@ -89,6 +92,31 @@ class _LocationPickerScreenState extends ConsumerState<LocationPickerScreen> {
     }
   }
 
+  Future<void> _onMyLocation() async {
+    if (_locating) return;
+    setState(() => _locating = true);
+    try {
+      final position = await ref.read(getCurrentPositionProvider).call();
+      final point = ymk.Point(latitude: position.lat, longitude: position.long);
+      _mapWindow?.map.move(ymk.CameraPosition(point, zoom: 17, azimuth: 0, tilt: 0));
+      _scheduleGeocode(point);
+    } on LocationException catch (e) {
+      if (!mounted) return;
+      final localization = AppLocalizations.of(context)!;
+      showErrorMessage(
+        context,
+        e.failure == LocationFailure.serviceDisabled
+            ? localization.locationServiceDisabled
+            : localization.locationPermissionDenied,
+      );
+    } catch (_) {
+      if (!mounted) return;
+      showErrorMessage(context, AppLocalizations.of(context)!.locationUnavailable);
+    } finally {
+      if (mounted) setState(() => _locating = false);
+    }
+  }
+
   void _onConfirm() {
     final target = _mapWindow?.map.cameraPosition.target;
     if (target == null) return;
@@ -120,6 +148,11 @@ class _LocationPickerScreenState extends ConsumerState<LocationPickerScreen> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: _MyLocationButton(locating: _locating, onTap: _onMyLocation),
+                  ),
+                  const SizedBox(height: AppSpacing.md),
                   _AddressBanner(
                     resolving: _resolving,
                     name: _addressName,
@@ -182,6 +215,34 @@ class _AddressBanner extends StatelessWidget {
             const SizedBox(width: 16, height: 16, child: CircularProgressIndicator(strokeWidth: 2)),
           ],
         ],
+      ),
+    );
+  }
+}
+
+class _MyLocationButton extends StatelessWidget {
+  final bool locating;
+  final VoidCallback onTap;
+
+  const _MyLocationButton({required this.locating, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return Material(
+      color: theme.colorScheme.surface,
+      shape: const CircleBorder(),
+      elevation: 3,
+      child: InkWell(
+        customBorder: const CircleBorder(),
+        onTap: locating ? null : onTap,
+        child: Padding(
+          padding: const EdgeInsets.all(AppSpacing.md),
+          child: locating
+              ? const SizedBox(width: 22, height: 22, child: CircularProgressIndicator(strokeWidth: 2))
+              : Icon(Icons.my_location, size: 22, color: theme.colorScheme.primary),
+        ),
       ),
     );
   }

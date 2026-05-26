@@ -642,5 +642,17 @@
   "resolvingAddress": "Determining address…",
   "@resolvingAddress": {
     "description": "Placeholder shown while reverse-geocoding the picked map location"
+  },
+  "locationServiceDisabled": "Turn on location services",
+  "@locationServiceDisabled": {
+    "description": "Error when device location services are off"
+  },
+  "locationPermissionDenied": "Location permission denied",
+  "@locationPermissionDenied": {
+    "description": "Error when the user denies location permission"
+  },
+  "locationUnavailable": "Couldn't get your location",
+  "@locationUnavailable": {
+    "description": "Generic error when the current position can't be resolved"
   }
 }

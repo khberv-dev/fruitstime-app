@@ -643,5 +643,17 @@
   "resolvingAddress": "Manzil aniqlanmoqda…",
   "@resolvingAddress": {
     "description": "Placeholder shown while reverse-geocoding the picked map location"
+  },
+  "locationServiceDisabled": "Joylashuvni yoqing",
+  "@locationServiceDisabled": {
+    "description": "Error when device location services are off"
+  },
+  "locationPermissionDenied": "Joylashuvga ruxsat berilmagan",
+  "@locationPermissionDenied": {
+    "description": "Error when the user denies location permission"
+  },
+  "locationUnavailable": "Joylashuvni aniqlab bo'lmadi",
+  "@locationUnavailable": {
+    "description": "Generic error when the current position can't be resolved"
   }
 }
