@@ -20,4 +20,10 @@ abstract interface class CacheService {
   String? getSelectedBranchId();
 
   void setSelectedBranchId(String id);
+
+  String? getSelectedAddressId();
+
+  void setSelectedAddressId(String id);
+
+  void clearSelectedAddressId();
 }

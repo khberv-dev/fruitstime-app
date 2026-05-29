@@ -13,7 +13,7 @@ class FulfillmentToggle extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final localization = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
-    final type = ref.watch(fulfillmentProvider).type;
+    final type = ref.watch(fulfillmentProvider);
 
     Widget segment(OrderType segmentType, String label, IconData icon) {
       final selected = type == segmentType;

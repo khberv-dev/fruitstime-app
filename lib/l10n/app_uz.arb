@@ -655,5 +655,37 @@
   "locationUnavailable": "Joylashuvni aniqlab bo'lmadi",
   "@locationUnavailable": {
     "description": "Generic error when the current position can't be resolved"
+  },
+  "myAddressesTitle": "MENING MANZILLARIM",
+  "@myAddressesTitle": {
+    "description": "Header of the saved-addresses sheet"
+  },
+  "addAddressButton": "Manzil qo'shish",
+  "@addAddressButton": {
+    "description": "Button to add a new saved address via the map"
+  },
+  "noAddresses": "Hozircha saqlangan manzillar yo'q",
+  "@noAddresses": {
+    "description": "Empty state for the saved-addresses list"
+  },
+  "addressLabelTitle": "Manzil nomi",
+  "@addressLabelTitle": {
+    "description": "Title of the dialog to label a newly picked address"
+  },
+  "addressLabelHint": "masalan Uy, Ish",
+  "@addressLabelHint": {
+    "description": "Hint for the address label text field"
+  },
+  "cancelButton": "Bekor qilish",
+  "@cancelButton": {
+    "description": "Generic cancel action"
+  },
+  "deleteButton": "O'chirish",
+  "@deleteButton": {
+    "description": "Generic delete action"
+  },
+  "deleteAddressConfirm": "Bu manzil o'chirilsinmi?",
+  "@deleteAddressConfirm": {
+    "description": "Confirmation when deleting a saved address"
   }
 }

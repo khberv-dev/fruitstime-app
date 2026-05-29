@@ -240,7 +240,11 @@ class _MyLocationButton extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(AppSpacing.md),
           child: locating
-              ? const SizedBox(width: 22, height: 22, child: CircularProgressIndicator(strokeWidth: 2))
+              ? const SizedBox(
+                  width: 22,
+                  height: 22,
+                  child: CircularProgressIndicator(strokeWidth: 2),
+                )
               : Icon(Icons.my_location, size: 22, color: theme.colorScheme.primary),
         ),
       ),

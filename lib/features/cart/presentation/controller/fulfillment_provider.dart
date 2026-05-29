@@ -1,26 +1,15 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fruitstime/features/order/data/enum/order_type.dart';
-import 'package:fruitstime/features/order/domain/entity/order_address_entity.dart';
 
-class FulfillmentState {
-  final OrderType type;
-  final OrderAddressEntity? address;
-
-  const FulfillmentState({this.type = OrderType.pickup, this.address});
-
-  FulfillmentState copyWith({OrderType? type, OrderAddressEntity? address}) =>
-      FulfillmentState(type: type ?? this.type, address: address ?? this.address);
-}
-
-final fulfillmentProvider = NotifierProvider<_FulfillmentNotifier, FulfillmentState>(
+/// Tracks the chosen fulfillment method (pickup vs delivery). The delivery
+/// address itself lives in selectedAddressProvider.
+final fulfillmentProvider = NotifierProvider<_FulfillmentNotifier, OrderType>(
   _FulfillmentNotifier.new,
 );
 
-class _FulfillmentNotifier extends Notifier<FulfillmentState> {
+class _FulfillmentNotifier extends Notifier<OrderType> {
   @override
-  FulfillmentState build() => const FulfillmentState();
+  OrderType build() => OrderType.pickup;
 
-  void setType(OrderType type) => state = state.copyWith(type: type);
-
-  void setAddress(OrderAddressEntity address) => state = state.copyWith(address: address);
+  void setType(OrderType type) => state = type;
 }

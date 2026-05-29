@@ -654,5 +654,37 @@
   "locationUnavailable": "Не удалось определить местоположение",
   "@locationUnavailable": {
     "description": "Generic error when the current position can't be resolved"
+  },
+  "myAddressesTitle": "МОИ АДРЕСА",
+  "@myAddressesTitle": {
+    "description": "Header of the saved-addresses sheet"
+  },
+  "addAddressButton": "Добавить адрес",
+  "@addAddressButton": {
+    "description": "Button to add a new saved address via the map"
+  },
+  "noAddresses": "Пока нет сохранённых адресов",
+  "@noAddresses": {
+    "description": "Empty state for the saved-addresses list"
+  },
+  "addressLabelTitle": "Название адреса",
+  "@addressLabelTitle": {
+    "description": "Title of the dialog to label a newly picked address"
+  },
+  "addressLabelHint": "напр. Дом, Работа",
+  "@addressLabelHint": {
+    "description": "Hint for the address label text field"
+  },
+  "cancelButton": "Отмена",
+  "@cancelButton": {
+    "description": "Generic cancel action"
+  },
+  "deleteButton": "Удалить",
+  "@deleteButton": {
+    "description": "Generic delete action"
+  },
+  "deleteAddressConfirm": "Удалить этот адрес?",
+  "@deleteAddressConfirm": {
+    "description": "Confirmation when deleting a saved address"
   }
 }

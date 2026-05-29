@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fruitstime/core/theme/app_spacing.dart';
+import 'package:fruitstime/features/address/presentation/controller/selected_address_provider.dart';
 import 'package:fruitstime/features/auth/presentation/ui/controller/user_provider.dart';
 import 'package:fruitstime/features/auth/presentation/ui/login_screen.dart';
 import 'package:fruitstime/features/cart/presentation/controller/cart_provider.dart';
@@ -33,8 +34,8 @@ class CartPage extends ConsumerWidget {
     final cartTypesCount = ref.read(cartProvider.notifier).totalProductsTypesCount();
     final cartPrice = ref.read(cartProvider.notifier).totalProductsPrice();
     final createOrderState = ref.watch(createOrderControllerProvider);
-    final fulfillment = ref.watch(fulfillmentProvider);
-    final isDelivery = fulfillment.type == OrderType.delivery;
+    final isDelivery = ref.watch(fulfillmentProvider) == OrderType.delivery;
+    final selectedAddress = ref.watch(selectedAddressProvider);
 
     void onAddProductCartClick(ProductEntity product) {
       ref.read(cartProvider.notifier).addProduct(product);
@@ -101,7 +102,7 @@ class CartPage extends ConsumerWidget {
                           label: localization.sendOrderButton,
                           onPressed:
                               (createOrderState.isLoading ||
-                                  (isDelivery && fulfillment.address == null))
+                                  (isDelivery && selectedAddress == null))
                               ? null
                               : onPaymentClick,
                         ),

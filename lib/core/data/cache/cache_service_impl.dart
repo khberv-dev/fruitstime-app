@@ -65,4 +65,19 @@ class CacheServiceImpl implements CacheService {
   void setSelectedBranchId(String id) {
     _sharedPreferences.setString(selectedBranchIdKey, id);
   }
+
+  @override
+  String? getSelectedAddressId() {
+    return _sharedPreferences.getString(selectedAddressIdKey);
+  }
+
+  @override
+  void setSelectedAddressId(String id) {
+    _sharedPreferences.setString(selectedAddressIdKey, id);
+  }
+
+  @override
+  void clearSelectedAddressId() {
+    _sharedPreferences.remove(selectedAddressIdKey);
+  }
 }

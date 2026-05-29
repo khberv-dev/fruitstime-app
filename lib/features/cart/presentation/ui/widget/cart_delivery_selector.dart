@@ -2,37 +2,42 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fruitstime/core/theme/app_radius.dart';
 import 'package:fruitstime/core/theme/app_spacing.dart';
-import 'package:fruitstime/features/cart/presentation/controller/fulfillment_provider.dart';
-import 'package:fruitstime/features/order/domain/entity/order_address_entity.dart';
-import 'package:fruitstime/features/order/presentation/ui/location_picker_screen.dart';
+import 'package:fruitstime/features/address/presentation/controller/addresses_provider.dart';
+import 'package:fruitstime/features/address/presentation/controller/selected_address_provider.dart';
+import 'package:fruitstime/features/address/presentation/ui/address_list_modal.dart';
+import 'package:fruitstime/features/auth/presentation/ui/controller/user_provider.dart';
 import 'package:fruitstime/l10n/app_localizations.dart';
-import 'package:go_router/go_router.dart';
 
-class CartDeliverySelector extends ConsumerWidget {
+class CartDeliverySelector extends ConsumerStatefulWidget {
   const CartDeliverySelector({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<CartDeliverySelector> createState() => _CartDeliverySelectorState();
+}
+
+class _CartDeliverySelectorState extends ConsumerState<CartDeliverySelector> {
+  @override
+  void initState() {
+    super.initState();
+    // Load so a previously saved default address resolves and shows here.
+    // Addresses require auth, so skip for guests (they log in at checkout).
+    Future.microtask(() {
+      if (ref.read(userProvider).data != null) {
+        ref.read(addressesProvider.notifier).load();
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final localization = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
-    final address = ref.watch(fulfillmentProvider).address;
+    final selected = ref.watch(selectedAddressProvider);
 
-    Future<void> onTap() async {
-      final result = await context.push<OrderAddressEntity>(
-        LocationPickerScreen.path,
-        extra: address,
-      );
-      if (result != null) {
-        ref.read(fulfillmentProvider.notifier).setAddress(result);
-      }
-    }
-
-    final subtitle = address == null
-        ? localization.selectDeliveryAddress
-        : address.name ?? '${address.lat.toStringAsFixed(5)}, ${address.long.toStringAsFixed(5)}';
+    final subtitle = selected?.name ?? localization.selectDeliveryAddress;
 
     return GestureDetector(
-      onTap: onTap,
+      onTap: () => showModalBottomSheet(context: context, builder: (_) => const AddressListModal()),
       child: Container(
         padding: const EdgeInsets.all(AppSpacing.lg),
         decoration: BoxDecoration(

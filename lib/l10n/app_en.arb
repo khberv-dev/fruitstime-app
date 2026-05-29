@@ -654,5 +654,37 @@
   "locationUnavailable": "Couldn't get your location",
   "@locationUnavailable": {
     "description": "Generic error when the current position can't be resolved"
+  },
+  "myAddressesTitle": "MY ADDRESSES",
+  "@myAddressesTitle": {
+    "description": "Header of the saved-addresses sheet"
+  },
+  "addAddressButton": "Add address",
+  "@addAddressButton": {
+    "description": "Button to add a new saved address via the map"
+  },
+  "noAddresses": "No saved addresses yet",
+  "@noAddresses": {
+    "description": "Empty state for the saved-addresses list"
+  },
+  "addressLabelTitle": "Name this address",
+  "@addressLabelTitle": {
+    "description": "Title of the dialog to label a newly picked address"
+  },
+  "addressLabelHint": "e.g. Home, Work",
+  "@addressLabelHint": {
+    "description": "Hint for the address label text field"
+  },
+  "cancelButton": "Cancel",
+  "@cancelButton": {
+    "description": "Generic cancel action"
+  },
+  "deleteButton": "Delete",
+  "@deleteButton": {
+    "description": "Generic delete action"
+  },
+  "deleteAddressConfirm": "Delete this address?",
+  "@deleteAddressConfirm": {
+    "description": "Confirmation when deleting a saved address"
   }
 }
