@@ -6,6 +6,7 @@ import 'package:fruitstime/features/app/presentation/controller/bottom_navbar_pr
 import 'package:fruitstime/features/app/presentation/ui/app_screen.dart';
 import 'package:fruitstime/features/order/presentation/controller/orders_provider.dart';
 import 'package:fruitstime/features/order/presentation/ui/widget/order_card.dart';
+import 'package:fruitstime/features/order/presentation/ui/widget/order_detail_sheet.dart';
 import 'package:fruitstime/features/order/presentation/ui/widget/orders_empty_state.dart';
 import 'package:fruitstime/l10n/app_localizations.dart';
 import 'package:fruitstime/utils/messanger.dart';
@@ -63,7 +64,15 @@ class _OrdersScreenState extends ConsumerState<OrdersScreen> {
           padding: EdgeInsets.zero,
           itemCount: orderList.length,
           separatorBuilder: (_, _) => SizedBox(height: AppSpacing.md),
-          itemBuilder: (_, i) => OrderCard(order: orderList[i]),
+          itemBuilder: (_, i) => OrderCard(
+            order: orderList[i],
+            onTap: () => showModalBottomSheet(
+              context: context,
+              isScrollControlled: true,
+              useRootNavigator: true,
+              builder: (_) => OrderDetailSheet(order: orderList[i]),
+            ),
+          ),
         ),
       );
     }
