@@ -620,6 +620,13 @@
   "@deliveryOption": {
     "description": "Fulfillment option label for having the order delivered"
   },
+  "availableAtBranch": "Mavjud: {branches}",
+  "@availableAtBranch": {
+    "description": "Banner on unavailable product showing which branches have it in stock",
+    "placeholders": {
+      "branches": { "type": "String" }
+    }
+  },
   "deliveryFeeLabel": "Yetkazib berish narxi",
   "@deliveryFeeLabel": {
     "description": "Label for the delivery fee row in the cart summary"

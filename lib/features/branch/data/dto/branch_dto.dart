@@ -6,6 +6,7 @@ class BranchDto {
   final String name;
   final String address;
   final bool isActive;
+  final int? storageId;
 
   BranchDto({
     required this.id,
@@ -13,6 +14,7 @@ class BranchDto {
     required this.name,
     required this.address,
     required this.isActive,
+    this.storageId,
   });
 
   factory BranchDto.parse(Map<String, dynamic> data) => BranchDto(
@@ -21,8 +23,15 @@ class BranchDto {
     name: data['name'],
     address: data['address'],
     isActive: data['isActive'],
+    storageId: data['storageId'] as int?,
   );
 
-  BranchEntity toEntity() =>
-      BranchEntity(id: id, posId: posId, name: name, address: address, isActive: isActive);
+  BranchEntity toEntity() => BranchEntity(
+    id: id,
+    posId: posId,
+    name: name,
+    address: address,
+    isActive: isActive,
+    storageId: storageId,
+  );
 }

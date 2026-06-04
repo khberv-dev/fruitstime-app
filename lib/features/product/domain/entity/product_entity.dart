@@ -1,5 +1,12 @@
 import 'package:fruitstime/features/product/data/enum/product_type.dart';
 
+class ProductAvailability {
+  final int storageId;
+  final bool left;
+
+  const ProductAvailability({required this.storageId, required this.left});
+}
+
 class ProductEntity {
   final String id;
   final int? posId;
@@ -9,6 +16,7 @@ class ProductEntity {
   final List<String> compound;
   final int price;
   final ProductType type;
+  final List<ProductAvailability> available;
 
   ProductEntity({
     required this.id,
@@ -19,7 +27,17 @@ class ProductEntity {
     required this.compound,
     required this.price,
     required this.type,
+    this.available = const [],
   });
+
+  /// Returns true when the product is in stock at the given storage.
+  /// If [storageId] is null (branch has no storage configured) or the product
+  /// has no availability data yet, it is treated as available.
+  bool isAvailableAt(int? storageId) {
+    if (storageId == null || available.isEmpty) return true;
+    final entry = available.where((a) => a.storageId == storageId).firstOrNull;
+    return entry?.left ?? true;
+  }
 
   @override
   bool operator ==(Object other) {

@@ -11,6 +11,7 @@ class ProductDto {
   final List<String> compound;
   final int price;
   final ProductType type;
+  final List<ProductAvailability> available;
 
   ProductDto({
     required this.id,
@@ -21,18 +22,34 @@ class ProductDto {
     required this.compound,
     required this.price,
     required this.type,
+    this.available = const [],
   });
 
-  factory ProductDto.parse(Map<String, dynamic> data) => ProductDto(
-    id: data['id'],
-    posId: data['posId'],
-    title: data['title'],
-    description: data['description'],
-    image: data['image'],
-    compound: List.from(data['compound']),
-    price: data['price'],
-    type: ProductType.values.byName(data['type']),
-  );
+  factory ProductDto.parse(Map<String, dynamic> data) {
+    final rawAvailable = data['available'];
+    final available = rawAvailable is List
+        ? rawAvailable
+            .map(
+              (e) => ProductAvailability(
+                storageId: e['storage_id'] as int,
+                left: e['left'] as bool,
+              ),
+            )
+            .toList()
+        : <ProductAvailability>[];
+
+    return ProductDto(
+      id: data['id'],
+      posId: data['posId'],
+      title: data['title'],
+      description: data['description'],
+      image: data['image'],
+      compound: List.from(data['compound']),
+      price: data['price'],
+      type: ProductType.values.byName(data['type']),
+      available: available,
+    );
+  }
 
   ProductEntity toEntity() => ProductEntity(
     id: id,
@@ -43,5 +60,6 @@ class ProductDto {
     compound: compound,
     price: price,
     type: type,
+    available: available,
   );
 }

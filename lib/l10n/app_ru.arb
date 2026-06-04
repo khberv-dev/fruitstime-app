@@ -619,6 +619,13 @@
   "@deliveryOption": {
     "description": "Fulfillment option label for having the order delivered"
   },
+  "availableAtBranch": "Есть в: {branches}",
+  "@availableAtBranch": {
+    "description": "Banner on unavailable product showing which branches have it in stock",
+    "placeholders": {
+      "branches": { "type": "String" }
+    }
+  },
   "deliveryFeeLabel": "Доставка",
   "@deliveryFeeLabel": {
     "description": "Label for the delivery fee row in the cart summary"

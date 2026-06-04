@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class AddCartButton extends StatelessWidget {
-  final Function() onPressed;
+  final VoidCallback? onPressed;
 
   const AddCartButton({super.key, required this.onPressed});
 
