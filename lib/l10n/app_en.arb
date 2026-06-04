@@ -619,6 +619,10 @@
   "@deliveryOption": {
     "description": "Fulfillment option label for having the order delivered"
   },
+  "deliveryFeeLabel": "Delivery fee",
+  "@deliveryFeeLabel": {
+    "description": "Label for the delivery fee row in the cart summary"
+  },
   "sendOrderButton": "Send order",
   "@sendOrderButton": {
     "description": "Cart CTA when fulfillment is delivery"

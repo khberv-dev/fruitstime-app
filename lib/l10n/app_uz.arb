@@ -620,6 +620,10 @@
   "@deliveryOption": {
     "description": "Fulfillment option label for having the order delivered"
   },
+  "deliveryFeeLabel": "Yetkazib berish narxi",
+  "@deliveryFeeLabel": {
+    "description": "Label for the delivery fee row in the cart summary"
+  },
   "sendOrderButton": "Buyurtma berish",
   "@sendOrderButton": {
     "description": "Cart CTA when fulfillment is delivery"

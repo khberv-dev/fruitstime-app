@@ -5,6 +5,7 @@ import 'package:fruitstime/features/address/presentation/controller/selected_add
 import 'package:fruitstime/features/auth/presentation/ui/controller/user_provider.dart';
 import 'package:fruitstime/features/auth/presentation/ui/login_screen.dart';
 import 'package:fruitstime/features/cart/presentation/controller/cart_provider.dart';
+import 'package:fruitstime/features/cart/presentation/controller/delivery_cost_provider.dart';
 import 'package:fruitstime/features/cart/presentation/controller/fulfillment_provider.dart';
 import 'package:fruitstime/features/cart/presentation/ui/widget/cart_branch_selector.dart';
 import 'package:fruitstime/features/cart/presentation/ui/widget/cart_delivery_selector.dart';
@@ -36,6 +37,7 @@ class CartPage extends ConsumerWidget {
     final createOrderState = ref.watch(createOrderControllerProvider);
     final isDelivery = ref.watch(fulfillmentProvider) == OrderType.delivery;
     final selectedAddress = ref.watch(selectedAddressProvider);
+    final deliveryCostAsync = ref.watch(deliveryCostProvider);
 
     void onAddProductCartClick(ProductEntity product) {
       ref.read(cartProvider.notifier).addProduct(product);
@@ -102,7 +104,10 @@ class CartPage extends ConsumerWidget {
                           label: localization.sendOrderButton,
                           onPressed:
                               (createOrderState.isLoading ||
-                                  (isDelivery && selectedAddress == null))
+                                  (isDelivery && selectedAddress == null) ||
+                                  (isDelivery &&
+                                      selectedAddress != null &&
+                                      deliveryCostAsync.isLoading))
                               ? null
                               : onPaymentClick,
                         ),

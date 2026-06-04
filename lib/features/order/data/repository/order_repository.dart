@@ -18,6 +18,14 @@ class OrderRepository {
     return data.map((e) => OrderDto.parse(e)).toList();
   }
 
+  Future<int> getDeliveryCost({required String branchId, required String addressId}) async {
+    final response = await _client.get(
+      'order/delivery-cost',
+      queryParameters: {'branchId': branchId, 'addressId': addressId},
+    );
+    return (response.data['cost'] as num).toInt();
+  }
+
   Future<OrderDto> create(
     List<Map<String, dynamic>> items, {
     required String branchId,
