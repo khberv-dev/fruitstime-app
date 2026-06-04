@@ -7,8 +7,14 @@ class MessageDto {
   final String text;
   final MessageSender from;
   final List<ProductEntity> suggestedProducts;
+  final DateTime createdAt;
 
-  MessageDto({required this.text, required this.from, required this.suggestedProducts});
+  MessageDto({
+    required this.text,
+    required this.from,
+    required this.suggestedProducts,
+    DateTime? createdAt,
+  }) : createdAt = createdAt ?? DateTime.now();
 
   factory MessageDto.parse(Map<String, dynamic> data) {
     final suggestedProductsData = List<Map<String, dynamic>>.from(data['suggestions']);
@@ -24,6 +30,24 @@ class MessageDto {
     );
   }
 
-  MessageEntity toEntity() =>
-      MessageEntity(text: text, from: from, suggestedProducts: suggestedProducts);
+  factory MessageDto.parseHistoryItem(Map<String, dynamic> data) {
+    final raw = data['suggestions'];
+    final products = raw is List
+        ? raw.map((e) => ProductDto.parse(e as Map<String, dynamic>).toEntity()).toList()
+        : <ProductEntity>[];
+
+    return MessageDto(
+      text: data['text'] as String,
+      from: data['role'] == 'user' ? MessageSender.me : MessageSender.ai,
+      suggestedProducts: products,
+      createdAt: DateTime.parse(data['createdAt'] as String),
+    );
+  }
+
+  MessageEntity toEntity() => MessageEntity(
+    text: text,
+    from: from,
+    suggestedProducts: suggestedProducts,
+    createdAt: createdAt,
+  );
 }

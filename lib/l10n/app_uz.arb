@@ -624,7 +624,9 @@
   "@availableAtBranch": {
     "description": "Banner on unavailable product showing which branches have it in stock",
     "placeholders": {
-      "branches": { "type": "String" }
+      "branches": {
+        "type": "String"
+      }
     }
   },
   "deliveryFeeLabel": "Yetkazib berish narxi",

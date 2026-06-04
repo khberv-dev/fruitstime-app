@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fruitstime/core/theme/app_radius.dart';
 import 'package:fruitstime/core/theme/app_spacing.dart';
 import 'package:fruitstime/features/assistant/domain/entity/message_entity.dart';
 import 'package:fruitstime/features/assistant/domain/enum/message_sender.dart';
 import 'package:fruitstime/features/assistant/presentation/ui/widget/message_suggested_product_item.dart';
+import 'package:fruitstime/features/branch/presentation/controller/branches_provider.dart';
 import 'package:fruitstime/features/product/domain/entity/product_entity.dart';
 
-class ChatMessage extends StatelessWidget {
+class ChatMessage extends ConsumerWidget {
   final MessageEntity message;
   final Function(ProductEntity) onProductItemClick;
 
   const ChatMessage({super.key, required this.message, required this.onProductItemClick});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final storageId = ref.watch(selectedBranchProvider)?.storageId;
+
     final sentMessageDecoration = BoxDecoration(
       color: Theme.of(context).colorScheme.primary,
       borderRadius: BorderRadius.all(
@@ -53,20 +57,22 @@ class ChatMessage extends StatelessWidget {
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
-                    children: List.generate(
-                      message.suggestedProducts.length,
-                      (index) => Row(
+                    children: List.generate(message.suggestedProducts.length, (index) {
+                      final product = message.suggestedProducts[index];
+                      final isAvailable = product.isAvailableAt(storageId);
+                      return Row(
                         children: [
                           GestureDetector(
-                            onTap: () => onProductItemClick(message.suggestedProducts[index]),
+                            onTap: isAvailable ? () => onProductItemClick(product) : null,
                             child: MessageSuggestedProductItem(
-                              product: message.suggestedProducts[index],
+                              product: product,
+                              isAvailable: isAvailable,
                             ),
                           ),
                           SizedBox(width: AppSpacing.sm),
                         ],
-                      ),
-                    ),
+                      );
+                    }),
                   ),
                 )
               else

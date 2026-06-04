@@ -17,4 +17,10 @@ class AssistantRepository {
 
     return MessageDto.parse(data);
   }
+
+  Future<List<MessageDto>> getHistory() async {
+    final response = await _client.get('assistant/history');
+    final data = response.data as List<dynamic>;
+    return data.map((e) => MessageDto.parseHistoryItem(e as Map<String, dynamic>)).toList();
+  }
 }

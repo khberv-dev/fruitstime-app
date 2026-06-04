@@ -29,13 +29,11 @@ class ProductDto {
     final rawAvailable = data['available'];
     final available = rawAvailable is List
         ? rawAvailable
-            .map(
-              (e) => ProductAvailability(
-                storageId: e['storage_id'] as int,
-                left: e['left'] as bool,
-              ),
-            )
-            .toList()
+              .map(
+                (e) =>
+                    ProductAvailability(storageId: e['storage_id'] as int, left: e['left'] as bool),
+              )
+              .toList()
         : <ProductAvailability>[];
 
     return ProductDto(

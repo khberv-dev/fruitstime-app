@@ -4,12 +4,36 @@ import 'package:fruitstime/features/product/domain/entity/product_entity.dart';
 
 class MessageSuggestedProductItem extends StatelessWidget {
   final ProductEntity product;
+  final bool isAvailable;
 
-  const MessageSuggestedProductItem({super.key, required this.product});
+  const MessageSuggestedProductItem({super.key, required this.product, this.isAvailable = true});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    const grayscale = ColorFilter.matrix(<double>[
+      0.2126,
+      0.7152,
+      0.0722,
+      0,
+      0,
+      0.2126,
+      0.7152,
+      0.0722,
+      0,
+      0,
+      0.2126,
+      0.7152,
+      0.0722,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+    ]);
+
+    Widget card = Container(
       width: 96,
       height: 96,
       clipBehavior: Clip.hardEdge,
@@ -42,5 +66,11 @@ class MessageSuggestedProductItem extends StatelessWidget {
         ],
       ),
     );
+
+    if (!isAvailable) {
+      card = ColorFiltered(colorFilter: grayscale, child: card);
+    }
+
+    return card;
   }
 }
