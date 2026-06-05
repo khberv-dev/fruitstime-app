@@ -32,8 +32,7 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
   // Keeps newest-first order (index 0 = most recent) for the reversed ListView.
   void _insertSorted(List<MessageEntity> additions) {
     setState(() {
-      messages = [...messages, ...additions]
-        ..sort((a, b) => b.createdAt.compareTo(a.createdAt));
+      messages = [...messages, ...additions]..sort((a, b) => b.createdAt.compareTo(a.createdAt));
     });
   }
 

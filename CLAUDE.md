@@ -24,9 +24,12 @@ Feature-sliced clean architecture. Every feature under `lib/features/<feature>` 
 Cross-cutting code lives in `lib/core`:
 - `core/data/network/` — Dio setup (`api_client.dart`), `ApiClientInterceptor` (auth header + locale query param + 401 refresh-and-retry), `config.dart` host URLs, and `RequestState<T>` (the standard `{data, error, message, isLoading}` envelope every controller emits).
 - `core/data/cache/` — `CacheService` interface + `CacheServiceImpl` over `SharedPreferences`. Storage keys are centralized in `keys.dart`.
-- `core/router/app_router.dart` — single `GoRouter`. Routes are registered by reading each screen's `static const path` (e.g. `SplashScreen.path = '/'`, `AppScreen.path = '/app'`). When adding a screen, declare its `path` on the widget and register it here.
+- `core/router/app_router.dart` — single `GoRouter`. Routes are registered by reading each screen's `static const path` (e.g. `SplashScreen.path = '/'`, `AppScreen.path = '/app'`). When adding a screen, declare its `path` on the widget and register it here. `LocationPickerScreen` is the only route that uses `state.extra` (passes an optional `OrderAddressEntity` initial value).
 - `core/theme/` — `AppTheme` (Material color scheme + Inter via `google_fonts`) and the `AppSpacing` / `AppRadius` constant scales. Use these constants instead of magic numbers.
 - `core/controller/app_locale.dart` — locale notifier and the canonical list of supported locales (`uz` default, `en`, `ru`).
+- `core/ui/widget/` — shared widgets reused across features: `BubbleIcon`, `OtpField`, `ItemCounter`, `DotProgress`, `LabelBadge`. Check here before writing a new generic widget.
+
+`lib/utils/lib.dart` exports three formatting helpers used throughout the app: `formatNumber` (space-separated thousands), `extractDigits` (strips non-digits), `formatPhoneNumber` (formats a 12-digit UZ number with spaces).
 
 ### Riverpod conventions
 
@@ -36,6 +39,7 @@ Riverpod 3 is the only state management. The repeated patterns are:
 - Usecase → `Provider((ref) => XUseCase(ref.read(...)))`, exposing a single `call(...)`.
 - Screen-facing state → `NotifierProvider` whose `Notifier` holds `RequestState<T>`. The standard shape inside an action is: set `RequestState.loading()`, `await` the usecase, set `RequestState.data(...)` on success, catch `DioException` and set `RequestState.error(e.message)`. See `features/auth/presentation/ui/controller/login_user_provider.dart` for the canonical example.
 - Screens listen for navigation/error side effects with `ref.listen(provider, ...)` and call `showErrorMessage(context, ...)` from `utils/messanger.dart` for snackbars.
+- Cart is in-memory only: `cartProvider` is a `NotifierProvider<Map<ProductEntity, int>>` that resets on app restart. Checkout state spans three providers: `cartProvider` (items), `fulfillmentProvider` (pickup vs delivery `OrderType`), and `selectedAddressProvider` (chosen delivery address).
 
 ### App bootstrap and startup flow
 
@@ -44,7 +48,7 @@ Riverpod 3 is the only state management. The repeated patterns are:
 
 ### Networking
 
-- Base URL switches by build mode in `core/data/network/config.dart`: `kDebugMode` uses `http://192.168.0.39:8000` (a LAN dev host — update this IP for your machine), release uses `https://fruitstime.uz`. `baseCdnUrl` follows the same host and serves images under `/public/...` (e.g. `ProductDto.toEntity()` builds `$baseCdnUrl/product/$image`).
+- Base URL switches by build mode in `core/data/network/config.dart`: `kDebugMode` uses `http://192.168.0.39:8000` (a LAN dev host — update this IP for your machine), release uses `https://fruitstime.uz`. `baseCdnUrl` follows the same host and serves images under `/public/...` (e.g. `ProductDto.toEntity()` builds `$baseCdnUrl/product/$image`). `config.dart` also holds `yandexMapsApiKey` (shared by the map SDK init and the HTTP geocoder) and `geocoderBaseUrl`.
 - `ApiClientInterceptor` automatically attaches `Authorization: Bearer <accessToken>` on every non-`auth/*` request, appends `?locale=<code>` to every request, and on a 401 transparently calls `auth/refresh`, persists the new tokens, and retries the original request once. New endpoints under the `auth/` path prefix are intentionally exempt from both auth header and refresh.
 - API errors: the interceptor unwraps `response.data['message']` (string or list) into `DioException.message`, so controllers can surface `e.message` directly to users.
 
@@ -60,3 +64,4 @@ Riverpod 3 is the only state management. The repeated patterns are:
 - Each route screen exposes its path as `static const path = '/...'`. Use `context.go(Screen.path)` / `context.replace(...)` rather than string literals.
 - Use `AppSpacing.*` / `AppRadius.*` for paddings, gaps, and radii. The theme already styles `FilledButton`, `IconButton`, `InputDecoration`, dividers, and the progress indicator — prefer theme-driven styling over per-widget overrides.
 - Phone numbers are Uzbek-only: input is masked via `PhoneNumberFormatter`, `extractDigits` strips formatting, and the `998` country code is prepended at the call site before sending to the API.
+- Yandex Maps uses `yandex_maps_mapkit_lite` (maps display only — no native Search/Directions modules). Reverse geocoding is done via the Yandex HTTP Geocoder API (`geocoderBaseUrl` in `config.dart`) using plain Dio, not the native Search SDK. The map widget and camera API live in `yandex_maps_mapkit_lite/mapkit.dart`, `mapkit_factory.dart`, and `yandex_map.dart`; `initMapkit` is called in `main.dart` using `yandexMapsApiKey`.

@@ -1,22 +1,21 @@
-import 'package:yandex_maps_mapkit/search.dart' show SearchResponse;
-
-/// A human-readable address name extracted from a Yandex Search response.
-/// For a reverse-geocoded point the top toponym's `name` is the street/house
-/// line; `descriptionText` (district/city) is used as a fallback.
+/// A human-readable address name extracted from a Yandex HTTP Geocoder response.
+/// `name` is the place/street line; `description` (city, country) is the fallback.
 class GeocodeDto {
   final String name;
 
   GeocodeDto({required this.name});
 
-  factory GeocodeDto.fromResponse(SearchResponse response) {
-    for (final item in response.collection.children) {
-      final geoObject = item.asGeoObject();
-      if (geoObject == null) continue;
+  factory GeocodeDto.fromJson(Map<String, dynamic> json) {
+    final members =
+        json['response']['GeoObjectCollection']['featureMember'] as List<dynamic>;
 
-      final name = geoObject.name;
+    for (final member in members) {
+      final geoObject = member['GeoObject'] as Map<String, dynamic>;
+
+      final name = geoObject['name'] as String?;
       if (name != null && name.isNotEmpty) return GeocodeDto(name: name);
 
-      final description = geoObject.descriptionText;
+      final description = geoObject['description'] as String?;
       if (description != null && description.isNotEmpty) return GeocodeDto(name: description);
     }
 

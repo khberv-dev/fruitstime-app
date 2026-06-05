@@ -10,9 +10,7 @@ import 'package:fruitstime/features/order/domain/entity/order_address_entity.dar
 import 'package:fruitstime/l10n/app_localizations.dart';
 import 'package:fruitstime/utils/messanger.dart';
 import 'package:go_router/go_router.dart';
-import 'package:yandex_maps_mapkit/mapkit.dart' as ymk;
-import 'package:yandex_maps_mapkit/mapkit_factory.dart';
-import 'package:yandex_maps_mapkit/yandex_map.dart';
+import 'package:yandex_mapkit/yandex_mapkit.dart';
 
 class LocationPickerScreen extends ConsumerStatefulWidget {
   static const path = '/location-picker';
@@ -26,13 +24,13 @@ class LocationPickerScreen extends ConsumerStatefulWidget {
 }
 
 class _LocationPickerScreenState extends ConsumerState<LocationPickerScreen> {
-  static const _tashkent = ymk.Point(latitude: 41.2995, longitude: 69.2401);
+  static const _tashkent = Point(latitude: 41.2995, longitude: 69.2401);
 
-  ymk.MapWindow? _mapWindow;
-  late final _CameraListener _cameraListener;
+  YandexMapController? _controller;
   Timer? _debounce;
   int _requestId = 0;
 
+  late Point _currentTarget;
   String? _addressName;
   bool _resolving = false;
   bool _locating = false;
@@ -40,42 +38,43 @@ class _LocationPickerScreenState extends ConsumerState<LocationPickerScreen> {
   @override
   void initState() {
     super.initState();
-    mapkit.onStart();
-    _cameraListener = _CameraListener(_onCameraChanged);
+    _currentTarget = _initialPoint;
   }
 
   @override
   void dispose() {
     _debounce?.cancel();
-    _mapWindow?.map.removeCameraListener(_cameraListener);
-    mapkit.onStop();
     super.dispose();
   }
 
-  ymk.Point get _initialPoint {
+  Point get _initialPoint {
     final initial = widget.initial;
-    return initial != null ? ymk.Point(latitude: initial.lat, longitude: initial.long) : _tashkent;
+    return initial != null ? Point(latitude: initial.lat, longitude: initial.long) : _tashkent;
   }
 
-  void _onMapCreated(ymk.MapWindow mapWindow) {
-    _mapWindow = mapWindow;
-    mapWindow.map.move(ymk.CameraPosition(_initialPoint, zoom: 16, azimuth: 0, tilt: 0));
-    mapWindow.map.addCameraListener(_cameraListener);
+  void _onMapCreated(YandexMapController controller) {
+    _controller = controller;
+    controller.moveCamera(
+      CameraUpdate.newCameraPosition(
+        CameraPosition(target: _initialPoint, zoom: 16, azimuth: 0, tilt: 0),
+      ),
+    );
     _scheduleGeocode(_initialPoint);
   }
 
-  void _onCameraChanged(ymk.CameraPosition position, bool finished) {
+  void _onCameraChanged(CameraPosition position, CameraUpdateReason reason, bool finished) {
+    _currentTarget = position.target;
     if (!finished) return;
     _scheduleGeocode(position.target);
   }
 
-  void _scheduleGeocode(ymk.Point point) {
+  void _scheduleGeocode(Point point) {
     _debounce?.cancel();
     if (!_resolving) setState(() => _resolving = true);
     _debounce = Timer(const Duration(milliseconds: 400), () => _geocode(point));
   }
 
-  Future<void> _geocode(ymk.Point point) async {
+  Future<void> _geocode(Point point) async {
     final id = ++_requestId;
     try {
       final name = await ref
@@ -97,8 +96,12 @@ class _LocationPickerScreenState extends ConsumerState<LocationPickerScreen> {
     setState(() => _locating = true);
     try {
       final position = await ref.read(getCurrentPositionProvider).call();
-      final point = ymk.Point(latitude: position.lat, longitude: position.long);
-      _mapWindow?.map.move(ymk.CameraPosition(point, zoom: 17, azimuth: 0, tilt: 0));
+      final point = Point(latitude: position.lat, longitude: position.long);
+      _controller?.moveCamera(
+        CameraUpdate.newCameraPosition(
+          CameraPosition(target: point, zoom: 17, azimuth: 0, tilt: 0),
+        ),
+      );
       _scheduleGeocode(point);
     } on LocationException catch (e) {
       if (!mounted) return;
@@ -118,10 +121,12 @@ class _LocationPickerScreenState extends ConsumerState<LocationPickerScreen> {
   }
 
   void _onConfirm() {
-    final target = _mapWindow?.map.cameraPosition.target;
-    if (target == null) return;
     context.pop(
-      OrderAddressEntity(lat: target.latitude, long: target.longitude, name: _addressName),
+      OrderAddressEntity(
+        lat: _currentTarget.latitude,
+        long: _currentTarget.longitude,
+        name: _addressName,
+      ),
     );
   }
 
@@ -135,7 +140,7 @@ class _LocationPickerScreenState extends ConsumerState<LocationPickerScreen> {
       body: Stack(
         alignment: Alignment.center,
         children: [
-          YandexMap(onMapCreated: _onMapCreated),
+          YandexMap(onMapCreated: _onMapCreated, onCameraPositionChanged: _onCameraChanged),
           Padding(
             padding: const EdgeInsets.only(bottom: 40),
             child: Icon(Icons.location_on, size: 48, color: theme.colorScheme.primary),
@@ -250,18 +255,4 @@ class _MyLocationButton extends StatelessWidget {
       ),
     );
   }
-}
-
-class _CameraListener implements ymk.MapCameraListener {
-  final void Function(ymk.CameraPosition position, bool finished) onChanged;
-
-  _CameraListener(this.onChanged);
-
-  @override
-  void onCameraPositionChanged(
-    ymk.Map map,
-    ymk.CameraPosition cameraPosition,
-    ymk.CameraUpdateReason cameraUpdateReason,
-    bool finished,
-  ) => onChanged(cameraPosition, finished);
 }
