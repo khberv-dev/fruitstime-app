@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fruitstime/core/data/network/request_state.dart';
 import 'package:fruitstime/features/auth/presentation/ui/controller/user_provider.dart';
@@ -12,6 +13,8 @@ class _StartupNotifier extends Notifier<RequestState<bool>> {
 
   Future<void> startup() async {
     await Future.delayed(Duration(milliseconds: 800));
+
+    await FirebaseMessaging.instance.requestPermission();
 
     state = RequestState.loading();
 

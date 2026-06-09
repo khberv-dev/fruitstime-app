@@ -18,6 +18,8 @@ if (keystorePropertiesFile.exists()) {
 dependencies {
     implementation("com.google.android.gms:play-services-location:21.1.0")
     implementation("com.yandex.android:maps.mobile:4.22.0-lite")
+    implementation(platform("com.google.firebase:firebase-bom:34.14.0"))
+    implementation("com.google.firebase:firebase-analytics")
 }
 
 android {

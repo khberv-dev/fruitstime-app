@@ -13,7 +13,7 @@ import YandexMapsMobile
     YMKMapKit.setApiKey("9b104dbc-7702-4a81-a7c4-e03acf385e52")
 
     if #available(iOS 10.0, *) {
-      UNUserNotificationCenter.current().delegate = self as? UNUserNotificationCenterDelegate
+      UNUserNotificationCenter.current().delegate = self
     }
 
     clearBadge(application)

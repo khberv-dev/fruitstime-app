@@ -21,8 +21,6 @@ class UpsertSession {
 
   Future<void> call() async {
     try {
-      await FirebaseMessaging.instance.requestPermission();
-
       // Always listen for token refresh — fires when token rotates or when
       // APNs registers for the first time (covers the "not ready yet" case).
       _tokenRefreshSub?.cancel();
