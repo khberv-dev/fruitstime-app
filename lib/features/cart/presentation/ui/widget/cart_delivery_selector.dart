@@ -6,7 +6,9 @@ import 'package:fruitstime/features/address/presentation/controller/addresses_pr
 import 'package:fruitstime/features/address/presentation/controller/selected_address_provider.dart';
 import 'package:fruitstime/features/address/presentation/ui/address_list_modal.dart';
 import 'package:fruitstime/features/auth/presentation/ui/controller/user_provider.dart';
+import 'package:fruitstime/features/auth/presentation/ui/login_screen.dart';
 import 'package:fruitstime/l10n/app_localizations.dart';
+import 'package:go_router/go_router.dart';
 
 class CartDeliverySelector extends ConsumerStatefulWidget {
   const CartDeliverySelector({super.key});
@@ -37,7 +39,13 @@ class _CartDeliverySelectorState extends ConsumerState<CartDeliverySelector> {
     final subtitle = selected?.name ?? localization.selectDeliveryAddress;
 
     return GestureDetector(
-      onTap: () => showModalBottomSheet(context: context, builder: (_) => const AddressListModal()),
+      onTap: () {
+        if (ref.read(userProvider).data == null) {
+          context.push(LoginScreen.path);
+          return;
+        }
+        showModalBottomSheet(context: context, builder: (_) => const AddressListModal());
+      },
       child: Container(
         padding: const EdgeInsets.all(AppSpacing.lg),
         decoration: BoxDecoration(

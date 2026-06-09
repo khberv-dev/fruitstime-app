@@ -26,4 +26,8 @@ abstract interface class CacheService {
   void setSelectedAddressId(String id);
 
   void clearSelectedAddressId();
+
+  String? getSessionId();
+  void setSessionId(String id);
+  void clearSessionId();
 }

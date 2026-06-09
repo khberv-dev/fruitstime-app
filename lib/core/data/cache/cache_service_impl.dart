@@ -80,4 +80,13 @@ class CacheServiceImpl implements CacheService {
   void clearSelectedAddressId() {
     _sharedPreferences.remove(selectedAddressIdKey);
   }
+
+  @override
+  String? getSessionId() => _sharedPreferences.getString(sessionIdKey);
+
+  @override
+  void setSessionId(String id) => _sharedPreferences.setString(sessionIdKey, id);
+
+  @override
+  void clearSessionId() => _sharedPreferences.remove(sessionIdKey);
 }
