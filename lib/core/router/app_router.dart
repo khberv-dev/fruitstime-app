@@ -11,6 +11,7 @@ import 'package:fruitstime/features/order/domain/entity/order_address_entity.dar
 import 'package:fruitstime/features/order/presentation/ui/location_picker_screen.dart';
 import 'package:fruitstime/features/order/presentation/ui/order_detail_screen.dart';
 import 'package:fruitstime/features/order/presentation/ui/orders_screen.dart';
+import 'package:fruitstime/features/order/presentation/ui/web_view_screen.dart';
 import 'package:fruitstime/features/product/presentation/ui/products_screen.dart';
 import 'package:fruitstime/features/product/presentation/ui/search_screen.dart';
 import 'package:go_router/go_router.dart';
@@ -33,6 +34,10 @@ final _appRouter = GoRouter(
     GoRoute(
       path: LocationPickerScreen.path,
       builder: (_, state) => LocationPickerScreen(initial: state.extra as OrderAddressEntity?),
+    ),
+    GoRoute(
+      path: WebViewScreen.path,
+      builder: (_, state) => WebViewScreen(url: state.extra as String),
     ),
   ],
 );

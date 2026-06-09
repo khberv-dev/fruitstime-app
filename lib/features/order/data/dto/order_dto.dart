@@ -49,6 +49,7 @@ class OrderDto {
   final OrderStatus status;
   final OrderType type;
   final OrderAddressEntity? address;
+  final String? link;
   final List<OrderItemDto> items;
   final Jiffy createdAt;
   final Jiffy updatedAt;
@@ -59,6 +60,7 @@ class OrderDto {
     required this.status,
     required this.type,
     this.address,
+    this.link,
     required this.items,
     required this.createdAt,
     required this.updatedAt,
@@ -83,6 +85,7 @@ class OrderDto {
               long: (addressData['long'] as num).toDouble(),
             )
           : null,
+      link: data['link'] as String?,
       items: (data['items'] as List<dynamic>? ?? []).map((e) => OrderItemDto.parse(e)).toList(),
       createdAt: Jiffy.parse(data['createdAt']),
       updatedAt: Jiffy.parse(data['updatedAt']),
@@ -95,6 +98,7 @@ class OrderDto {
     status: status,
     type: type,
     address: address,
+    link: link,
     items: items.map((e) => e.toEntity()).toList(),
     createdAt: createdAt,
     updatedAt: updatedAt,

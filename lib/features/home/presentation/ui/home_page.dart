@@ -20,6 +20,11 @@ import 'package:fruitstime/features/home/presentation/ui/widget/go_search_card.d
 import 'package:fruitstime/features/home/presentation/ui/widget/home_header.dart';
 import 'package:fruitstime/features/home/presentation/ui/widget/request_fill_profile_card.dart';
 import 'package:fruitstime/features/home/presentation/ui/widget/special_offers_section.dart';
+import 'package:fruitstime/features/order/domain/entity/order_entity.dart';
+import 'package:fruitstime/features/order/presentation/controller/active_order_provider.dart';
+import 'package:fruitstime/features/order/presentation/ui/web_view_screen.dart';
+import 'package:fruitstime/features/order/presentation/ui/widget/order_card.dart';
+import 'package:fruitstime/features/order/presentation/ui/widget/order_detail_sheet.dart';
 import 'package:fruitstime/features/product/presentation/ui/products_screen.dart';
 import 'package:fruitstime/features/product/presentation/ui/search_screen.dart';
 import 'package:go_router/go_router.dart';
@@ -27,12 +32,26 @@ import 'package:go_router/go_router.dart';
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});
 
+  void _onActiveOrderTap(BuildContext context, OrderEntity order) {
+    if (order.link != null) {
+      context.push(WebViewScreen.path, extra: order.link!);
+    } else {
+      showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        useRootNavigator: true,
+        builder: (_) => OrderDetailSheet(order: order),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final banners = ref.watch(bannersProvider);
     final catalogs = ref.watch(catalogsProvider);
     final user = ref.watch(userProvider);
     final selectedBranch = ref.watch(selectedBranchProvider);
+    final activeOrder = ref.watch(activeOrderProvider);
     final bool isProfileFilled =
         user.data?.birthday != null &&
         user.data?.weight != null &&
@@ -93,6 +112,14 @@ class HomePage extends ConsumerWidget {
             SizedBox(height: AppSpacing.xl),
             GoSearchCard(onPressed: onGotoSearchClick),
             SizedBox(height: AppSpacing.lg),
+            if (activeOrder.value != null) ...[
+              OrderCard(
+                order: activeOrder.value!,
+                onTap: () => _onActiveOrderTap(context, activeOrder.value!),
+                glow: true,
+              ),
+              SizedBox(height: AppSpacing.lg),
+            ],
             if (!isProfileFilled && user.data != null) ...[
               RequestFillProfileCard(onClick: onFillProfileClick),
               SizedBox(height: AppSpacing.lg),

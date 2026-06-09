@@ -9,8 +9,9 @@ import 'package:fruitstime/utils/lib.dart';
 class OrderCard extends StatelessWidget {
   final OrderEntity order;
   final VoidCallback? onTap;
+  final bool glow;
 
-  const OrderCard({super.key, required this.order, this.onTap});
+  const OrderCard({super.key, required this.order, this.onTap, this.glow = false});
 
   String _statusLabel(AppLocalizations l) => switch (order.status) {
     OrderStatus.created => l.orderStatusCreated,
@@ -40,7 +41,18 @@ class OrderCard extends StatelessWidget {
         decoration: BoxDecoration(
           color: scheme.surface,
           borderRadius: BorderRadius.circular(AppRadius.lg),
-          border: Border.all(color: scheme.onSurfaceVariant.withAlpha(40)),
+          border: Border.all(
+            color: glow ? scheme.primary.withAlpha(120) : scheme.onSurfaceVariant.withAlpha(40),
+          ),
+          boxShadow: glow
+              ? [
+                  BoxShadow(
+                    color: scheme.primary.withAlpha(60),
+                    blurRadius: 20,
+                    spreadRadius: 2,
+                  ),
+                ]
+              : null,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,

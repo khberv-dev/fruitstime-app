@@ -11,6 +11,12 @@ class OrderRepository {
 
   OrderRepository(this._client);
 
+  Future<OrderDto?> getActive() async {
+    final response = await _client.get('order/active');
+    if (response.data == null) return null;
+    return OrderDto.parse(response.data as Map<String, dynamic>);
+  }
+
   Future<List<OrderDto>> getMine() async {
     final response = await _client.get('order');
     final data = response.data as List<dynamic>;

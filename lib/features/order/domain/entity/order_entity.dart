@@ -10,6 +10,7 @@ class OrderEntity {
   final OrderStatus status;
   final OrderType type;
   final OrderAddressEntity? address;
+  final String? link;
   final List<OrderItemEntity> items;
   final Jiffy createdAt;
   final Jiffy updatedAt;
@@ -20,6 +21,7 @@ class OrderEntity {
     required this.status,
     required this.type,
     this.address,
+    this.link,
     required this.items,
     required this.createdAt,
     required this.updatedAt,

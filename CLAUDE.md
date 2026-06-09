@@ -5,7 +5,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 - `flutter pub get` — install dependencies
-- `flutter run` — run on the connected device/emulator (debug build hits the test host, see Networking)
+- `flutter run` — run on the connected device/emulator
 - `flutter analyze` — static analysis using the rules in `analysis_options.yaml` (extends `flutter_lints`, page width 100)
 - `dart format .` — format (page width is 100)
 - `flutter test` — run all tests; `flutter test test/path/file_test.dart` for a single file
@@ -28,8 +28,9 @@ Cross-cutting code lives in `lib/core`:
 - `core/theme/` — `AppTheme` (Material color scheme + Inter via `google_fonts`) and the `AppSpacing` / `AppRadius` constant scales. Use these constants instead of magic numbers.
 - `core/controller/app_locale.dart` — locale notifier and the canonical list of supported locales (`uz` default, `en`, `ru`).
 - `core/ui/widget/` — shared widgets reused across features: `BubbleIcon`, `OtpField`, `ItemCounter`, `DotProgress`, `LabelBadge`. Check here before writing a new generic widget.
+- `core/ui/prompt_dialog.dart` — reusable confirmation dialog used across features.
 
-`lib/utils/lib.dart` exports three formatting helpers used throughout the app: `formatNumber` (space-separated thousands), `extractDigits` (strips non-digits), `formatPhoneNumber` (formats a 12-digit UZ number with spaces).
+`lib/utils/lib.dart` exports three formatting helpers: `formatNumber` (space-separated thousands), `extractDigits` (strips non-digits), `formatPhoneNumber` (formats a 12-digit UZ number with spaces). `lib/utils/debouncer.dart` is a simple timer-based debouncer used in search and location picker.
 
 ### Riverpod conventions
 
@@ -39,16 +40,25 @@ Riverpod 3 is the only state management. The repeated patterns are:
 - Usecase → `Provider((ref) => XUseCase(ref.read(...)))`, exposing a single `call(...)`.
 - Screen-facing state → `NotifierProvider` whose `Notifier` holds `RequestState<T>`. The standard shape inside an action is: set `RequestState.loading()`, `await` the usecase, set `RequestState.data(...)` on success, catch `DioException` and set `RequestState.error(e.message)`. See `features/auth/presentation/ui/controller/login_user_provider.dart` for the canonical example.
 - Screens listen for navigation/error side effects with `ref.listen(provider, ...)` and call `showErrorMessage(context, ...)` from `utils/messanger.dart` for snackbars.
-- Cart is in-memory only: `cartProvider` is a `NotifierProvider<Map<ProductEntity, int>>` that resets on app restart. Checkout state spans three providers: `cartProvider` (items), `fulfillmentProvider` (pickup vs delivery `OrderType`), and `selectedAddressProvider` (chosen delivery address).
+- Checkout state spans five providers: `cartProvider` (in-memory items, resets on restart), `fulfillmentProvider` (pickup vs delivery `OrderType`), `selectedAddressProvider` (chosen delivery address), `paymentTypeProvider` (cash vs card `PaymentType`), and `deliveryCostProvider` (auto-computed `FutureProvider` that watches fulfillment + branch + address). `selectedBranchProvider` holds the chosen branch and is required for order creation — `CreateOrder.call()` always requires a `branchId`.
 
 ### App bootstrap and startup flow
 
-- `main.dart` initializes `SharedPreferences` synchronously, builds a `CacheServiceImpl`, and overrides `cacheProvider` in `ProviderScope` — this is why `cacheProvider` is declared with `throw UnimplementedError()`. Anything that needs cache before `runApp` must be wired the same way.
-- The first route is `SplashScreen` (`/`). It triggers `startupInitiatorProvider`, which loads banners + catalogs + the current user, then `StartupRoute` decides where to go: no locale → `/select-locale`, onboarding not passed → `/onboarding`, else `/app`. `AppScreen` is a 4-tab `TabBarView` (Home, Catalogs, Cart, Profile) controlled by `bottomNavbarProvider`.
+- `main.dart` initializes `Firebase`, `SharedPreferences`, and `CacheServiceImpl`, then overrides `cacheProvider` in `ProviderScope`. The `cacheProvider` is declared with `throw UnimplementedError()` so the override is enforced at startup. Anything that needs cache before `runApp` must be wired the same way.
+- The first route is `SplashScreen` (`/`). It triggers `startupInitiatorProvider`, which loads banners + catalogs + the current user, then `startupRouteProvider` decides where to go: no locale → `/select-locale`, onboarding not passed → `/onboarding`, else `/app`. `AppScreen` is a 4-tab `TabBarView` (Home, Catalogs, Cart, Profile) controlled by `bottomNavbarProvider`.
+
+### Push notifications and session management
+
+The `session` feature manages FCM device registration. `UpsertSession` (via `upsertSessionProvider`) is called at startup — it requests FCM permission, listens for token refresh, and on iOS polls for the APNs token (up to 10 × 1 s) before fetching the FCM token. It calls `session/create` on first run (persisting the session ID in cache) and `session/update` on subsequent launches. The session ID is stored via `CacheService.setSessionId` / `getSessionId`.
+
+### AI assistant feature
+
+The `assistant` feature provides an AI chat interface (`ChatScreen`). `chatHistoryProvider` loads prior messages on screen open; `chatAskProvider` sends new messages. Messages have a `MessageSender` enum (`user` / `assistant`).
 
 ### Networking
 
-- Base URL switches by build mode in `core/data/network/config.dart`: `kDebugMode` uses `http://192.168.0.39:8000` (a LAN dev host — update this IP for your machine), release uses `https://fruitstime.uz`. `baseCdnUrl` follows the same host and serves images under `/public/...` (e.g. `ProductDto.toEntity()` builds `$baseCdnUrl/product/$image`). `config.dart` also holds `yandexMapsApiKey` (shared by the map SDK init and the HTTP geocoder) and `geocoderBaseUrl`.
+- Base URL is set in `core/data/network/config.dart`. The debug URL toggle (`kDebugMode ? testHostUrl : mainHostUrl`) is currently commented out — `hostUrl` is hardcoded to `mainHostUrl` (`https://fruitstime.uz`). Update this when switching between dev and prod.
+- There are two separate Yandex API keys: `yandexMapsApiKey` (map display SDK) and `yandexGeocoderApiKey` (HTTP geocoder). Both live in `config.dart`.
 - `ApiClientInterceptor` automatically attaches `Authorization: Bearer <accessToken>` on every non-`auth/*` request, appends `?locale=<code>` to every request, and on a 401 transparently calls `auth/refresh`, persists the new tokens, and retries the original request once. New endpoints under the `auth/` path prefix are intentionally exempt from both auth header and refresh.
 - API errors: the interceptor unwraps `response.data['message']` (string or list) into `DioException.message`, so controllers can surface `e.message` directly to users.
 
@@ -64,4 +74,5 @@ Riverpod 3 is the only state management. The repeated patterns are:
 - Each route screen exposes its path as `static const path = '/...'`. Use `context.go(Screen.path)` / `context.replace(...)` rather than string literals.
 - Use `AppSpacing.*` / `AppRadius.*` for paddings, gaps, and radii. The theme already styles `FilledButton`, `IconButton`, `InputDecoration`, dividers, and the progress indicator — prefer theme-driven styling over per-widget overrides.
 - Phone numbers are Uzbek-only: input is masked via `PhoneNumberFormatter`, `extractDigits` strips formatting, and the `998` country code is prepended at the call site before sending to the API.
-- Yandex Maps uses `yandex_maps_mapkit_lite` (maps display only — no native Search/Directions modules). Reverse geocoding is done via the Yandex HTTP Geocoder API (`geocoderBaseUrl` in `config.dart`) using plain Dio, not the native Search SDK. The map widget and camera API live in `yandex_maps_mapkit_lite/mapkit.dart`, `mapkit_factory.dart`, and `yandex_map.dart`; `initMapkit` is called in `main.dart` using `yandexMapsApiKey`.
+- Maps use `yandex_mapkit` (package version 4.2.1). Reverse geocoding goes through the Yandex HTTP Geocoder API (`geocoderBaseUrl` in `config.dart`) using plain Dio via `GeocodingRepository`, not the native map SDK. The map widget is `YandexMap` from `package:yandex_mapkit/yandex_mapkit.dart`; the default center for Tashkent is `Point(latitude: 41.2995, longitude: 69.2401)`.
+- `OrderType` and `OrderStatus` enums live in `features/order/data/enum/` (not `domain/enum/`) and are imported directly by usecases and controllers across features.
