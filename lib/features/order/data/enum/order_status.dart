@@ -1,1 +1,1 @@
-enum OrderStatus { created, ready, delivered, done, canceled }
+enum OrderStatus { created, cancelled, done }

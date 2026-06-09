@@ -560,21 +560,13 @@
   "@orderStatusCreated": {
     "description": "Created/pending order status label"
   },
-  "orderStatusReady": "Olib ketish uchun tayyor",
-  "@orderStatusReady": {
-    "description": "Ready-for-pickup order status label"
-  },
-  "orderStatusDelivered": "Yetkazib berildi",
-  "@orderStatusDelivered": {
-    "description": "Delivered order status label"
-  },
   "orderStatusDone": "Yakunlandi",
   "@orderStatusDone": {
     "description": "Done/completed order status label"
   },
   "orderStatusCanceled": "Bekor qilindi",
   "@orderStatusCanceled": {
-    "description": "Canceled order status label"
+    "description": "Cancelled order status label"
   },
   "orderConfirmedTitle": "Buyurtma tasdiqlandi",
   "@orderConfirmedTitle": {
@@ -636,6 +628,22 @@
   "sendOrderButton": "Buyurtma berish",
   "@sendOrderButton": {
     "description": "Cart CTA when fulfillment is delivery"
+  },
+  "confirmOrderContent": "Buyurtmani tasdiqlaysizmi?",
+  "@confirmOrderContent": {
+    "description": "Body text of the order confirmation dialog"
+  },
+  "paymentTypeLabel": "To'lov usuli",
+  "@paymentTypeLabel": {
+    "description": "Label above payment type selector in cart"
+  },
+  "paymentTypeCash": "Naqd pul",
+  "@paymentTypeCash": {
+    "description": "Cash payment option"
+  },
+  "paymentTypeCard": "Karta",
+  "@paymentTypeCard": {
+    "description": "Card payment option"
   },
   "deliverTo": "YETKAZISH MANZILI",
   "@deliverTo": {

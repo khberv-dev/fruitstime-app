@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fruitstime/core/theme/app_spacing.dart';
+import 'package:fruitstime/core/ui/prompt_dialog.dart';
 import 'package:fruitstime/features/address/presentation/controller/selected_address_provider.dart';
 import 'package:fruitstime/features/auth/presentation/ui/controller/user_provider.dart';
 import 'package:fruitstime/features/auth/presentation/ui/login_screen.dart';
@@ -14,6 +15,7 @@ import 'package:fruitstime/features/cart/presentation/ui/widget/cart_items_list.
 import 'package:fruitstime/features/cart/presentation/ui/widget/empty_cart.dart';
 import 'package:fruitstime/features/cart/presentation/ui/widget/fulfillment_toggle.dart';
 import 'package:fruitstime/features/cart/presentation/ui/widget/goto_pay_button.dart';
+import 'package:fruitstime/features/cart/presentation/ui/widget/payment_type_selector.dart';
 import 'package:fruitstime/features/cart/presentation/ui/widget/summary_card.dart';
 import 'package:fruitstime/features/order/data/enum/order_type.dart';
 import 'package:fruitstime/features/order/presentation/controller/create_order_provider.dart';
@@ -47,11 +49,22 @@ class CartPage extends ConsumerWidget {
       ref.read(cartProvider.notifier).popProduct(product);
     }
 
-    void onPaymentClick() {
+    Future<void> onPaymentClick() async {
       if (ref.read(userProvider).data == null) {
         context.push(LoginScreen.path);
         return;
       }
+
+      final confirmed = await showDialog<bool>(
+        context: context,
+        builder: (_) => PromptDialog(
+          title: localization.confirmDialogTitle,
+          content: localization.confirmOrderContent,
+        ),
+      );
+
+      if (confirmed != true) return;
+
       ref.read(createOrderControllerProvider.notifier).create(cart);
     }
 
@@ -93,6 +106,8 @@ class CartPage extends ConsumerWidget {
                         TextField(
                           decoration: InputDecoration(labelText: localization.orderNoteHint),
                         ),
+                        SizedBox(height: AppSpacing.lg),
+                        PaymentTypeSelector(),
                         SizedBox(height: AppSpacing.lg),
                         SummaryCard(
                           totalItemCount: cartCount,

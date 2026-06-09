@@ -559,21 +559,13 @@
   "@orderStatusCreated": {
     "description": "Created/pending order status label"
   },
-  "orderStatusReady": "Готов к выдаче",
-  "@orderStatusReady": {
-    "description": "Ready-for-pickup order status label"
-  },
-  "orderStatusDelivered": "Доставлен",
-  "@orderStatusDelivered": {
-    "description": "Delivered order status label"
-  },
   "orderStatusDone": "Завершён",
   "@orderStatusDone": {
     "description": "Done/completed order status label"
   },
   "orderStatusCanceled": "Отменён",
   "@orderStatusCanceled": {
-    "description": "Canceled order status label"
+    "description": "Cancelled order status label"
   },
   "orderConfirmedTitle": "Заказ подтверждён",
   "@orderConfirmedTitle": {
@@ -635,6 +627,22 @@
   "sendOrderButton": "Отправить заказ",
   "@sendOrderButton": {
     "description": "Cart CTA when fulfillment is delivery"
+  },
+  "confirmOrderContent": "Подтвердить заказ?",
+  "@confirmOrderContent": {
+    "description": "Body text of the order confirmation dialog"
+  },
+  "paymentTypeLabel": "Способ оплаты",
+  "@paymentTypeLabel": {
+    "description": "Label above payment type selector in cart"
+  },
+  "paymentTypeCash": "Наличные",
+  "@paymentTypeCash": {
+    "description": "Cash payment option"
+  },
+  "paymentTypeCard": "Картой",
+  "@paymentTypeCard": {
+    "description": "Card payment option"
   },
   "deliverTo": "ДОСТАВИТЬ ПО АДРЕСУ",
   "@deliverTo": {

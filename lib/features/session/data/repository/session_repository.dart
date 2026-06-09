@@ -2,8 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fruitstime/core/data/network/api_client.dart';
 
-final sessionRepositoryProvider =
-    Provider((ref) => SessionRepository(ref.read(apiClientProvider)));
+final sessionRepositoryProvider = Provider((ref) => SessionRepository(ref.read(apiClientProvider)));
 
 class SessionRepository {
   final Dio _client;

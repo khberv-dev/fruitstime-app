@@ -6,8 +6,7 @@ class GeocodeDto {
   GeocodeDto({required this.name});
 
   factory GeocodeDto.fromJson(Map<String, dynamic> json) {
-    final members =
-        json['response']['GeoObjectCollection']['featureMember'] as List<dynamic>;
+    final members = json['response']['GeoObjectCollection']['featureMember'] as List<dynamic>;
 
     for (final member in members) {
       final geoObject = member['GeoObject'] as Map<String, dynamic>;

@@ -15,10 +15,8 @@ class OrderDetailSheet extends StatelessWidget {
 
   String _statusLabel(AppLocalizations l) => switch (order.status) {
     OrderStatus.created => l.orderStatusCreated,
-    OrderStatus.ready => l.orderStatusReady,
-    OrderStatus.delivered => l.orderStatusDelivered,
     OrderStatus.done => l.orderStatusDone,
-    OrderStatus.canceled => l.orderStatusCanceled,
+    OrderStatus.cancelled => l.orderStatusCanceled,
   };
 
   @override
@@ -27,10 +25,8 @@ class OrderDetailSheet extends StatelessWidget {
     final localization = AppLocalizations.of(context)!;
 
     final (statusBg, statusFg, dotColor) = switch (order.status) {
-      OrderStatus.ready => (scheme.primary, scheme.onPrimary, scheme.onPrimary),
-      OrderStatus.delivered => (scheme.secondary.withAlpha(30), scheme.secondary, scheme.secondary),
       OrderStatus.done => (scheme.secondary.withAlpha(30), scheme.secondary, scheme.secondary),
-      OrderStatus.canceled => (scheme.error.withAlpha(30), scheme.error, scheme.error),
+      OrderStatus.cancelled => (scheme.error.withAlpha(30), scheme.error, scheme.error),
       OrderStatus.created => (
         scheme.onSurfaceVariant.withAlpha(30),
         scheme.onSurfaceVariant,

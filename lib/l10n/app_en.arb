@@ -559,21 +559,13 @@
   "@orderStatusCreated": {
     "description": "Created/pending order status label"
   },
-  "orderStatusDelivered": "Delivered",
-  "@orderStatusDelivered": {
-    "description": "Delivered order status label"
-  },
-  "orderStatusReady": "Ready for pickup",
-  "@orderStatusReady": {
-    "description": "Ready-for-pickup order status label"
-  },
   "orderStatusDone": "Completed",
   "@orderStatusDone": {
     "description": "Done/completed order status label"
   },
-  "orderStatusCanceled": "Canceled",
+  "orderStatusCanceled": "Cancelled",
   "@orderStatusCanceled": {
-    "description": "Canceled order status label"
+    "description": "Cancelled order status label"
   },
   "orderConfirmedTitle": "Order Confirmed",
   "@orderConfirmedTitle": {
@@ -635,6 +627,22 @@
   "sendOrderButton": "Send order",
   "@sendOrderButton": {
     "description": "Cart CTA when fulfillment is delivery"
+  },
+  "confirmOrderContent": "Confirm your order?",
+  "@confirmOrderContent": {
+    "description": "Body text of the order confirmation dialog"
+  },
+  "paymentTypeLabel": "Payment method",
+  "@paymentTypeLabel": {
+    "description": "Label above payment type selector in cart"
+  },
+  "paymentTypeCash": "Cash",
+  "@paymentTypeCash": {
+    "description": "Cash payment option"
+  },
+  "paymentTypeCard": "Card",
+  "@paymentTypeCard": {
+    "description": "Card payment option"
   },
   "deliverTo": "DELIVER TO",
   "@deliverTo": {
