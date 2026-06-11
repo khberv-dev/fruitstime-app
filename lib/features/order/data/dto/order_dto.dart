@@ -50,6 +50,7 @@ class OrderDto {
   final OrderType type;
   final OrderAddressEntity? address;
   final String? link;
+  final int? deliveryCost;
   final List<OrderItemDto> items;
   final Jiffy createdAt;
   final Jiffy updatedAt;
@@ -61,6 +62,7 @@ class OrderDto {
     required this.type,
     this.address,
     this.link,
+    this.deliveryCost,
     required this.items,
     required this.createdAt,
     required this.updatedAt,
@@ -86,6 +88,7 @@ class OrderDto {
             )
           : null,
       link: data['link'] as String?,
+      deliveryCost: (data['deliveryCost'] as num?)?.toInt(),
       items: (data['items'] as List<dynamic>? ?? []).map((e) => OrderItemDto.parse(e)).toList(),
       createdAt: Jiffy.parse(data['createdAt']),
       updatedAt: Jiffy.parse(data['updatedAt']),
@@ -99,6 +102,7 @@ class OrderDto {
     type: type,
     address: address,
     link: link,
+    deliveryCost: deliveryCost,
     items: items.map((e) => e.toEntity()).toList(),
     createdAt: createdAt,
     updatedAt: updatedAt,

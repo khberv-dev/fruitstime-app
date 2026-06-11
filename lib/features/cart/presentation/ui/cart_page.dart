@@ -113,6 +113,7 @@ class CartPage extends ConsumerWidget {
                           totalItemCount: cartCount,
                           totalItemTypeCount: cartTypesCount,
                           totalCartPrice: cartPrice,
+                          discountPercent: ref.watch(userProvider).data?.discountPercent ?? 0,
                         ),
                         SizedBox(height: AppSpacing.lg),
                         GotoPayButton(

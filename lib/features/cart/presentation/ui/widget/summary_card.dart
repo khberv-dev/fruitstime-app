@@ -40,12 +40,14 @@ class SummaryCard extends ConsumerWidget {
   final int totalItemCount;
   final int totalItemTypeCount;
   final int totalCartPrice;
+  final int discountPercent;
 
   const SummaryCard({
     super.key,
     required this.totalItemCount,
     required this.totalItemTypeCount,
     required this.totalCartPrice,
+    this.discountPercent = 0,
   });
 
   @override
@@ -55,6 +57,11 @@ class SummaryCard extends ConsumerWidget {
     final deliveryCostAsync = ref.watch(deliveryCostProvider);
     final deliveryCost = deliveryCostAsync.asData?.value;
     final isLoadingDelivery = deliveryCostAsync.isLoading;
+
+    final int discountedSubtotal = discountPercent > 0
+        ? (totalCartPrice * (1 - discountPercent / 100)).round()
+        : totalCartPrice;
+    final int discountAmount = totalCartPrice - discountedSubtotal;
 
     return Container(
       padding: EdgeInsets.all(AppSpacing.lg),
@@ -80,6 +87,30 @@ class SummaryCard extends ConsumerWidget {
               _SummaryValueText(text: totalItemTypeCount.toString()),
             ],
           ),
+          SizedBox(height: AppSpacing.sm),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              _SummaryKeyText(text: localization.subtotalLabel),
+              _SummaryValueText(text: localization.priceText(formatNumber(totalCartPrice))),
+            ],
+          ),
+          if (discountAmount > 0) ...[
+            SizedBox(height: AppSpacing.sm),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                _SummaryKeyText(text: localization.loyaltyDiscountLabel),
+                Text(
+                  '−${localization.priceText(formatNumber(discountAmount))}',
+                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                    color: scheme.secondary,
+                    fontWeight: FontWeight.w900,
+                  ),
+                ),
+              ],
+            ),
+          ],
           if (deliveryCost != null || isLoadingDelivery) ...[
             SizedBox(height: AppSpacing.sm),
             Row(
@@ -110,7 +141,7 @@ class SummaryCard extends ConsumerWidget {
                 style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.w900),
               ),
               Text(
-                localization.priceText(formatNumber(totalCartPrice + (deliveryCost ?? 0))),
+                localization.priceText(formatNumber(discountedSubtotal + (deliveryCost ?? 0))),
                 style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                   color: scheme.secondary,
                   fontWeight: FontWeight.w900,

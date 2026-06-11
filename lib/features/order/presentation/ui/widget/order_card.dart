@@ -134,11 +134,33 @@ class OrderCard extends StatelessWidget {
             Divider(height: 1, color: scheme.onSurfaceVariant.withAlpha(40)),
             Padding(
               padding: const EdgeInsets.fromLTRB(14, 10, 14, 10),
-              child: Text(
-                localization.priceText(formatNumber(order.totalPrice)),
-                style: Theme.of(
-                  context,
-                ).textTheme.bodyLarge!.copyWith(fontSize: 16, fontWeight: FontWeight.w900),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    localization.priceText(formatNumber(order.grandTotal)),
+                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w900,
+                      color: order.discount > 0 ? scheme.secondary : null,
+                    ),
+                  ),
+                  if (order.discount > 0) ...[
+                    const SizedBox(width: 8),
+                    Text(
+                      localization.priceText(
+                        formatNumber(order.subtotal + (order.deliveryCost ?? 0)),
+                      ),
+                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w500,
+                        color: scheme.onSurfaceVariant.withAlpha(140),
+                        decoration: TextDecoration.lineThrough,
+                        decorationColor: scheme.onSurfaceVariant.withAlpha(140),
+                      ),
+                    ),
+                  ],
+                ],
               ),
             ),
           ],

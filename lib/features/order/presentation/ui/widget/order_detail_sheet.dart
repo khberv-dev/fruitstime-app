@@ -167,10 +167,20 @@ class OrderDetailSheet extends StatelessWidget {
                       valueWeight: FontWeight.w600,
                     ),
                   ],
+                  if (order.deliveryCost != null && order.deliveryCost! > 0) ...[
+                    SizedBox(height: AppSpacing.xs),
+                    _SummaryRow(
+                      label: localization.deliveryFeeLabel,
+                      value: localization.priceText(formatNumber(order.deliveryCost!)),
+                      labelColor: scheme.onSurfaceVariant,
+                      valueColor: scheme.onSurface,
+                      valueWeight: FontWeight.w600,
+                    ),
+                  ],
                   SizedBox(height: AppSpacing.sm),
                   _SummaryRow(
                     label: localization.totalPaidLabel,
-                    value: localization.priceText(formatNumber(order.totalPrice)),
+                    value: localization.priceText(formatNumber(order.grandTotal)),
                     labelColor: scheme.onSurface,
                     valueColor: scheme.primary,
                     labelSize: 15,

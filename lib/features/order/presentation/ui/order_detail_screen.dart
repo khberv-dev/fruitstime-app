@@ -50,7 +50,7 @@ class OrderDetailScreen extends ConsumerWidget {
 
     final subtotal = order.subtotal;
     final discount = order.discount;
-    final totalPaid = order.totalPrice;
+    final totalPaid = order.grandTotal;
 
     return Scaffold(
       body: SafeArea(
@@ -258,6 +258,16 @@ class _DetailsCard extends StatelessWidget {
               value: '−${localization.priceText(formatNumber(discount))}',
               labelColor: scheme.onSurfaceVariant,
               valueColor: scheme.secondary,
+              valueWeight: FontWeight.w600,
+            ),
+          ],
+          if (order.deliveryCost != null && order.deliveryCost! > 0) ...[
+            SizedBox(height: AppSpacing.xs),
+            _SummaryRow(
+              label: localization.deliveryFeeLabel,
+              value: localization.priceText(formatNumber(order.deliveryCost!)),
+              labelColor: scheme.onSurfaceVariant,
+              valueColor: scheme.onSurface,
               valueWeight: FontWeight.w600,
             ),
           ],

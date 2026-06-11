@@ -11,6 +11,7 @@ class OrderEntity {
   final OrderType type;
   final OrderAddressEntity? address;
   final String? link;
+  final int? deliveryCost;
   final List<OrderItemEntity> items;
   final Jiffy createdAt;
   final Jiffy updatedAt;
@@ -22,6 +23,7 @@ class OrderEntity {
     required this.type,
     this.address,
     this.link,
+    this.deliveryCost,
     required this.items,
     required this.createdAt,
     required this.updatedAt,
@@ -36,4 +38,6 @@ class OrderEntity {
   int get totalPrice => items.fold<int>(0, (sum, e) => sum + e.price);
 
   int get discount => subtotal - totalPrice;
+
+  int get grandTotal => totalPrice + (deliveryCost ?? 0);
 }
