@@ -90,8 +90,8 @@ class OrderDto {
       link: data['link'] as String?,
       deliveryCost: (data['deliveryCost'] as num?)?.toInt(),
       items: (data['items'] as List<dynamic>? ?? []).map((e) => OrderItemDto.parse(e)).toList(),
-      createdAt: Jiffy.parse(data['createdAt']),
-      updatedAt: Jiffy.parse(data['updatedAt']),
+      createdAt: Jiffy.parseFromDateTime(DateTime.parse(data['createdAt']).toLocal()),
+      updatedAt: Jiffy.parseFromDateTime(DateTime.parse(data['updatedAt']).toLocal()),
     );
   }
 

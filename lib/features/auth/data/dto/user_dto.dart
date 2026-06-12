@@ -49,8 +49,8 @@ class UserDto {
     role: data['role'],
     tier: data['status'] != null ? Tier.values.byName(data['status']) : Tier.silver,
     discountPercent: data['discountPercent'] ?? 0,
-    createdAt: Jiffy.parse(data['createdAt']),
-    updatedAt: Jiffy.parse(data['updatedAt']),
+    createdAt: Jiffy.parseFromDateTime(DateTime.parse(data['createdAt']).toLocal()),
+    updatedAt: Jiffy.parseFromDateTime(DateTime.parse(data['updatedAt']).toLocal()),
   );
 
   UserEntity toEntity() => UserEntity(
