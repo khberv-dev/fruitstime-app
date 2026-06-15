@@ -26,6 +26,37 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
     });
   }
 
+  void _navigateNext() {
+    context.go(ref.read(startupRouteProvider).call());
+  }
+
+  void _showUpdateModal() {
+    final localization = AppLocalizations.of(context)!;
+    final upgrader = ref.read(upgraderProvider);
+
+    showDialog<void>(
+      context: context,
+      barrierDismissible: false,
+      builder: (_) => AlertDialog(
+        title: Text(localization.updateAvailableTitle),
+        content: Text(localization.updateAvailableBody),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+              _navigateNext();
+            },
+            child: Text(localization.laterButton),
+          ),
+          FilledButton(
+            onPressed: () => upgrader.sendUserToAppStore(),
+            child: Text(localization.updateButton),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final localization = AppLocalizations.of(context)!;
@@ -33,7 +64,11 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
 
     ref.listen(startupInitiatorProvider, (_, state) {
       if (state.data != null) {
-        context.go(ref.read(startupRouteProvider).call());
+        if (ref.read(upgraderProvider).shouldDisplayUpgrade()) {
+          _showUpdateModal();
+        } else {
+          _navigateNext();
+        }
       }
     });
 

@@ -7,12 +7,19 @@ import 'package:fruitstime/features/assistant/domain/enum/message_sender.dart';
 import 'package:fruitstime/features/assistant/presentation/ui/widget/message_suggested_product_item.dart';
 import 'package:fruitstime/features/branch/presentation/controller/branches_provider.dart';
 import 'package:fruitstime/features/product/domain/entity/product_entity.dart';
+import 'package:fruitstime/l10n/app_localizations.dart';
 
 class ChatMessage extends ConsumerWidget {
   final MessageEntity message;
   final Function(ProductEntity) onProductItemClick;
+  final VoidCallback? onGoToCartClick;
 
-  const ChatMessage({super.key, required this.message, required this.onProductItemClick});
+  const ChatMessage({
+    super.key,
+    required this.message,
+    required this.onProductItemClick,
+    this.onGoToCartClick,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -77,6 +84,16 @@ class ChatMessage extends ConsumerWidget {
                 )
               else
                 SizedBox.shrink(),
+              if (message.from == MessageSender.ai && message.cartProductIds.isNotEmpty) ...[
+                SizedBox(height: AppSpacing.sm),
+                SizedBox(
+                  width: double.infinity,
+                  child: FilledButton(
+                    onPressed: onGoToCartClick,
+                    child: Text(AppLocalizations.of(context)!.goToCartButton),
+                  ),
+                ),
+              ],
             ],
           ),
         ),

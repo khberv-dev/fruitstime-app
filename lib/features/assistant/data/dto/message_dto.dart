@@ -7,12 +7,14 @@ class MessageDto {
   final String text;
   final MessageSender from;
   final List<ProductEntity> suggestedProducts;
+  final List<String> cartProductIds;
   final DateTime createdAt;
 
   MessageDto({
     required this.text,
     required this.from,
     required this.suggestedProducts,
+    this.cartProductIds = const [],
     DateTime? createdAt,
   }) : createdAt = createdAt ?? DateTime.now();
 
@@ -23,10 +25,14 @@ class MessageDto {
         .map((element) => ProductDto.parse(element).toEntity())
         .toList();
 
+    final cart = data['cart'];
+    final cartIds = cart is List ? List<String>.from(cart) : <String>[];
+
     return MessageDto(
       text: data['text'],
       from: data['from'] == 'me' ? MessageSender.me : MessageSender.ai,
       suggestedProducts: products,
+      cartProductIds: cartIds,
     );
   }
 
@@ -40,6 +46,8 @@ class MessageDto {
       text: data['text'] as String,
       from: data['role'] == 'user' ? MessageSender.me : MessageSender.ai,
       suggestedProducts: products,
+      // history messages must not re-trigger cart adds
+      cartProductIds: const [],
       createdAt: DateTime.parse(data['createdAt'] as String),
     );
   }
@@ -48,6 +56,7 @@ class MessageDto {
     text: text,
     from: from,
     suggestedProducts: suggestedProducts,
+    cartProductIds: cartProductIds,
     createdAt: createdAt,
   );
 }

@@ -1,4 +1,5 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fruitstime/core/data/network/request_state.dart';
 import 'package:fruitstime/features/auth/presentation/ui/controller/user_provider.dart';
@@ -6,6 +7,11 @@ import 'package:fruitstime/features/banner/presentation/controller/banners_provi
 import 'package:fruitstime/features/branch/presentation/controller/branches_provider.dart';
 import 'package:fruitstime/features/catalog/presentation/controller/catalogs_provider.dart';
 import 'package:fruitstime/features/session/domain/usecase/upsert_session.dart';
+import 'package:upgrader/upgrader.dart';
+
+final upgraderProvider = Provider<Upgrader>(
+  (_) => Upgrader(debugDisplayAlways: kDebugMode, debugLogging: kDebugMode),
+);
 
 class _StartupNotifier extends Notifier<RequestState<bool>> {
   @override
@@ -18,6 +24,9 @@ class _StartupNotifier extends Notifier<RequestState<bool>> {
 
     state = RequestState.loading();
 
+    final upgrader = ref.read(upgraderProvider);
+    final versionFuture = upgrader.initialize();
+
     await ref.read(bannersProvider.notifier).getAll();
     await ref.read(catalogsProvider.notifier).getAll();
     await ref.read(branchesProvider.notifier).getAll();
@@ -26,6 +35,8 @@ class _StartupNotifier extends Notifier<RequestState<bool>> {
     if (ref.read(userProvider).data != null) {
       await ref.read(upsertSessionProvider).call();
     }
+
+    await versionFuture;
 
     state = RequestState.data(true);
   }

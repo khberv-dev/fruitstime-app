@@ -8,7 +8,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `flutter run` — run on the connected device/emulator
 - `flutter analyze` — static analysis using the rules in `analysis_options.yaml` (extends `flutter_lints`, page width 100)
 - `dart format .` — format (page width is 100)
-- `flutter test` — run all tests; `flutter test test/path/file_test.dart` for a single file
+- `flutter test` — run all tests; `flutter test test/path/file_test.dart` for a single file (no test files exist yet)
 - `flutter gen-l10n` — regenerate localization Dart from ARBs in `lib/l10n` (config is in `l10n.yaml`; runs automatically on build because `generate: true` is set in `pubspec.yaml`)
 - `dart run flutter_launcher_icons` — regenerate launcher icons from `assets/images/brand.png`
 - Release builds: `flutter build apk --release` / `flutter build appbundle` / `flutter build ipa`. The Android signing keystore lives in `keys/upload-keystore.jks`; do not commit changes to anything in `keys/`.
@@ -30,7 +30,7 @@ Cross-cutting code lives in `lib/core`:
 - `core/ui/widget/` — shared widgets reused across features: `BubbleIcon`, `OtpField`, `ItemCounter`, `DotProgress`, `LabelBadge`. Check here before writing a new generic widget.
 - `core/ui/prompt_dialog.dart` — reusable confirmation dialog used across features.
 
-`lib/utils/lib.dart` exports three formatting helpers: `formatNumber` (space-separated thousands), `extractDigits` (strips non-digits), `formatPhoneNumber` (formats a 12-digit UZ number with spaces). `lib/utils/debouncer.dart` is a simple timer-based debouncer used in search and location picker.
+`lib/utils/lib.dart` exports three formatting helpers: `formatNumber` (space-separated thousands), `extractDigits` (strips non-digits), `formatPhoneNumber` (formats a 12-digit UZ number with spaces). `lib/utils/messanger.dart` has `showErrorMessage` (red snackbar) and `showInfoMessage` (secondary-color snackbar). `lib/utils/debouncer.dart` is a simple timer-based debouncer used in search and location picker.
 
 ### Riverpod conventions
 
@@ -40,7 +40,7 @@ Riverpod 3 is the only state management. The repeated patterns are:
 - Usecase → `Provider((ref) => XUseCase(ref.read(...)))`, exposing a single `call(...)`.
 - Screen-facing state → `NotifierProvider` whose `Notifier` holds `RequestState<T>`. The standard shape inside an action is: set `RequestState.loading()`, `await` the usecase, set `RequestState.data(...)` on success, catch `DioException` and set `RequestState.error(e.message)`. See `features/auth/presentation/ui/controller/login_user_provider.dart` for the canonical example.
 - Screens listen for navigation/error side effects with `ref.listen(provider, ...)` and call `showErrorMessage(context, ...)` from `utils/messanger.dart` for snackbars.
-- Checkout state spans five providers: `cartProvider` (in-memory items, resets on restart), `fulfillmentProvider` (pickup vs delivery `OrderType`), `selectedAddressProvider` (chosen delivery address), `paymentTypeProvider` (cash vs card `PaymentType`), and `deliveryCostProvider` (auto-computed `FutureProvider` that watches fulfillment + branch + address). `selectedBranchProvider` holds the chosen branch and is required for order creation — `CreateOrder.call()` always requires a `branchId`.
+- Checkout state spans five providers: `cartProvider` (in-memory items, resets on restart), `fulfillmentProvider` (pickup vs delivery `OrderType`, defaults to pickup), `selectedAddressProvider` (chosen delivery address), `paymentTypeProvider` (cash vs card `PaymentType`), and `deliveryCostProvider` (auto-computed `FutureProvider.autoDispose` that watches fulfillment + branch + address). `selectedBranchProvider` holds the chosen branch and is co-located with `branchesProvider` in `branch/presentation/controller/branches_provider.dart`; it persists the selection to cache. `selectedBranchProvider` is required for order creation — `CreateOrder.call()` always requires a `branchId`.
 
 ### App bootstrap and startup flow
 
@@ -57,7 +57,7 @@ The `assistant` feature provides an AI chat interface (`ChatScreen`). `chatHisto
 
 ### Networking
 
-- Base URL is set in `core/data/network/config.dart`. The debug URL toggle (`kDebugMode ? testHostUrl : mainHostUrl`) is currently commented out — `hostUrl` is hardcoded to `mainHostUrl` (`https://fruitstime.uz`). Update this when switching between dev and prod.
+- Base URL is set in `core/data/network/config.dart`. The debug URL toggle (`kDebugMode ? testHostUrl : mainHostUrl`) is currently commented out — `hostUrl` is hardcoded to `mainHostUrl` (`https://fruitstime.uz`). Update this when switching between dev and prod. `baseCdnUrl` (`$hostUrl/public`) is used in DTOs to prefix image paths.
 - There are two separate Yandex API keys: `yandexMapsApiKey` (map display SDK) and `yandexGeocoderApiKey` (HTTP geocoder). Both live in `config.dart`.
 - `ApiClientInterceptor` automatically attaches `Authorization: Bearer <accessToken>` on every non-`auth/*` request, appends `?locale=<code>` to every request, and on a 401 transparently calls `auth/refresh`, persists the new tokens, and retries the original request once. New endpoints under the `auth/` path prefix are intentionally exempt from both auth header and refresh.
 - API errors: the interceptor unwraps `response.data['message']` (string or list) into `DioException.message`, so controllers can surface `e.message` directly to users.
@@ -75,4 +75,4 @@ The `assistant` feature provides an AI chat interface (`ChatScreen`). `chatHisto
 - Use `AppSpacing.*` / `AppRadius.*` for paddings, gaps, and radii. The theme already styles `FilledButton`, `IconButton`, `InputDecoration`, dividers, and the progress indicator — prefer theme-driven styling over per-widget overrides.
 - Phone numbers are Uzbek-only: input is masked via `PhoneNumberFormatter`, `extractDigits` strips formatting, and the `998` country code is prepended at the call site before sending to the API.
 - Maps use `yandex_mapkit` (package version 4.2.1). Reverse geocoding goes through the Yandex HTTP Geocoder API (`geocoderBaseUrl` in `config.dart`) using plain Dio via `GeocodingRepository`, not the native map SDK. The map widget is `YandexMap` from `package:yandex_mapkit/yandex_mapkit.dart`; the default center for Tashkent is `Point(latitude: 41.2995, longitude: 69.2401)`.
-- `OrderType` and `OrderStatus` enums live in `features/order/data/enum/` (not `domain/enum/`) and are imported directly by usecases and controllers across features.
+- `OrderType` and `OrderStatus` enums live in `features/order/data/enum/` (not `domain/enum/`) and are imported directly by usecases and controllers across features. `PaymentType` is defined inline in `cart/presentation/controller/payment_type_provider.dart`.

@@ -707,5 +707,25 @@
   "deleteAddressConfirm": "Удалить этот адрес?",
   "@deleteAddressConfirm": {
     "description": "Confirmation when deleting a saved address"
+  },
+  "cartItemsAdded": "Товары добавлены в корзину",
+  "@cartItemsAdded": {
+    "description": "Snackbar shown when AI assistant adds products to cart"
+  },
+  "updateAvailableTitle": "Доступно обновление",
+  "@updateAvailableTitle": {
+    "description": "Title of the update available modal"
+  },
+  "updateAvailableBody": "Обновите приложение, чтобы получить доступ к новым функциям.",
+  "@updateAvailableBody": {
+    "description": "Body text of the update available modal"
+  },
+  "updateButton": "Обновить",
+  "@updateButton": {
+    "description": "Button to open the store and update the app"
+  },
+  "laterButton": "Позже",
+  "@laterButton": {
+    "description": "Button to dismiss the update modal and continue"
   }
 }

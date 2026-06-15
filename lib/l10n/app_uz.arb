@@ -708,5 +708,25 @@
   "deleteAddressConfirm": "Bu manzil o'chirilsinmi?",
   "@deleteAddressConfirm": {
     "description": "Confirmation when deleting a saved address"
+  },
+  "cartItemsAdded": "Mahsulotlar savatga qo'shildi",
+  "@cartItemsAdded": {
+    "description": "Snackbar shown when AI assistant adds products to cart"
+  },
+  "updateAvailableTitle": "Yangilash mavjud",
+  "@updateAvailableTitle": {
+    "description": "Title of the update available modal"
+  },
+  "updateAvailableBody": "Yangi funksiyalarga kirish uchun ilovani yangilang.",
+  "@updateAvailableBody": {
+    "description": "Body text of the update available modal"
+  },
+  "updateButton": "Yangilash",
+  "@updateButton": {
+    "description": "Button to open the store and update the app"
+  },
+  "laterButton": "Keyinroq",
+  "@laterButton": {
+    "description": "Button to dismiss the update modal and continue"
   }
 }

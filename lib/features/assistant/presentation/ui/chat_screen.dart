@@ -9,6 +9,9 @@ import 'package:fruitstime/features/assistant/presentation/controller/chat_histo
 import 'package:fruitstime/features/assistant/presentation/ui/widget/chat_header.dart';
 import 'package:fruitstime/features/assistant/presentation/ui/widget/chat_message.dart';
 import 'package:fruitstime/features/auth/presentation/ui/controller/user_provider.dart';
+import 'package:fruitstime/features/app/presentation/controller/bottom_navbar_provider.dart';
+import 'package:fruitstime/features/app/presentation/ui/app_screen.dart';
+import 'package:fruitstime/features/cart/presentation/controller/cart_provider.dart';
 import 'package:fruitstime/features/product/domain/entity/product_entity.dart';
 import 'package:fruitstime/features/product/presentation/ui/product_view_modal.dart';
 import 'package:fruitstime/l10n/app_localizations.dart';
@@ -83,6 +86,16 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
     ref.listen(chatAskStateProvider, (_, state) {
       if (state.data != null) {
         _insertSorted([state.data!]);
+
+        final cartIds = state.data!.cartProductIds;
+        if (cartIds.isNotEmpty) {
+          final byId = {for (final p in state.data!.suggestedProducts) p.id: p};
+          final cart = ref.read(cartProvider.notifier);
+          for (final id in cartIds) {
+            final product = byId[id];
+            if (product != null) cart.addProduct(product);
+          }
+        }
       }
     });
 
@@ -121,6 +134,10 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
                             : ChatMessage(
                                 message: messages[index - 1],
                                 onProductItemClick: onProductItemClick,
+                                onGoToCartClick: () {
+                                  ref.read(bottomNavbarProvider.notifier).state = 2;
+                                  context.go(AppScreen.path);
+                                },
                               ),
                         separatorBuilder: (_, _) => SizedBox(height: AppSpacing.sm),
                         itemCount: messages.length + 1,

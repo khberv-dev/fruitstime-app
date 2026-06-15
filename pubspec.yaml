@@ -3,7 +3,7 @@ description: "FruitsTime mobile app"
 
 publish_to: 'none'
 
-version: 1.4.3+31
+version: 1.4.4+32
 
 environment:
   sdk: ^3.11.4
@@ -36,6 +36,7 @@ dependencies:
   firebase_core: ^4.10.0
   firebase_messaging: ^16.3.0
   flutter_inappwebview: ^6.1.5
+  upgrader: ^13.5.0
 
 dev_dependencies:
   flutter_test:

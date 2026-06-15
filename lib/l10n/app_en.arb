@@ -707,5 +707,25 @@
   "deleteAddressConfirm": "Delete this address?",
   "@deleteAddressConfirm": {
     "description": "Confirmation when deleting a saved address"
+  },
+  "cartItemsAdded": "Products added to cart",
+  "@cartItemsAdded": {
+    "description": "Snackbar shown when AI assistant adds products to cart"
+  },
+  "updateAvailableTitle": "Update available",
+  "@updateAvailableTitle": {
+    "description": "Title of the update available modal"
+  },
+  "updateAvailableBody": "Update the app to access new features.",
+  "@updateAvailableBody": {
+    "description": "Body text of the update available modal"
+  },
+  "updateButton": "Update",
+  "@updateButton": {
+    "description": "Button to open the store and update the app"
+  },
+  "laterButton": "Later",
+  "@laterButton": {
+    "description": "Button to dismiss the update modal and continue"
   }
 }
