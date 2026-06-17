@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fruitstime/core/theme/app_spacing.dart';
+import 'package:fruitstime/features/app/presentation/controller/bottom_navbar_provider.dart';
+import 'package:fruitstime/features/app/presentation/ui/app_screen.dart';
 import 'package:fruitstime/features/assistant/domain/entity/message_entity.dart';
 import 'package:fruitstime/features/assistant/domain/enum/message_sender.dart';
 import 'package:fruitstime/features/assistant/presentation/controller/chat_ask_provider.dart';
@@ -9,8 +11,6 @@ import 'package:fruitstime/features/assistant/presentation/controller/chat_histo
 import 'package:fruitstime/features/assistant/presentation/ui/widget/chat_header.dart';
 import 'package:fruitstime/features/assistant/presentation/ui/widget/chat_message.dart';
 import 'package:fruitstime/features/auth/presentation/ui/controller/user_provider.dart';
-import 'package:fruitstime/features/app/presentation/controller/bottom_navbar_provider.dart';
-import 'package:fruitstime/features/app/presentation/ui/app_screen.dart';
 import 'package:fruitstime/features/cart/presentation/controller/cart_provider.dart';
 import 'package:fruitstime/features/product/domain/entity/product_entity.dart';
 import 'package:fruitstime/features/product/presentation/ui/product_view_modal.dart';

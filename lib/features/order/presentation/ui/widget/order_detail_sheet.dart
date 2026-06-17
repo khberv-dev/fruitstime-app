@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fruitstime/core/theme/app_radius.dart';
 import 'package:fruitstime/core/theme/app_spacing.dart';
+import 'package:fruitstime/features/branch/presentation/controller/branches_provider.dart';
 import 'package:fruitstime/features/order/data/enum/order_status.dart';
 import 'package:fruitstime/features/order/data/enum/order_type.dart';
 import 'package:fruitstime/features/order/domain/entity/order_entity.dart';
 import 'package:fruitstime/features/order/domain/entity/order_item_entity.dart';
 import 'package:fruitstime/l10n/app_localizations.dart';
 import 'package:fruitstime/utils/lib.dart';
+import 'package:go_router/go_router.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-class OrderDetailSheet extends StatelessWidget {
+class OrderDetailSheet extends ConsumerWidget {
   final OrderEntity order;
 
   const OrderDetailSheet({super.key, required this.order});
@@ -20,9 +24,10 @@ class OrderDetailSheet extends StatelessWidget {
   };
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final scheme = Theme.of(context).colorScheme;
     final localization = AppLocalizations.of(context)!;
+    final branchPhone = ref.watch(selectedBranchProvider)?.managerPhone;
 
     final (statusBg, statusFg, dotColor) = switch (order.status) {
       OrderStatus.done => (scheme.secondary.withAlpha(30), scheme.secondary, scheme.secondary),
@@ -191,6 +196,29 @@ class OrderDetailSheet extends StatelessWidget {
                 ],
               ),
             ),
+            if (order.status == OrderStatus.created) ...[
+              SizedBox(height: AppSpacing.md),
+              if (branchPhone != null) ...[
+                SizedBox(
+                  width: double.infinity,
+                  child: OutlinedButton(
+                    onPressed: () => launchUrl(Uri(scheme: 'tel', path: branchPhone)),
+                    child: Text(localization.needHelpButton),
+                  ),
+                ),
+                SizedBox(height: AppSpacing.sm),
+              ],
+              SizedBox(
+                width: double.infinity,
+                child: FilledButton(
+                  style: FilledButton.styleFrom(backgroundColor: scheme.error),
+                  onPressed: branchPhone != null
+                      ? () => launchUrl(Uri(scheme: 'tel', path: branchPhone))
+                      : null,
+                  child: Text(localization.cancelButton),
+                ),
+              ),
+            ],
           ],
         ),
       ),

@@ -712,6 +712,18 @@
   "@cartItemsAdded": {
     "description": "Snackbar shown when AI assistant adds products to cart"
   },
+  "needHelpButton": "Need help?",
+  "@needHelpButton": {
+    "description": "Need help button in active order sheet"
+  },
+  "helpCenterLabel": "Help center",
+  "@helpCenterLabel": {
+    "description": "Help center tile label in profile"
+  },
+  "helpCenterDescription": "Contact branch",
+  "@helpCenterDescription": {
+    "description": "Help center tile description in profile"
+  },
   "updateAvailableTitle": "Update available",
   "@updateAvailableTitle": {
     "description": "Title of the update available modal"

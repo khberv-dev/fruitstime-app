@@ -5,6 +5,7 @@ class BranchEntity {
   final String address;
   final bool isActive;
   final int? storageId;
+  final String? managerPhone;
 
   BranchEntity({
     required this.id,
@@ -13,5 +14,6 @@ class BranchEntity {
     required this.address,
     required this.isActive,
     this.storageId,
+    this.managerPhone,
   });
 }

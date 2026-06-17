@@ -13,11 +13,13 @@ import 'package:fruitstime/features/auth/presentation/ui/set_gender_modal.dart';
 import 'package:fruitstime/features/auth/presentation/ui/set_height_modal.dart';
 import 'package:fruitstime/features/auth/presentation/ui/set_weight_modal.dart';
 import 'package:fruitstime/features/auth/presentation/ui/status_info_modal.dart';
+import 'package:fruitstime/features/auth/presentation/ui/widget/help_center_tile.dart';
 import 'package:fruitstime/features/auth/presentation/ui/widget/login_profile_card.dart';
 import 'package:fruitstime/features/auth/presentation/ui/widget/preference_item.dart';
 import 'package:fruitstime/features/auth/presentation/ui/widget/preferences_group.dart';
 import 'package:fruitstime/features/auth/presentation/ui/widget/profile_card.dart';
 import 'package:fruitstime/features/auth/presentation/ui/widget/status_tier_card.dart';
+import 'package:fruitstime/features/branch/presentation/controller/branches_provider.dart';
 import 'package:fruitstime/features/order/presentation/ui/orders_screen.dart';
 import 'package:fruitstime/features/order/presentation/ui/widget/my_orders_tile.dart';
 import 'package:fruitstime/l10n/app_localizations.dart';
@@ -127,6 +129,14 @@ class ProfilePage extends ConsumerWidget {
       context.push(OrdersScreen.path);
     }
 
+    final branchPhone = ref.watch(selectedBranchProvider)?.managerPhone;
+
+    void onHelpCenterClick() {
+      if (branchPhone != null) {
+        launchUrl(Uri(scheme: 'tel', path: branchPhone));
+      }
+    }
+
     return SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: AppSpacing.md),
@@ -152,6 +162,12 @@ class ProfilePage extends ConsumerWidget {
                 ? Padding(
                     padding: EdgeInsets.only(bottom: AppSpacing.md),
                     child: MyOrdersTile(onPressed: onMyOrdersClick),
+                  )
+                : SizedBox.shrink(),
+            branchPhone != null
+                ? Padding(
+                    padding: EdgeInsets.only(bottom: AppSpacing.md),
+                    child: HelpCenterTile(onPressed: onHelpCenterClick),
                   )
                 : SizedBox.shrink(),
             user.data != null

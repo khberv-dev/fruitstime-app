@@ -45,13 +45,7 @@ class OrderCard extends StatelessWidget {
             color: glow ? scheme.primary.withAlpha(120) : scheme.onSurfaceVariant.withAlpha(40),
           ),
           boxShadow: glow
-              ? [
-                  BoxShadow(
-                    color: scheme.primary.withAlpha(60),
-                    blurRadius: 20,
-                    spreadRadius: 2,
-                  ),
-                ]
+              ? [BoxShadow(color: scheme.primary.withAlpha(60), blurRadius: 20, spreadRadius: 2)]
               : null,
         ),
         child: Column(

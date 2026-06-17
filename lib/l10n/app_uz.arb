@@ -713,6 +713,18 @@
   "@cartItemsAdded": {
     "description": "Snackbar shown when AI assistant adds products to cart"
   },
+  "needHelpButton": "Yordam kerakmi?",
+  "@needHelpButton": {
+    "description": "Need help button in active order sheet"
+  },
+  "helpCenterLabel": "Yordam markazi",
+  "@helpCenterLabel": {
+    "description": "Help center tile label in profile"
+  },
+  "helpCenterDescription": "Filial bilan bog'lanish",
+  "@helpCenterDescription": {
+    "description": "Help center tile description in profile"
+  },
   "updateAvailableTitle": "Yangilash mavjud",
   "@updateAvailableTitle": {
     "description": "Title of the update available modal"
