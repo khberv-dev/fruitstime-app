@@ -628,9 +628,14 @@
   "@sendOrderButton": {
     "description": "Cart CTA when fulfillment is delivery"
   },
-  "confirmOrderContent": "Confirm your order?",
+  "confirmOrderContent": "By confirming the order you will need to pay {orderSum} so'm upon delivery. Do you confirm?",
   "@confirmOrderContent": {
-    "description": "Body text of the order confirmation dialog"
+    "description": "Body text of the order confirmation dialog",
+    "placeholders": {
+      "orderSum": {
+        "type": "String"
+      }
+    }
   },
   "paymentTypeLabel": "Payment method",
   "@paymentTypeLabel": {

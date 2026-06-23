@@ -9,7 +9,6 @@ import 'package:fruitstime/features/order/domain/entity/order_entity.dart';
 import 'package:fruitstime/features/order/domain/entity/order_item_entity.dart';
 import 'package:fruitstime/l10n/app_localizations.dart';
 import 'package:fruitstime/utils/lib.dart';
-import 'package:go_router/go_router.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class OrderDetailSheet extends ConsumerWidget {

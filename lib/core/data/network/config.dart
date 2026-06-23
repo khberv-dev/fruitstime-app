@@ -1,5 +1,3 @@
-
-
 const yandexMapsApiKey = '9b104dbc-7702-4a81-a7c4-e03acf385e52';
 const yandexGeocoderApiKey = 'c4a38489-982d-4acf-bf1b-c7deea87a711';
 const geocoderBaseUrl = 'https://geocode-maps.yandex.ru/1.x/';

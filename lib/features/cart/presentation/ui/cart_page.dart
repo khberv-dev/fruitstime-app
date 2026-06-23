@@ -23,6 +23,7 @@ import 'package:fruitstime/features/order/presentation/controller/selected_order
 import 'package:fruitstime/features/order/presentation/ui/order_detail_screen.dart';
 import 'package:fruitstime/features/product/domain/entity/product_entity.dart';
 import 'package:fruitstime/l10n/app_localizations.dart';
+import 'package:fruitstime/utils/lib.dart';
 import 'package:fruitstime/utils/messanger.dart';
 import 'package:go_router/go_router.dart';
 
@@ -55,11 +56,14 @@ class CartPage extends ConsumerWidget {
         return;
       }
 
+      final deliveryCost = ref.read(deliveryCostProvider).value ?? 0;
+      final totalPrice = ref.read(cartProvider.notifier).totalProductsPrice() + deliveryCost;
+
       final confirmed = await showDialog<bool>(
         context: context,
         builder: (_) => PromptDialog(
           title: localization.confirmDialogTitle,
-          content: localization.confirmOrderContent,
+          content: localization.confirmOrderContent(formatNumber(totalPrice)),
         ),
       );
 

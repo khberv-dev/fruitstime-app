@@ -628,9 +628,14 @@
   "@sendOrderButton": {
     "description": "Cart CTA when fulfillment is delivery"
   },
-  "confirmOrderContent": "Подтвердить заказ?",
+  "confirmOrderContent": "Подтверждая заказ, вы обязуетесь оплатить {orderSum} сум при получении. Подтверждаете?",
   "@confirmOrderContent": {
-    "description": "Body text of the order confirmation dialog"
+    "description": "Body text of the order confirmation dialog",
+    "placeholders": {
+      "orderSum": {
+        "type": "String"
+      }
+    }
   },
   "paymentTypeLabel": "Способ оплаты",
   "@paymentTypeLabel": {

@@ -629,9 +629,14 @@
   "@sendOrderButton": {
     "description": "Cart CTA when fulfillment is delivery"
   },
-  "confirmOrderContent": "Buyurtmani tasdiqlaysizmi?",
+  "confirmOrderContent": "Buyurtmani tasdiqlash orqali yetkazib berilgan {orderSum} so'm to'lashingiz kerak. Tasdiqlaysizmi?",
   "@confirmOrderContent": {
-    "description": "Body text of the order confirmation dialog"
+    "description": "Body text of the order confirmation dialog",
+    "placeholders": {
+      "orderSum": {
+        "type": "String"
+      }
+    }
   },
   "paymentTypeLabel": "To'lov usuli",
   "@paymentTypeLabel": {
