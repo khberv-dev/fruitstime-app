@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fruitstime/core/theme/app_radius.dart';
 import 'package:fruitstime/core/theme/app_spacing.dart';
 
@@ -42,7 +41,7 @@ class HomePromoCard extends StatelessWidget {
                 Positioned(
                   top: (constraints.maxHeight - imageSize) / 2,
                   right: -imageSize * 0.4,
-                  child: SvgPicture.asset(imagePath, width: imageSize, height: imageSize),
+                  child: Image.asset(imagePath, width: imageSize, height: imageSize),
                 ),
                 Padding(
                   padding: EdgeInsets.all(AppSpacing.md),

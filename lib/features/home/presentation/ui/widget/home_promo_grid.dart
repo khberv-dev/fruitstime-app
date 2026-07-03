@@ -23,7 +23,7 @@ class HomePromoGrid extends StatelessWidget {
                 Expanded(
                   child: HomePromoCard(
                     title: localization.homePromoSmoothieTitle,
-                    imagePath: 'assets/images/smoothie.svg',
+                    imagePath: 'assets/images/smoothie.png',
                     backgroundColor: const Color(0xfff5bd1f),
                     foregroundColor: Colors.white,
                     onTap: onCardTap,
@@ -33,7 +33,7 @@ class HomePromoGrid extends StatelessWidget {
                 Expanded(
                   child: HomePromoCard(
                     title: localization.homePromoVitaminTitle,
-                    imagePath: 'assets/images/vitamin.svg',
+                    imagePath: 'assets/images/vitamin.png',
                     backgroundColor: const Color(0xff7b3fa0),
                     foregroundColor: Colors.white,
                     onTap: onCardTap,
@@ -46,7 +46,7 @@ class HomePromoGrid extends StatelessWidget {
           Expanded(
             child: HomePromoCard(
               title: localization.homePromoDeliveryTitle,
-              imagePath: 'assets/images/delivery.svg',
+              imagePath: 'assets/images/delivery.png',
               backgroundColor: const Color(0xff5a8a3c),
               foregroundColor: Colors.white,
               textAlignment: Alignment.topLeft,
