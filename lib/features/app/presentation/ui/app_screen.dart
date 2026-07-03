@@ -4,6 +4,7 @@ import 'package:fruitstime/core/theme/app_spacing.dart';
 import 'package:fruitstime/features/app/domain/model/nav_item.dart';
 import 'package:fruitstime/features/app/presentation/controller/bottom_navbar_provider.dart';
 import 'package:fruitstime/features/app/presentation/ui/widget/bottom_navbar.dart';
+import 'package:fruitstime/features/assistant/presentation/ui/widget/assistant_bubble.dart';
 import 'package:fruitstime/features/auth/presentation/ui/profile_page.dart';
 import 'package:fruitstime/features/cart/presentation/ui/cart_page.dart';
 import 'package:fruitstime/features/catalog/presentation/ui/catalogs_page.dart';
@@ -22,6 +23,8 @@ class AppScreen extends ConsumerStatefulWidget {
 class _AppScreenState extends ConsumerState<AppScreen> with SingleTickerProviderStateMixin {
   double navbarPagerValue = 0;
   late final TabController bottomNavController;
+  final GlobalKey _navbarKey = GlobalKey();
+  double _navbarHeight = 64;
 
   @override
   void initState() {
@@ -40,6 +43,15 @@ class _AppScreenState extends ConsumerState<AppScreen> with SingleTickerProvider
         navbarPagerValue = animationValue;
       });
     });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => _measureNavbarHeight());
+  }
+
+  void _measureNavbarHeight() {
+    final height = _navbarKey.currentContext?.size?.height;
+    if (height != null && height != _navbarHeight && mounted) {
+      setState(() => _navbarHeight = height);
+    }
   }
 
   @override
@@ -71,10 +83,16 @@ class _AppScreenState extends ConsumerState<AppScreen> with SingleTickerProvider
               left: AppSpacing.md,
               right: AppSpacing.md,
               child: BottomNavbar(
+                key: _navbarKey,
                 controller: bottomNavController,
                 items: navItems,
                 pagerValue: navbarPagerValue,
               ),
+            ),
+            Positioned(
+              bottom: AppSpacing.lg + _navbarHeight + AppSpacing.md,
+              right: AppSpacing.md,
+              child: const AssistantBubble(),
             ),
           ],
         ),

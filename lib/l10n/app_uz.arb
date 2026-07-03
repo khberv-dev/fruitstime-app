@@ -105,22 +105,6 @@
   "@showAllButton": {
     "description": "Button to show all items in a section"
   },
-  "specialOffersTitle": "Maxsus takliflar",
-  "@specialOffersTitle": {
-    "description": "Title for special offers section"
-  },
-  "aiAssistantTitle": "AI Yordamchi",
-  "@aiAssistantTitle": {
-    "description": "AI assistant card title"
-  },
-  "aiAssistantDescription": "Sog'ligingiz haqida qayg'uruvchi shaxsiy yordamchingiz",
-  "@aiAssistantDescription": {
-    "description": "AI assistant card description"
-  },
-  "goButton": "O'tish",
-  "@goButton": {
-    "description": "Short navigation button label"
-  },
   "chatDoctorTitle": "Fruits Time doctor",
   "@chatDoctorTitle": {
     "description": "Title in the chat/assistant header"
@@ -745,5 +729,72 @@
   "laterButton": "Keyinroq",
   "@laterButton": {
     "description": "Button to dismiss the update modal and continue"
+  },
+  "loyaltyCardTitle": "Sodiqlik dasturi",
+  "@loyaltyCardTitle": {
+    "description": "Title of the loyalty program card on the home page"
+  },
+  "loyaltyItemsOrderedLabel": "Buyurtma qilingan mahsulotlar: {count}",
+  "@loyaltyItemsOrderedLabel": {
+    "description": "Lifetime products ordered count shown on the loyalty card",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "loyaltyItemsUntilNextBonus": "Bonus mahsulotgacha {count} ta mahsulot qoldi",
+  "@loyaltyItemsUntilNextBonus": {
+    "description": "Products remaining until the next bonus item on the loyalty card",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "referralCardTitle": "Referal dasturi",
+  "@referralCardTitle": {
+    "description": "Title of the referral program card on the home page"
+  },
+  "referralCountLabel": "Taklif qilingan do'stlar: {count}",
+  "@referralCountLabel": {
+    "description": "Number of users referred by the current user, shown on the referral card",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "referralRemainingToNextTier": "{status} darajasigacha yana {count} ta",
+  "@referralRemainingToNextTier": {
+    "description": "Referrals remaining until the next status tier on the referral card",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "status": {
+        "type": "String"
+      }
+    }
+  },
+  "referralStatusSilver": "Kumush",
+  "@referralStatusSilver": {
+    "description": "Silver referral status tier label"
+  },
+  "referralStatusGold": "Oltin",
+  "@referralStatusGold": {
+    "description": "Gold referral status tier label"
+  },
+  "referralStatusVip": "VIP",
+  "@referralStatusVip": {
+    "description": "VIP referral status tier label"
+  },
+  "referralStatusPremium": "Premium",
+  "@referralStatusPremium": {
+    "description": "Premium referral status tier label"
+  },
+  "assistantHintText": "Salom! Men sizning dietologingizman, gaplashamizmi?",
+  "@assistantHintText": {
+    "description": "One-time hint bubble shown above the floating assistant button"
   }
 }

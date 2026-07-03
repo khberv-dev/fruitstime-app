@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fruitstime/features/product/presentation/ui/search_screen.dart';
 import 'package:fruitstime/l10n/app_localizations.dart';
+import 'package:go_router/go_router.dart';
 
 class CatalogsHeader extends StatelessWidget {
   const CatalogsHeader({super.key});
@@ -19,7 +21,10 @@ class CatalogsHeader extends StatelessWidget {
             localization.catalogTitle,
             style: Theme.of(context).textTheme.headlineSmall!.copyWith(fontWeight: FontWeight.w900),
           ),
-          IconButton(onPressed: () {}, icon: SvgPicture.asset('assets/icons/search.svg')),
+          IconButton(
+            onPressed: () => context.push(SearchScreen.path),
+            icon: SvgPicture.asset('assets/icons/search.svg'),
+          ),
         ],
       ),
     );

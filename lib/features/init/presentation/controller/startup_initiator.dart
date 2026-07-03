@@ -6,6 +6,8 @@ import 'package:fruitstime/features/auth/presentation/ui/controller/user_provide
 import 'package:fruitstime/features/banner/presentation/controller/banners_provider.dart';
 import 'package:fruitstime/features/branch/presentation/controller/branches_provider.dart';
 import 'package:fruitstime/features/catalog/presentation/controller/catalogs_provider.dart';
+import 'package:fruitstime/features/loyalty/presentation/controller/loyalty_status_provider.dart';
+import 'package:fruitstime/features/referral/presentation/controller/referral_status_provider.dart';
 import 'package:fruitstime/features/session/domain/usecase/upsert_session.dart';
 import 'package:upgrader/upgrader.dart';
 
@@ -34,6 +36,8 @@ class _StartupNotifier extends Notifier<RequestState<bool>> {
 
     if (ref.read(userProvider).data != null) {
       await ref.read(upsertSessionProvider).call();
+      await ref.read(loyaltyStatusProvider.notifier).getStatus();
+      await ref.read(referralStatusProvider.notifier).getStatus();
     }
 
     await versionFuture;

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fruitstime/core/theme/app_spacing.dart';
 import 'package:fruitstime/features/app/presentation/controller/bottom_navbar_provider.dart';
-import 'package:fruitstime/features/assistant/presentation/ui/chat_screen.dart';
 import 'package:fruitstime/features/auth/presentation/ui/controller/user_provider.dart';
 import 'package:fruitstime/features/auth/presentation/ui/set_birthday_modal.dart';
 import 'package:fruitstime/features/auth/presentation/ui/set_gender_modal.dart';
@@ -14,19 +13,20 @@ import 'package:fruitstime/features/branch/presentation/ui/branch_selector_modal
 import 'package:fruitstime/features/catalog/domain/entity/catalog_entity.dart';
 import 'package:fruitstime/features/catalog/presentation/controller/catalogs_provider.dart';
 import 'package:fruitstime/features/catalog/presentation/controller/selected_catalog_provider.dart';
-import 'package:fruitstime/features/home/presentation/ui/widget/ai_card.dart';
+import 'package:fruitstime/features/home/presentation/ui/widget/banner_stories_row.dart';
 import 'package:fruitstime/features/home/presentation/ui/widget/catalog_row.dart';
-import 'package:fruitstime/features/home/presentation/ui/widget/go_search_card.dart';
 import 'package:fruitstime/features/home/presentation/ui/widget/home_header.dart';
+import 'package:fruitstime/features/home/presentation/ui/widget/loyalty_card.dart';
+import 'package:fruitstime/features/home/presentation/ui/widget/referral_card.dart';
 import 'package:fruitstime/features/home/presentation/ui/widget/request_fill_profile_card.dart';
-import 'package:fruitstime/features/home/presentation/ui/widget/special_offers_section.dart';
+import 'package:fruitstime/features/loyalty/presentation/controller/loyalty_status_provider.dart';
 import 'package:fruitstime/features/order/domain/entity/order_entity.dart';
 import 'package:fruitstime/features/order/presentation/controller/active_order_provider.dart';
 import 'package:fruitstime/features/order/presentation/ui/web_view_screen.dart';
 import 'package:fruitstime/features/order/presentation/ui/widget/order_card.dart';
 import 'package:fruitstime/features/order/presentation/ui/widget/order_detail_sheet.dart';
 import 'package:fruitstime/features/product/presentation/ui/products_screen.dart';
-import 'package:fruitstime/features/product/presentation/ui/search_screen.dart';
+import 'package:fruitstime/features/referral/presentation/controller/referral_status_provider.dart';
 import 'package:go_router/go_router.dart';
 
 class HomePage extends ConsumerWidget {
@@ -52,6 +52,8 @@ class HomePage extends ConsumerWidget {
     final user = ref.watch(userProvider);
     final selectedBranch = ref.watch(selectedBranchProvider);
     final activeOrder = ref.watch(activeOrderProvider);
+    final loyaltyStatus = ref.watch(loyaltyStatusProvider);
+    final referralStatus = ref.watch(referralStatusProvider);
     final bool isProfileFilled =
         user.data?.birthday != null &&
         user.data?.weight != null &&
@@ -62,17 +64,9 @@ class HomePage extends ConsumerWidget {
       ref.read(bottomNavbarProvider.notifier).state = 1;
     }
 
-    void onGotoAiClick() {
-      context.push(ChatScreen.path);
-    }
-
     void onCatalogItemClick(CatalogEntity catalog) {
       ref.read(selectedCatalogProvider.notifier).state = catalog;
       context.push(ProductsScreen.path);
-    }
-
-    void onGotoSearchClick() {
-      context.push(SearchScreen.path);
     }
 
     void onFillProfileClick() {
@@ -110,8 +104,6 @@ class HomePage extends ConsumerWidget {
               ),
             ),
             SizedBox(height: AppSpacing.xl),
-            GoSearchCard(onPressed: onGotoSearchClick),
-            SizedBox(height: AppSpacing.lg),
             if (activeOrder.value != null) ...[
               OrderCard(
                 order: activeOrder.value!,
@@ -124,10 +116,16 @@ class HomePage extends ConsumerWidget {
               RequestFillProfileCard(onClick: onFillProfileClick),
               SizedBox(height: AppSpacing.lg),
             ],
-            SpecialOffersSection(banners: banners.data ?? []),
-            SizedBox(height: AppSpacing.xl),
-            AiCard(onPressed: onGotoAiClick),
+            BannerStoriesRow(banners: banners.data ?? []),
             SizedBox(height: AppSpacing.lg),
+            if (loyaltyStatus.data?.isActive ?? false) ...[
+              LoyaltyCard(status: loyaltyStatus.data!),
+              SizedBox(height: AppSpacing.lg),
+            ],
+            if (referralStatus.data != null) ...[
+              ReferralCard(status: referralStatus.data!),
+              SizedBox(height: AppSpacing.lg),
+            ],
             CatalogRow(
               catalogs: catalogs.data ?? [],
               onShowAllClick: onShowCatalogsClick,

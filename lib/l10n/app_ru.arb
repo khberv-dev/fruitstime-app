@@ -104,22 +104,6 @@
   "@showAllButton": {
     "description": "Button to show all items in a section"
   },
-  "specialOffersTitle": "Специальные предложения",
-  "@specialOffersTitle": {
-    "description": "Title for special offers section"
-  },
-  "aiAssistantTitle": "ИИ Помощник",
-  "@aiAssistantTitle": {
-    "description": "AI assistant card title"
-  },
-  "aiAssistantDescription": "Ваш личный помощник, заботящийся о вашем здоровье",
-  "@aiAssistantDescription": {
-    "description": "AI assistant card description"
-  },
-  "goButton": "Перейти",
-  "@goButton": {
-    "description": "Short navigation button label"
-  },
   "chatDoctorTitle": "Fruits Time Doctor",
   "@chatDoctorTitle": {
     "description": "Title in the chat/assistant header"
@@ -744,5 +728,72 @@
   "laterButton": "Позже",
   "@laterButton": {
     "description": "Button to dismiss the update modal and continue"
+  },
+  "loyaltyCardTitle": "Программа лояльности",
+  "@loyaltyCardTitle": {
+    "description": "Title of the loyalty program card on the home page"
+  },
+  "loyaltyItemsOrderedLabel": "Заказано товаров: {count}",
+  "@loyaltyItemsOrderedLabel": {
+    "description": "Lifetime products ordered count shown on the loyalty card",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "loyaltyItemsUntilNextBonus": "Осталось {count} товаров до бонусного товара",
+  "@loyaltyItemsUntilNextBonus": {
+    "description": "Products remaining until the next bonus item on the loyalty card",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "referralCardTitle": "Реферальная программа",
+  "@referralCardTitle": {
+    "description": "Title of the referral program card on the home page"
+  },
+  "referralCountLabel": "Приглашено друзей: {count}",
+  "@referralCountLabel": {
+    "description": "Number of users referred by the current user, shown on the referral card",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "referralRemainingToNextTier": "Ещё {count} до статуса {status}",
+  "@referralRemainingToNextTier": {
+    "description": "Referrals remaining until the next status tier on the referral card",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "status": {
+        "type": "String"
+      }
+    }
+  },
+  "referralStatusSilver": "Серебро",
+  "@referralStatusSilver": {
+    "description": "Silver referral status tier label"
+  },
+  "referralStatusGold": "Золото",
+  "@referralStatusGold": {
+    "description": "Gold referral status tier label"
+  },
+  "referralStatusVip": "VIP",
+  "@referralStatusVip": {
+    "description": "VIP referral status tier label"
+  },
+  "referralStatusPremium": "Премиум",
+  "@referralStatusPremium": {
+    "description": "Premium referral status tier label"
+  },
+  "assistantHintText": "Привет! Я твой диетолог, поговорим?",
+  "@assistantHintText": {
+    "description": "One-time hint bubble shown above the floating assistant button"
   }
 }

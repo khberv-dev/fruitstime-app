@@ -104,22 +104,6 @@
   "@showAllButton": {
     "description": "Button to show all items in a section"
   },
-  "specialOffersTitle": "Special Offers",
-  "@specialOffersTitle": {
-    "description": "Title for special offers section"
-  },
-  "aiAssistantTitle": "AI Assistant",
-  "@aiAssistantTitle": {
-    "description": "AI assistant card title"
-  },
-  "aiAssistantDescription": "Your personal assistant caring about your health",
-  "@aiAssistantDescription": {
-    "description": "AI assistant card description"
-  },
-  "goButton": "Go",
-  "@goButton": {
-    "description": "Short navigation button label"
-  },
   "chatDoctorTitle": "Fruits Time Doctor",
   "@chatDoctorTitle": {
     "description": "Title in the chat/assistant header"
@@ -744,5 +728,72 @@
   "laterButton": "Later",
   "@laterButton": {
     "description": "Button to dismiss the update modal and continue"
+  },
+  "loyaltyCardTitle": "Loyalty rewards",
+  "@loyaltyCardTitle": {
+    "description": "Title of the loyalty program card on the home page"
+  },
+  "loyaltyItemsOrderedLabel": "{count} products ordered",
+  "@loyaltyItemsOrderedLabel": {
+    "description": "Lifetime products ordered count shown on the loyalty card",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "loyaltyItemsUntilNextBonus": "{count} products until your next bonus product",
+  "@loyaltyItemsUntilNextBonus": {
+    "description": "Products remaining until the next bonus item on the loyalty card",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "referralCardTitle": "Referral program",
+  "@referralCardTitle": {
+    "description": "Title of the referral program card on the home page"
+  },
+  "referralCountLabel": "{count} friends invited",
+  "@referralCountLabel": {
+    "description": "Number of users referred by the current user, shown on the referral card",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "referralRemainingToNextTier": "{count} more to reach {status}",
+  "@referralRemainingToNextTier": {
+    "description": "Referrals remaining until the next status tier on the referral card",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "status": {
+        "type": "String"
+      }
+    }
+  },
+  "referralStatusSilver": "Silver",
+  "@referralStatusSilver": {
+    "description": "Silver referral status tier label"
+  },
+  "referralStatusGold": "Gold",
+  "@referralStatusGold": {
+    "description": "Gold referral status tier label"
+  },
+  "referralStatusVip": "VIP",
+  "@referralStatusVip": {
+    "description": "VIP referral status tier label"
+  },
+  "referralStatusPremium": "Premium",
+  "@referralStatusPremium": {
+    "description": "Premium referral status tier label"
+  },
+  "assistantHintText": "Hey, I am your dietolog, let's speak?",
+  "@assistantHintText": {
+    "description": "One-time hint bubble shown above the floating assistant button"
   }
 }
