@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fruitstime/core/data/network/api_client.dart';
 import 'package:fruitstime/features/order/data/dto/order_dto.dart';
+import 'package:fruitstime/features/order/data/dto/order_evaluation_dto.dart';
 import 'package:fruitstime/features/order/data/enum/order_type.dart';
 
 final orderRepositoryProvider = Provider((ref) => OrderRepository(ref.read(apiClientProvider)));
@@ -24,12 +25,18 @@ class OrderRepository {
     return data.map((e) => OrderDto.parse(e)).toList();
   }
 
-  Future<int> getDeliveryCost({required String branchId, required String addressId}) async {
-    final response = await _client.get(
-      'order/delivery-cost',
-      queryParameters: {'branchId': branchId, 'addressId': addressId},
-    );
-    return (response.data['cost'] as num).toInt();
+  Future<OrderEvaluationDto> evaluate(
+    List<Map<String, dynamic>> items, {
+    required String branchId,
+    required OrderType type,
+    String? addressId,
+  }) async {
+    final body = <String, dynamic>{'branchId': branchId, 'type': type.name, 'items': items};
+    if (addressId != null) body['addressId'] = addressId;
+
+    final response = await _client.post('order/evaluate', data: body);
+
+    return OrderEvaluationDto.parse(response.data);
   }
 
   Future<OrderDto> create(

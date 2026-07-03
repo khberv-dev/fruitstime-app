@@ -795,5 +795,29 @@
   "assistantHintText": "Hey, I am your dietolog, let's speak?",
   "@assistantHintText": {
     "description": "One-time hint bubble shown above the floating assistant button"
+  },
+  "homePromoSmoothieTitle": "Order smoothie",
+  "@homePromoSmoothieTitle": {
+    "description": "Title of the smoothie promo card on the home page"
+  },
+  "homePromoVitaminTitle": "Order vitamins",
+  "@homePromoVitaminTitle": {
+    "description": "Title of the vitamins promo card on the home page"
+  },
+  "homePromoDeliveryTitle": "Delivery",
+  "@homePromoDeliveryTitle": {
+    "description": "Title of the delivery promo card on the home page"
+  },
+  "notificationsTitle": "Notifications",
+  "@notificationsTitle": {
+    "description": "Title of the notifications screen"
+  },
+  "notificationsEmptyTitle": "No notifications yet",
+  "@notificationsEmptyTitle": {
+    "description": "Empty-state title on the notifications screen"
+  },
+  "notificationsEmptySubtitle": "We'll let you know when there's something new.",
+  "@notificationsEmptySubtitle": {
+    "description": "Empty-state subtitle on the notifications screen"
   }
 }

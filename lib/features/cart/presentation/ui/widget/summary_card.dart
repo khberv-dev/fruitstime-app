@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fruitstime/core/theme/app_radius.dart';
 import 'package:fruitstime/core/theme/app_spacing.dart';
-import 'package:fruitstime/features/cart/presentation/controller/delivery_cost_provider.dart';
+import 'package:fruitstime/features/cart/presentation/controller/order_evaluation_provider.dart';
 import 'package:fruitstime/l10n/app_localizations.dart';
 import 'package:fruitstime/utils/lib.dart';
 
@@ -40,28 +40,25 @@ class SummaryCard extends ConsumerWidget {
   final int totalItemCount;
   final int totalItemTypeCount;
   final int totalCartPrice;
-  final int discountPercent;
 
   const SummaryCard({
     super.key,
     required this.totalItemCount,
     required this.totalItemTypeCount,
     required this.totalCartPrice,
-    this.discountPercent = 0,
   });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final localization = AppLocalizations.of(context)!;
     final scheme = Theme.of(context).colorScheme;
-    final deliveryCostAsync = ref.watch(deliveryCostProvider);
-    final deliveryCost = deliveryCostAsync.asData?.value;
-    final isLoadingDelivery = deliveryCostAsync.isLoading;
+    final evaluationAsync = ref.watch(orderEvaluationProvider);
+    final evaluation = evaluationAsync.value;
+    final isLoading = evaluationAsync.isLoading;
 
-    final int discountedSubtotal = discountPercent > 0
-        ? (totalCartPrice * (1 - discountPercent / 100)).round()
-        : totalCartPrice;
-    final int discountAmount = totalCartPrice - discountedSubtotal;
+    final subtotal = evaluation?.subtotal ?? totalCartPrice;
+    final deliveryCost = evaluation?.deliveryCost;
+    final total = evaluation?.total ?? totalCartPrice;
 
     return Container(
       padding: EdgeInsets.all(AppSpacing.lg),
@@ -92,17 +89,17 @@ class SummaryCard extends ConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               _SummaryKeyText(text: localization.subtotalLabel),
-              _SummaryValueText(text: localization.priceText(formatNumber(totalCartPrice))),
+              _SummaryValueText(text: localization.priceText(formatNumber(subtotal))),
             ],
           ),
-          if (discountAmount > 0) ...[
+          for (final discount in evaluation?.discounts ?? []) ...[
             SizedBox(height: AppSpacing.sm),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                _SummaryKeyText(text: localization.loyaltyDiscountLabel),
+                _SummaryKeyText(text: discount.name),
                 Text(
-                  '−${localization.priceText(formatNumber(discountAmount))}',
+                  '−${localization.priceText(formatNumber(discount.amount))}',
                   style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                     color: scheme.secondary,
                     fontWeight: FontWeight.w900,
@@ -111,13 +108,13 @@ class SummaryCard extends ConsumerWidget {
               ],
             ),
           ],
-          if (deliveryCost != null || isLoadingDelivery) ...[
+          if (deliveryCost != null || isLoading) ...[
             SizedBox(height: AppSpacing.sm),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 _SummaryKeyText(text: localization.deliveryFeeLabel),
-                isLoadingDelivery
+                isLoading
                     ? SizedBox(
                         width: 14,
                         height: 14,
@@ -140,13 +137,19 @@ class SummaryCard extends ConsumerWidget {
                 localization.totalLabel,
                 style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.w900),
               ),
-              Text(
-                localization.priceText(formatNumber(discountedSubtotal + (deliveryCost ?? 0))),
-                style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                  color: scheme.secondary,
-                  fontWeight: FontWeight.w900,
-                ),
-              ),
+              isLoading
+                  ? SizedBox(
+                      width: 16,
+                      height: 16,
+                      child: CircularProgressIndicator(strokeWidth: 2, color: scheme.secondary),
+                    )
+                  : Text(
+                      localization.priceText(formatNumber(total)),
+                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                        color: scheme.secondary,
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
             ],
           ),
         ],

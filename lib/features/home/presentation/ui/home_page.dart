@@ -16,10 +16,12 @@ import 'package:fruitstime/features/catalog/presentation/controller/selected_cat
 import 'package:fruitstime/features/home/presentation/ui/widget/banner_stories_row.dart';
 import 'package:fruitstime/features/home/presentation/ui/widget/catalog_row.dart';
 import 'package:fruitstime/features/home/presentation/ui/widget/home_header.dart';
+import 'package:fruitstime/features/home/presentation/ui/widget/home_promo_grid.dart';
 import 'package:fruitstime/features/home/presentation/ui/widget/loyalty_card.dart';
 import 'package:fruitstime/features/home/presentation/ui/widget/referral_card.dart';
 import 'package:fruitstime/features/home/presentation/ui/widget/request_fill_profile_card.dart';
 import 'package:fruitstime/features/loyalty/presentation/controller/loyalty_status_provider.dart';
+import 'package:fruitstime/features/notification/presentation/ui/notifications_screen.dart';
 import 'package:fruitstime/features/order/domain/entity/order_entity.dart';
 import 'package:fruitstime/features/order/presentation/controller/active_order_provider.dart';
 import 'package:fruitstime/features/order/presentation/ui/web_view_screen.dart';
@@ -102,6 +104,7 @@ class HomePage extends ConsumerWidget {
                 context: context,
                 builder: (_) => const BranchSelectorModal(),
               ),
+              onNotificationTap: () => context.push(NotificationsScreen.path),
             ),
             SizedBox(height: AppSpacing.xl),
             if (activeOrder.value != null) ...[
@@ -118,6 +121,14 @@ class HomePage extends ConsumerWidget {
             ],
             BannerStoriesRow(banners: banners.data ?? []),
             SizedBox(height: AppSpacing.lg),
+            HomePromoGrid(onCardTap: onShowCatalogsClick),
+            SizedBox(height: AppSpacing.lg),
+            CatalogRow(
+              catalogs: catalogs.data ?? [],
+              onShowAllClick: onShowCatalogsClick,
+              onItemClick: onCatalogItemClick,
+            ),
+            SizedBox(height: AppSpacing.lg),
             if (loyaltyStatus.data?.isActive ?? false) ...[
               LoyaltyCard(status: loyaltyStatus.data!),
               SizedBox(height: AppSpacing.lg),
@@ -126,11 +137,6 @@ class HomePage extends ConsumerWidget {
               ReferralCard(status: referralStatus.data!),
               SizedBox(height: AppSpacing.lg),
             ],
-            CatalogRow(
-              catalogs: catalogs.data ?? [],
-              onShowAllClick: onShowCatalogsClick,
-              onItemClick: onCatalogItemClick,
-            ),
           ],
         ),
       ),

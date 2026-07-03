@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="smoothieLiquid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ff8fb1"/>
+      <stop offset="100%" stop-color="#b23fd1"/>
+    </linearGradient>
+  </defs>
+  <path d="M58 50 H142 L128 170 Q100 184 72 170 Z" fill="#ffffff"/>
+  <path d="M66 76 H134 L124 166 Q100 178 76 166 Z" fill="url(#smoothieLiquid)"/>
+  <ellipse cx="100" cy="50" rx="42" ry="9" fill="#ffffff"/>
+  <rect x="98" y="10" width="12" height="70" rx="6" fill="#ff5e8f" transform="rotate(16 104 45)"/>
+  <path d="M60 34 Q72 14 84 34 Q72 50 60 34 Z" fill="#ff3b5c"/>
+  <path d="M70 22 L74 30 L78 21" fill="#2e9e4c"/>
+</svg>

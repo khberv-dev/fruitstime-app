@@ -795,5 +795,29 @@
   "assistantHintText": "Привет! Я твой диетолог, поговорим?",
   "@assistantHintText": {
     "description": "One-time hint bubble shown above the floating assistant button"
+  },
+  "homePromoSmoothieTitle": "Заказать смузи",
+  "@homePromoSmoothieTitle": {
+    "description": "Title of the smoothie promo card on the home page"
+  },
+  "homePromoVitaminTitle": "Заказать витамины",
+  "@homePromoVitaminTitle": {
+    "description": "Title of the vitamins promo card on the home page"
+  },
+  "homePromoDeliveryTitle": "Доставка",
+  "@homePromoDeliveryTitle": {
+    "description": "Title of the delivery promo card on the home page"
+  },
+  "notificationsTitle": "Уведомления",
+  "@notificationsTitle": {
+    "description": "Title of the notifications screen"
+  },
+  "notificationsEmptyTitle": "Пока нет уведомлений",
+  "@notificationsEmptyTitle": {
+    "description": "Empty-state title on the notifications screen"
+  },
+  "notificationsEmptySubtitle": "Мы сообщим вам, когда появится что-то новое.",
+  "@notificationsEmptySubtitle": {
+    "description": "Empty-state subtitle on the notifications screen"
   }
 }

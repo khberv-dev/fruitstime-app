@@ -6,8 +6,8 @@ import 'package:fruitstime/features/address/presentation/controller/selected_add
 import 'package:fruitstime/features/auth/presentation/ui/controller/user_provider.dart';
 import 'package:fruitstime/features/auth/presentation/ui/login_screen.dart';
 import 'package:fruitstime/features/cart/presentation/controller/cart_provider.dart';
-import 'package:fruitstime/features/cart/presentation/controller/delivery_cost_provider.dart';
 import 'package:fruitstime/features/cart/presentation/controller/fulfillment_provider.dart';
+import 'package:fruitstime/features/cart/presentation/controller/order_evaluation_provider.dart';
 import 'package:fruitstime/features/cart/presentation/ui/widget/cart_branch_selector.dart';
 import 'package:fruitstime/features/cart/presentation/ui/widget/cart_delivery_selector.dart';
 import 'package:fruitstime/features/cart/presentation/ui/widget/cart_header.dart';
@@ -40,7 +40,7 @@ class CartPage extends ConsumerWidget {
     final createOrderState = ref.watch(createOrderControllerProvider);
     final isDelivery = ref.watch(fulfillmentProvider) == OrderType.delivery;
     final selectedAddress = ref.watch(selectedAddressProvider);
-    final deliveryCostAsync = ref.watch(deliveryCostProvider);
+    final evaluationAsync = ref.watch(orderEvaluationProvider);
 
     void onAddProductCartClick(ProductEntity product) {
       ref.read(cartProvider.notifier).addProduct(product);
@@ -56,8 +56,9 @@ class CartPage extends ConsumerWidget {
         return;
       }
 
-      final deliveryCost = ref.read(deliveryCostProvider).value ?? 0;
-      final totalPrice = ref.read(cartProvider.notifier).totalProductsPrice() + deliveryCost;
+      final totalPrice =
+          ref.read(orderEvaluationProvider).value?.total ??
+          ref.read(cartProvider.notifier).totalProductsPrice();
 
       final confirmed = await showDialog<bool>(
         context: context,
@@ -117,7 +118,6 @@ class CartPage extends ConsumerWidget {
                           totalItemCount: cartCount,
                           totalItemTypeCount: cartTypesCount,
                           totalCartPrice: cartPrice,
-                          discountPercent: ref.watch(userProvider).data?.discountPercent ?? 0,
                         ),
                         SizedBox(height: AppSpacing.lg),
                         GotoPayButton(
@@ -125,9 +125,7 @@ class CartPage extends ConsumerWidget {
                           onPressed:
                               (createOrderState.isLoading ||
                                   (isDelivery && selectedAddress == null) ||
-                                  (isDelivery &&
-                                      selectedAddress != null &&
-                                      deliveryCostAsync.isLoading))
+                                  evaluationAsync.isLoading)
                               ? null
                               : onPaymentClick,
                         ),

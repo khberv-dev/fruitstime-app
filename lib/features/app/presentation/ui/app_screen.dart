@@ -90,7 +90,7 @@ class _AppScreenState extends ConsumerState<AppScreen> with SingleTickerProvider
               ),
             ),
             Positioned(
-              bottom: AppSpacing.lg + _navbarHeight + AppSpacing.md,
+              bottom: AppSpacing.lg + _navbarHeight + AppSpacing.md + AppSpacing.xl,
               right: AppSpacing.md,
               child: const AssistantBubble(),
             ),
