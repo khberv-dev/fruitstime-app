@@ -796,17 +796,41 @@
   "@assistantHintText": {
     "description": "One-time hint bubble shown above the floating assistant button"
   },
-  "homePromoSmoothieTitle": "Заказать смузи",
+  "homePromoSmoothieTitle": "Смузи и фреши",
   "@homePromoSmoothieTitle": {
     "description": "Title of the smoothie promo card on the home page"
+  },
+  "homePromoSmoothieSubtitle": "Напитки из натуральных фруктов и овощей",
+  "@homePromoSmoothieSubtitle": {
+    "description": "Subtitle of the smoothie promo card on the home page"
+  },
+  "homePromoSmoothieButton": "Выбрать",
+  "@homePromoSmoothieButton": {
+    "description": "Button label on the smoothie promo card on the home page"
   },
   "homePromoVitaminTitle": "Заказать витамины",
   "@homePromoVitaminTitle": {
     "description": "Title of the vitamins promo card on the home page"
   },
+  "homePromoVitaminSubtitle": "Необходимые витамины для вашего здоровья",
+  "@homePromoVitaminSubtitle": {
+    "description": "Subtitle of the vitamins promo card on the home page"
+  },
+  "homePromoVitaminButton": "Выбрать",
+  "@homePromoVitaminButton": {
+    "description": "Button label on the vitamins promo card on the home page"
+  },
   "homePromoDeliveryTitle": "Доставка",
   "@homePromoDeliveryTitle": {
     "description": "Title of the delivery promo card on the home page"
+  },
+  "homePromoDeliverySubtitle": "Доставим ваш заказ быстро и надёжно",
+  "@homePromoDeliverySubtitle": {
+    "description": "Subtitle of the delivery promo card on the home page"
+  },
+  "homePromoDeliveryButton": "Доставить",
+  "@homePromoDeliveryButton": {
+    "description": "Button label on the delivery promo card on the home page"
   },
   "notificationsTitle": "Уведомления",
   "@notificationsTitle": {

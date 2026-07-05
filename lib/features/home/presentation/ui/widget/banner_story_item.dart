@@ -15,13 +15,13 @@ class BannerStoryItem extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: SizedBox(
-        width: 72,
+        width: 90,
         child: Column(
           children: [
             Container(
-              width: 64,
-              height: 64,
-              padding: const EdgeInsets.all(2.5),
+              width: 80,
+              height: 80,
+              padding: const EdgeInsets.all(3.13),
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 gradient: LinearGradient(
@@ -31,7 +31,7 @@ class BannerStoryItem extends StatelessWidget {
                 ),
               ),
               child: Container(
-                padding: const EdgeInsets.all(2),
+                padding: const EdgeInsets.all(2.5),
                 decoration: BoxDecoration(color: scheme.surface, shape: BoxShape.circle),
                 child: ClipOval(
                   child: FadeInImage(
@@ -52,7 +52,7 @@ class BannerStoryItem extends StatelessWidget {
               textAlign: TextAlign.center,
               style: Theme.of(
                 context,
-              ).textTheme.bodySmall!.copyWith(fontSize: 11, fontWeight: FontWeight.w600),
+              ).textTheme.bodySmall!.copyWith(fontSize: 14, fontWeight: FontWeight.w600),
             ),
           ],
         ),

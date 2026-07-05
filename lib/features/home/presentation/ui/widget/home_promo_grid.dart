@@ -13,7 +13,7 @@ class HomePromoGrid extends StatelessWidget {
     final localization = AppLocalizations.of(context)!;
 
     return SizedBox(
-      height: 220,
+      height: 300,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -23,9 +23,10 @@ class HomePromoGrid extends StatelessWidget {
                 Expanded(
                   child: HomePromoCard(
                     title: localization.homePromoSmoothieTitle,
-                    imagePath: 'assets/images/smoothie.png',
-                    backgroundColor: const Color(0xfff5bd1f),
-                    foregroundColor: Colors.white,
+                    subtitle: localization.homePromoSmoothieSubtitle,
+                    buttonLabel: localization.homePromoSmoothieButton,
+                    imagePath: 'assets/images/smoothie_fresh.png',
+                    scrimColor: const Color(0xff2f6b3f),
                     onTap: onCardTap,
                   ),
                 ),
@@ -33,9 +34,10 @@ class HomePromoGrid extends StatelessWidget {
                 Expanded(
                   child: HomePromoCard(
                     title: localization.homePromoVitaminTitle,
+                    subtitle: localization.homePromoVitaminSubtitle,
+                    buttonLabel: localization.homePromoVitaminButton,
                     imagePath: 'assets/images/vitamin.png',
-                    backgroundColor: const Color(0xff7b3fa0),
-                    foregroundColor: Colors.white,
+                    scrimColor: const Color(0xffe0562b),
                     onTap: onCardTap,
                   ),
                 ),
@@ -46,10 +48,10 @@ class HomePromoGrid extends StatelessWidget {
           Expanded(
             child: HomePromoCard(
               title: localization.homePromoDeliveryTitle,
+              subtitle: localization.homePromoDeliverySubtitle,
+              buttonLabel: localization.homePromoDeliveryButton,
               imagePath: 'assets/images/delivery.png',
-              backgroundColor: const Color(0xff5a8a3c),
-              foregroundColor: Colors.white,
-              textAlignment: Alignment.topLeft,
+              scrimColor: const Color(0xff2f6b3f),
               onTap: onCardTap,
             ),
           ),

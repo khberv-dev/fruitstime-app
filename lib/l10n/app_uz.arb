@@ -797,17 +797,41 @@
   "@assistantHintText": {
     "description": "One-time hint bubble shown above the floating assistant button"
   },
-  "homePromoSmoothieTitle": "Smuzi buyurtma qiling",
+  "homePromoSmoothieTitle": "Smuzi va freshlar",
   "@homePromoSmoothieTitle": {
     "description": "Title of the smoothie promo card on the home page"
+  },
+  "homePromoSmoothieSubtitle": "Tabiiy meva va sabzavotlardan tayyorlangan ichimliklar",
+  "@homePromoSmoothieSubtitle": {
+    "description": "Subtitle of the smoothie promo card on the home page"
+  },
+  "homePromoSmoothieButton": "Tanlash",
+  "@homePromoSmoothieButton": {
+    "description": "Button label on the smoothie promo card on the home page"
   },
   "homePromoVitaminTitle": "Vitamin buyurtma qiling",
   "@homePromoVitaminTitle": {
     "description": "Title of the vitamins promo card on the home page"
   },
+  "homePromoVitaminSubtitle": "Sog'ligingiz uchun kerakli vitaminlar",
+  "@homePromoVitaminSubtitle": {
+    "description": "Subtitle of the vitamins promo card on the home page"
+  },
+  "homePromoVitaminButton": "Tanlash",
+  "@homePromoVitaminButton": {
+    "description": "Button label on the vitamins promo card on the home page"
+  },
   "homePromoDeliveryTitle": "Yetkazib berish",
   "@homePromoDeliveryTitle": {
     "description": "Title of the delivery promo card on the home page"
+  },
+  "homePromoDeliverySubtitle": "Buyurtmangizni tez va ishonchli yetkazib beramiz",
+  "@homePromoDeliverySubtitle": {
+    "description": "Subtitle of the delivery promo card on the home page"
+  },
+  "homePromoDeliveryButton": "Yetkazish",
+  "@homePromoDeliveryButton": {
+    "description": "Button label on the delivery promo card on the home page"
   },
   "notificationsTitle": "Bildirishnomalar",
   "@notificationsTitle": {

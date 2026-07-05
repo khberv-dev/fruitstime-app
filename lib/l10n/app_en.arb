@@ -796,17 +796,41 @@
   "@assistantHintText": {
     "description": "One-time hint bubble shown above the floating assistant button"
   },
-  "homePromoSmoothieTitle": "Order smoothie",
+  "homePromoSmoothieTitle": "Smoothies & Freshes",
   "@homePromoSmoothieTitle": {
     "description": "Title of the smoothie promo card on the home page"
+  },
+  "homePromoSmoothieSubtitle": "Drinks made from natural fruits and vegetables",
+  "@homePromoSmoothieSubtitle": {
+    "description": "Subtitle of the smoothie promo card on the home page"
+  },
+  "homePromoSmoothieButton": "Choose",
+  "@homePromoSmoothieButton": {
+    "description": "Button label on the smoothie promo card on the home page"
   },
   "homePromoVitaminTitle": "Order vitamins",
   "@homePromoVitaminTitle": {
     "description": "Title of the vitamins promo card on the home page"
   },
+  "homePromoVitaminSubtitle": "Essential vitamins for your health",
+  "@homePromoVitaminSubtitle": {
+    "description": "Subtitle of the vitamins promo card on the home page"
+  },
+  "homePromoVitaminButton": "Choose",
+  "@homePromoVitaminButton": {
+    "description": "Button label on the vitamins promo card on the home page"
+  },
   "homePromoDeliveryTitle": "Delivery",
   "@homePromoDeliveryTitle": {
     "description": "Title of the delivery promo card on the home page"
+  },
+  "homePromoDeliverySubtitle": "We deliver your order fast and reliably",
+  "@homePromoDeliverySubtitle": {
+    "description": "Subtitle of the delivery promo card on the home page"
+  },
+  "homePromoDeliveryButton": "Deliver",
+  "@homePromoDeliveryButton": {
+    "description": "Button label on the delivery promo card on the home page"
   },
   "notificationsTitle": "Notifications",
   "@notificationsTitle": {

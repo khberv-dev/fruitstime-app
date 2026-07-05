@@ -27,7 +27,7 @@ class BannerStoriesRow extends StatelessWidget {
     if (banners.isEmpty) return const SizedBox.shrink();
 
     return SizedBox(
-      height: 96,
+      height: 120,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemCount: banners.length,
