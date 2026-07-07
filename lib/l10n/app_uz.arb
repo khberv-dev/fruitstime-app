@@ -844,5 +844,21 @@
   "notificationsEmptySubtitle": "Yangilik bo'lganda sizga xabar beramiz.",
   "@notificationsEmptySubtitle": {
     "description": "Empty-state subtitle on the notifications screen"
+  },
+  "loyaltyInfoSubtitle": "Istalgan mahsulotlarni buyurtma qiling — har 10-mahsulot bepul, chegirma to'lov vaqtida avtomatik qo'llaniladi",
+  "@loyaltyInfoSubtitle": {
+    "description": "Subtitle explaining the loyalty program on the loyalty info sheet"
+  },
+  "loyaltyInfoStep1": "Mahsulotlarni savatga qo'shing va odatdagidek buyurtma bering",
+  "@loyaltyInfoStep1": {
+    "description": "First step explaining how the loyalty program works"
+  },
+  "loyaltyInfoStep2": "Siz buyurtma qilgan barcha mahsulotlarni hisoblaymiz",
+  "@loyaltyInfoStep2": {
+    "description": "Second step explaining how the loyalty program works"
+  },
+  "loyaltyInfoStep3": "Har 10-mahsulot avtomatik ravishda bepul bo'ladi",
+  "@loyaltyInfoStep3": {
+    "description": "Third step explaining how the loyalty program works"
   }
 }

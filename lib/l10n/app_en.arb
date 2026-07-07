@@ -843,5 +843,21 @@
   "notificationsEmptySubtitle": "We'll let you know when there's something new.",
   "@notificationsEmptySubtitle": {
     "description": "Empty-state subtitle on the notifications screen"
+  },
+  "loyaltyInfoSubtitle": "Order any products and every 10th one is free — applied automatically at checkout",
+  "@loyaltyInfoSubtitle": {
+    "description": "Subtitle explaining the loyalty program on the loyalty info sheet"
+  },
+  "loyaltyInfoStep1": "Add products to your cart and check out as usual",
+  "@loyaltyInfoStep1": {
+    "description": "First step explaining how the loyalty program works"
+  },
+  "loyaltyInfoStep2": "We count every item you've ever ordered",
+  "@loyaltyInfoStep2": {
+    "description": "Second step explaining how the loyalty program works"
+  },
+  "loyaltyInfoStep3": "Every 10th item is free, applied automatically",
+  "@loyaltyInfoStep3": {
+    "description": "Third step explaining how the loyalty program works"
   }
 }

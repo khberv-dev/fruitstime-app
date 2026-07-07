@@ -1,0 +1,1 @@
+enum CatalogType { juice, vitamin }

@@ -5,8 +5,9 @@ import 'package:fruitstime/l10n/app_localizations.dart';
 
 class HomePromoGrid extends StatelessWidget {
   final VoidCallback onCardTap;
+  final VoidCallback onVitaminCardTap;
 
-  const HomePromoGrid({super.key, required this.onCardTap});
+  const HomePromoGrid({super.key, required this.onCardTap, required this.onVitaminCardTap});
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +39,7 @@ class HomePromoGrid extends StatelessWidget {
                     buttonLabel: localization.homePromoVitaminButton,
                     imagePath: 'assets/images/vitamin.png',
                     scrimColor: const Color(0xffe0562b),
-                    onTap: onCardTap,
+                    onTap: onVitaminCardTap,
                   ),
                 ),
               ],

@@ -843,5 +843,21 @@
   "notificationsEmptySubtitle": "Мы сообщим вам, когда появится что-то новое.",
   "@notificationsEmptySubtitle": {
     "description": "Empty-state subtitle on the notifications screen"
+  },
+  "loyaltyInfoSubtitle": "Заказывайте любые товары — каждый 10-й достаётся бесплатно, скидка применяется автоматически при оформлении заказа",
+  "@loyaltyInfoSubtitle": {
+    "description": "Subtitle explaining the loyalty program on the loyalty info sheet"
+  },
+  "loyaltyInfoStep1": "Добавьте товары в корзину и оформите заказ как обычно",
+  "@loyaltyInfoStep1": {
+    "description": "First step explaining how the loyalty program works"
+  },
+  "loyaltyInfoStep2": "Мы считаем все товары, которые вы когда-либо заказывали",
+  "@loyaltyInfoStep2": {
+    "description": "Second step explaining how the loyalty program works"
+  },
+  "loyaltyInfoStep3": "Каждый 10-й товар достаётся бесплатно — автоматически",
+  "@loyaltyInfoStep3": {
+    "description": "Third step explaining how the loyalty program works"
   }
 }

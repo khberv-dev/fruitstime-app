@@ -7,9 +7,11 @@ import 'package:fruitstime/features/auth/presentation/ui/set_birthday_modal.dart
 import 'package:fruitstime/features/auth/presentation/ui/set_gender_modal.dart';
 import 'package:fruitstime/features/auth/presentation/ui/set_height_modal.dart';
 import 'package:fruitstime/features/auth/presentation/ui/set_weight_modal.dart';
+import 'package:fruitstime/features/auth/presentation/ui/status_info_modal.dart';
 import 'package:fruitstime/features/banner/presentation/controller/banners_provider.dart';
 import 'package:fruitstime/features/branch/presentation/controller/branches_provider.dart';
 import 'package:fruitstime/features/branch/presentation/ui/branch_selector_modal.dart';
+import 'package:fruitstime/features/catalog/data/enum/catalog_type.dart';
 import 'package:fruitstime/features/catalog/domain/entity/catalog_entity.dart';
 import 'package:fruitstime/features/catalog/presentation/controller/catalogs_provider.dart';
 import 'package:fruitstime/features/catalog/presentation/controller/selected_catalog_provider.dart';
@@ -21,6 +23,7 @@ import 'package:fruitstime/features/home/presentation/ui/widget/loyalty_card.dar
 import 'package:fruitstime/features/home/presentation/ui/widget/referral_card.dart';
 import 'package:fruitstime/features/home/presentation/ui/widget/request_fill_profile_card.dart';
 import 'package:fruitstime/features/loyalty/presentation/controller/loyalty_status_provider.dart';
+import 'package:fruitstime/features/loyalty/presentation/ui/loyalty_info_modal.dart';
 import 'package:fruitstime/features/notification/presentation/ui/notifications_screen.dart';
 import 'package:fruitstime/features/order/domain/entity/order_entity.dart';
 import 'package:fruitstime/features/order/presentation/controller/active_order_provider.dart';
@@ -69,6 +72,36 @@ class HomePage extends ConsumerWidget {
     void onCatalogItemClick(CatalogEntity catalog) {
       ref.read(selectedCatalogProvider.notifier).state = catalog;
       context.push(ProductsScreen.path);
+    }
+
+    void onVitaminCardClick() {
+      final vitaminCatalog = (catalogs.data ?? const [])
+          .where((catalog) => catalog.type == CatalogType.vitamin)
+          .firstOrNull;
+
+      if (vitaminCatalog != null) {
+        onCatalogItemClick(vitaminCatalog);
+      } else {
+        onShowCatalogsClick();
+      }
+    }
+
+    void onLoyaltyCardClick() {
+      showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        useRootNavigator: true,
+        builder: (_) => const LoyaltyInfoModal(),
+      );
+    }
+
+    void onReferralCardClick() {
+      showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        useRootNavigator: true,
+        builder: (_) => const StatusInfoModal(),
+      );
     }
 
     void onFillProfileClick() {
@@ -121,7 +154,7 @@ class HomePage extends ConsumerWidget {
             ],
             BannerStoriesRow(banners: banners.data ?? []),
             SizedBox(height: AppSpacing.lg),
-            HomePromoGrid(onCardTap: onShowCatalogsClick),
+            HomePromoGrid(onCardTap: onShowCatalogsClick, onVitaminCardTap: onVitaminCardClick),
             SizedBox(height: AppSpacing.lg),
             CatalogRow(
               catalogs: catalogs.data ?? [],
@@ -130,11 +163,11 @@ class HomePage extends ConsumerWidget {
             ),
             SizedBox(height: AppSpacing.lg),
             if (loyaltyStatus.data?.isActive ?? false) ...[
-              LoyaltyCard(status: loyaltyStatus.data!),
+              LoyaltyCard(status: loyaltyStatus.data!, onTap: onLoyaltyCardClick),
               SizedBox(height: AppSpacing.lg),
             ],
             if (referralStatus.data != null) ...[
-              ReferralCard(status: referralStatus.data!),
+              ReferralCard(status: referralStatus.data!, onTap: onReferralCardClick),
               SizedBox(height: AppSpacing.lg),
             ],
           ],
