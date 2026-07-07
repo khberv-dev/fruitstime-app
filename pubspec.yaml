@@ -3,7 +3,7 @@ description: "FruitsTime mobile app"
 
 publish_to: 'none'
 
-version: 1.4.6+34
+version: 1.4.7+35
 
 environment:
   sdk: ^3.11.4

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruitstime/core/theme/app_radius.dart';
 import 'package:fruitstime/core/theme/app_spacing.dart';
 import 'package:fruitstime/features/banner/domain/entity/banner_entity.dart';
 
@@ -15,15 +16,15 @@ class BannerStoryItem extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: SizedBox(
-        width: 90,
+        width: 128,
         child: Column(
           children: [
             Container(
-              width: 80,
+              width: 128,
               height: 80,
               padding: const EdgeInsets.all(3.13),
               decoration: BoxDecoration(
-                shape: BoxShape.circle,
+                borderRadius: BorderRadius.circular(AppRadius.md),
                 gradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
@@ -32,8 +33,12 @@ class BannerStoryItem extends StatelessWidget {
               ),
               child: Container(
                 padding: const EdgeInsets.all(2.5),
-                decoration: BoxDecoration(color: scheme.surface, shape: BoxShape.circle),
-                child: ClipOval(
+                decoration: BoxDecoration(
+                  color: scheme.surface,
+                  borderRadius: BorderRadius.circular(AppRadius.sm),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(AppRadius.sm),
                   child: FadeInImage(
                     placeholder: const AssetImage('assets/images/placeholder.png'),
                     image: NetworkImage(banner.thumbnailUrl ?? banner.imageUrl),
