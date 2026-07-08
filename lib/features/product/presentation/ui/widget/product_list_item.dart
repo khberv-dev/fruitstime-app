@@ -35,6 +35,35 @@ class _ProductBadge extends StatelessWidget {
   }
 }
 
+class _PromoRibbon extends StatelessWidget {
+  final String text;
+
+  const _PromoRibbon({super.key, required this.text});
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      right: -26,
+      bottom: 14,
+      child: Transform.rotate(
+        angle: -pi / 4,
+        child: Container(
+          width: 90,
+          alignment: Alignment.center,
+          padding: const EdgeInsets.symmetric(vertical: 3),
+          color: Theme.of(context).colorScheme.secondary,
+          child: Text(
+            text,
+            style: Theme.of(
+              context,
+            ).textTheme.labelSmall!.copyWith(color: Colors.white, fontWeight: FontWeight.w900),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 class ProductListItem extends StatelessWidget {
   final ProductEntity product;
   final int countInCart;
@@ -121,6 +150,8 @@ class ProductListItem extends StatelessWidget {
                             iconPath: 'assets/icons/pill.svg',
                           ),
                         ),
+                      if (isAvailable && product.hasBuyTwoGetOneFreePromotion)
+                        const _PromoRibbon(text: '2+1'),
                     ],
                   ),
                 ),

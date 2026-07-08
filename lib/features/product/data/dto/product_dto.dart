@@ -1,4 +1,5 @@
 import 'package:fruitstime/core/data/network/config.dart';
+import 'package:fruitstime/features/product/data/dto/product_promotion_dto.dart';
 import 'package:fruitstime/features/product/data/enum/product_type.dart';
 import 'package:fruitstime/features/product/domain/entity/product_entity.dart';
 
@@ -12,6 +13,7 @@ class ProductDto {
   final int price;
   final ProductType type;
   final List<ProductAvailability> available;
+  final List<ProductPromotionDto> promotions;
 
   ProductDto({
     required this.id,
@@ -23,6 +25,7 @@ class ProductDto {
     required this.price,
     required this.type,
     this.available = const [],
+    this.promotions = const [],
   });
 
   factory ProductDto.parse(Map<String, dynamic> data) {
@@ -36,6 +39,11 @@ class ProductDto {
               .toList()
         : <ProductAvailability>[];
 
+    final rawPromotions = data['promotions'];
+    final promotions = rawPromotions is List
+        ? rawPromotions.map((e) => ProductPromotionDto.parse(e)).toList()
+        : <ProductPromotionDto>[];
+
     return ProductDto(
       id: data['id'],
       posId: data['posId'],
@@ -46,6 +54,7 @@ class ProductDto {
       price: data['price'],
       type: ProductType.values.byName(data['type']),
       available: available,
+      promotions: promotions,
     );
   }
 
@@ -59,5 +68,6 @@ class ProductDto {
     price: price,
     type: type,
     available: available,
+    promotions: promotions.map((p) => p.toEntity()).toList(),
   );
 }

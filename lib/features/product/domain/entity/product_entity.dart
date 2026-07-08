@@ -1,4 +1,7 @@
 import 'package:fruitstime/features/product/data/enum/product_type.dart';
+import 'package:fruitstime/features/product/domain/entity/product_promotion_entity.dart';
+
+const buyTwoGetOneFreePromotionType = 'buy_two_get_one_free';
 
 class ProductAvailability {
   final int storageId;
@@ -17,6 +20,7 @@ class ProductEntity {
   final int price;
   final ProductType type;
   final List<ProductAvailability> available;
+  final List<ProductPromotionEntity> promotions;
 
   ProductEntity({
     required this.id,
@@ -28,6 +32,7 @@ class ProductEntity {
     required this.price,
     required this.type,
     this.available = const [],
+    this.promotions = const [],
   });
 
   /// Returns true when the product is in stock at the given storage.
@@ -38,6 +43,9 @@ class ProductEntity {
     final entry = available.where((a) => a.storageId == storageId).firstOrNull;
     return entry?.left ?? true;
   }
+
+  bool get hasBuyTwoGetOneFreePromotion =>
+      promotions.any((p) => p.type == buyTwoGetOneFreePromotionType);
 
   @override
   bool operator ==(Object other) {
