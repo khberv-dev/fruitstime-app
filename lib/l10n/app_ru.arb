@@ -859,5 +859,9 @@
   "loyaltyInfoStep3": "Каждый 10-й товар достаётся бесплатно — автоматически",
   "@loyaltyInfoStep3": {
     "description": "Third step explaining how the loyalty program works"
+  },
+  "loyaltyInfoTiersTitle": "Уровни скидок",
+  "@loyaltyInfoTiersTitle": {
+    "description": "Section title listing referral status tiers and their discount percentages on the loyalty info sheet"
   }
 }

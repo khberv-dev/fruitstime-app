@@ -859,5 +859,9 @@
   "loyaltyInfoStep3": "Every 10th item is free, applied automatically",
   "@loyaltyInfoStep3": {
     "description": "Third step explaining how the loyalty program works"
+  },
+  "loyaltyInfoTiersTitle": "Discount tiers",
+  "@loyaltyInfoTiersTitle": {
+    "description": "Section title listing referral status tiers and their discount percentages on the loyalty info sheet"
   }
 }

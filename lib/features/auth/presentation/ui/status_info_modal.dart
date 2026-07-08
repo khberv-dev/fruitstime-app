@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fruitstime/core/theme/app_radius.dart';
 import 'package:fruitstime/core/theme/app_spacing.dart';
 import 'package:fruitstime/features/auth/data/enum/tier.dart';
+import 'package:fruitstime/features/auth/presentation/controller/status_tiers_provider.dart';
 import 'package:fruitstime/l10n/app_localizations.dart';
 
-class StatusInfoModal extends StatelessWidget {
+class StatusInfoModal extends ConsumerWidget {
   const StatusInfoModal({super.key});
 
   String _label(Tier tier, AppLocalizations l) => switch (tier) {
@@ -36,10 +38,23 @@ class StatusInfoModal extends StatelessWidget {
     Tier.premium => 11,
   };
 
+  // Fallback used until the live user/status-tiers endpoint is reachable —
+  // keeps these numbers in sync with the backend's STATUS_TIERS constant.
+  int _fallbackDiscountPercent(Tier tier) => switch (tier) {
+    Tier.silver => 0,
+    Tier.gold => 3,
+    Tier.vip => 7,
+    Tier.premium => 12,
+  };
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final localization = AppLocalizations.of(context)!;
     final scheme = Theme.of(context).colorScheme;
+    final statusTiers = ref.watch(statusTiersProvider).value;
+    final discountByTier = {
+      for (final tier in statusTiers ?? []) tier.status: tier.discountPercent,
+    };
 
     return Container(
       width: double.infinity,
@@ -101,6 +116,7 @@ class StatusInfoModal extends StatelessWidget {
                     iconPath: _iconPath(tier),
                     badgeColor: _badgeColor(tier),
                     count: _referrals(tier),
+                    discountPercent: discountByTier[tier] ?? _fallbackDiscountPercent(tier),
                   ),
                   if (tier != Tier.values.last) SizedBox(height: AppSpacing.sm),
                 ],
@@ -118,12 +134,14 @@ class _TierRow extends StatelessWidget {
   final String iconPath;
   final Color badgeColor;
   final int count;
+  final int discountPercent;
 
   const _TierRow({
     required this.label,
     required this.iconPath,
     required this.badgeColor,
     required this.count,
+    required this.discountPercent,
   });
 
   @override
@@ -177,6 +195,13 @@ class _TierRow extends StatelessWidget {
                     : SizedBox.shrink(),
               ],
             ),
+          ),
+          SizedBox(width: AppSpacing.sm),
+          Text(
+            '$discountPercent%',
+            style: Theme.of(
+              context,
+            ).textTheme.bodyLarge!.copyWith(color: badgeColor, fontWeight: FontWeight.w900),
           ),
         ],
       ),

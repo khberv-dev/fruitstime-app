@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fruitstime/core/data/network/api_client.dart';
+import 'package:fruitstime/features/auth/data/dto/status_tier_dto.dart';
 import 'package:fruitstime/features/auth/data/dto/user_dto.dart';
 import 'package:fruitstime/features/auth/data/enum/gender.dart';
 
@@ -15,6 +16,13 @@ class UserRepository {
     final response = await _client.get('user/me');
 
     return UserDto.parse(response.data);
+  }
+
+  Future<List<StatusTierDto>> getStatusTiers() async {
+    final response = await _client.get('user/status-tiers');
+    final data = response.data as List<dynamic>;
+
+    return data.map((e) => StatusTierDto.parse(e as Map<String, dynamic>)).toList();
   }
 
   Future<void> updateProfile({String? birthday, int? weight, int? height, Gender? gender}) async {

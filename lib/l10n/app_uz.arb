@@ -860,5 +860,9 @@
   "loyaltyInfoStep3": "Har 10-mahsulot avtomatik ravishda bepul bo'ladi",
   "@loyaltyInfoStep3": {
     "description": "Third step explaining how the loyalty program works"
+  },
+  "loyaltyInfoTiersTitle": "Chegirma darajalari",
+  "@loyaltyInfoTiersTitle": {
+    "description": "Section title listing referral status tiers and their discount percentages on the loyalty info sheet"
   }
 }
