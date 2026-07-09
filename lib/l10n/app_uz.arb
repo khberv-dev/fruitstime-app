@@ -544,6 +544,10 @@
   "@orderStatusCreated": {
     "description": "Created/pending order status label"
   },
+  "orderStatusAccepted": "Qabul qilindi",
+  "@orderStatusAccepted": {
+    "description": "Accepted order status label"
+  },
   "orderStatusDone": "Yakunlandi",
   "@orderStatusDone": {
     "description": "Done/completed order status label"

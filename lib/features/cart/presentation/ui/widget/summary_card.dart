@@ -56,6 +56,8 @@ class SummaryCard extends ConsumerWidget {
     final evaluation = evaluationAsync.value;
     final isLoading = evaluationAsync.isLoading;
 
+    final itemCount = evaluation?.productsCount ?? totalItemCount;
+    final itemTypeCount = evaluation?.productTypesCount ?? totalItemTypeCount;
     final subtotal = evaluation?.subtotal ?? totalCartPrice;
     final deliveryCost = evaluation?.deliveryCost;
     final total = evaluation?.total ?? totalCartPrice;
@@ -73,7 +75,7 @@ class SummaryCard extends ConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               _SummaryKeyText(text: localization.productCountLabel),
-              _SummaryValueText(text: totalItemCount.toString()),
+              _SummaryValueText(text: itemCount.toString()),
             ],
           ),
           SizedBox(height: AppSpacing.sm),
@@ -81,7 +83,7 @@ class SummaryCard extends ConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               _SummaryKeyText(text: localization.productTypeLabel),
-              _SummaryValueText(text: totalItemTypeCount.toString()),
+              _SummaryValueText(text: itemTypeCount.toString()),
             ],
           ),
           SizedBox(height: AppSpacing.sm),

@@ -4,6 +4,7 @@ class BannerEntity {
   final String content;
   final String imageUrl;
   final String? thumbnailUrl;
+  final bool popup;
 
   BannerEntity({
     required this.id,
@@ -11,5 +12,6 @@ class BannerEntity {
     required this.content,
     required this.imageUrl,
     this.thumbnailUrl,
+    this.popup = false,
   });
 }

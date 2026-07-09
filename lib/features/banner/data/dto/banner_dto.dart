@@ -7,6 +7,7 @@ class BannerDto {
   final String content;
   final String image;
   final String? thumbnail;
+  final bool popup;
 
   BannerDto({
     required this.id,
@@ -14,6 +15,7 @@ class BannerDto {
     required this.content,
     required this.image,
     this.thumbnail,
+    this.popup = false,
   });
 
   factory BannerDto.parse(Map<String, dynamic> data) => BannerDto(
@@ -22,6 +24,7 @@ class BannerDto {
     content: data['content'],
     image: data['image'],
     thumbnail: data['thumbnail'],
+    popup: data['popup'] ?? false,
   );
 
   BannerEntity toEntity() => BannerEntity(
@@ -30,5 +33,6 @@ class BannerDto {
     content: content,
     imageUrl: '$baseCdnUrl/banner/$image',
     thumbnailUrl: thumbnail != null ? '$baseCdnUrl/banner/$thumbnail' : null,
+    popup: popup,
   );
 }

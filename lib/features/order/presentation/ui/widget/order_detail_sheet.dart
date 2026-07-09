@@ -18,6 +18,7 @@ class OrderDetailSheet extends ConsumerWidget {
 
   String _statusLabel(AppLocalizations l) => switch (order.status) {
     OrderStatus.created => l.orderStatusCreated,
+    OrderStatus.accepted => l.orderStatusAccepted,
     OrderStatus.done => l.orderStatusDone,
     OrderStatus.cancelled => l.orderStatusCanceled,
   };
@@ -31,6 +32,7 @@ class OrderDetailSheet extends ConsumerWidget {
     final (statusBg, statusFg, dotColor) = switch (order.status) {
       OrderStatus.done => (scheme.secondary.withAlpha(30), scheme.secondary, scheme.secondary),
       OrderStatus.cancelled => (scheme.error.withAlpha(30), scheme.error, scheme.error),
+      OrderStatus.accepted => (scheme.primary.withAlpha(30), scheme.primary, scheme.primary),
       OrderStatus.created => (
         scheme.onSurfaceVariant.withAlpha(30),
         scheme.onSurfaceVariant,
@@ -195,7 +197,7 @@ class OrderDetailSheet extends ConsumerWidget {
                 ],
               ),
             ),
-            if (order.status == OrderStatus.created) ...[
+            if (order.status == OrderStatus.created || order.status == OrderStatus.accepted) ...[
               SizedBox(height: AppSpacing.md),
               if (branchPhone != null) ...[
                 SizedBox(

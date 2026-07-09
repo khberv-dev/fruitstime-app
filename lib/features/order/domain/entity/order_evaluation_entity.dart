@@ -25,6 +25,8 @@ class OrderEvaluationItemEntity {
 
 class OrderEvaluationEntity {
   final List<OrderEvaluationItemEntity> items;
+  final int productsCount;
+  final int productTypesCount;
   final int subtotal;
   final List<OrderDiscountEntity> discounts;
   final int discountTotal;
@@ -33,6 +35,8 @@ class OrderEvaluationEntity {
 
   OrderEvaluationEntity({
     required this.items,
+    required this.productsCount,
+    required this.productTypesCount,
     required this.subtotal,
     required this.discounts,
     required this.discountTotal,

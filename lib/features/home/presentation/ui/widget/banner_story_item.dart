@@ -55,9 +55,11 @@ class BannerStoryItem extends StatelessWidget {
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               textAlign: TextAlign.center,
-              style: Theme.of(
-                context,
-              ).textTheme.bodySmall!.copyWith(fontSize: 14, fontWeight: FontWeight.w600),
+              style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                fontSize: 14,
+                fontWeight: FontWeight.w600,
+                color: Colors.deepOrange,
+              ),
             ),
           ],
         ),

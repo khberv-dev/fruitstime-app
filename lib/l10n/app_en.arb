@@ -543,6 +543,10 @@
   "@orderStatusCreated": {
     "description": "Created/pending order status label"
   },
+  "orderStatusAccepted": "Accepted",
+  "@orderStatusAccepted": {
+    "description": "Accepted order status label"
+  },
   "orderStatusDone": "Completed",
   "@orderStatusDone": {
     "description": "Done/completed order status label"

@@ -9,6 +9,7 @@ import 'package:fruitstime/features/auth/presentation/ui/set_height_modal.dart';
 import 'package:fruitstime/features/auth/presentation/ui/set_weight_modal.dart';
 import 'package:fruitstime/features/auth/presentation/ui/status_info_modal.dart';
 import 'package:fruitstime/features/banner/presentation/controller/banners_provider.dart';
+import 'package:fruitstime/features/banner/presentation/ui/stories_screen.dart';
 import 'package:fruitstime/features/branch/presentation/controller/branches_provider.dart';
 import 'package:fruitstime/features/branch/presentation/ui/branch_selector_modal.dart';
 import 'package:fruitstime/features/catalog/data/enum/catalog_type.dart';
@@ -34,8 +35,38 @@ import 'package:fruitstime/features/product/presentation/ui/products_screen.dart
 import 'package:fruitstime/features/referral/presentation/controller/referral_status_provider.dart';
 import 'package:go_router/go_router.dart';
 
-class HomePage extends ConsumerWidget {
+class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
+
+  @override
+  ConsumerState<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends ConsumerState<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(const Duration(seconds: 2), _showPopupBannerIfAny);
+  }
+
+  void _showPopupBannerIfAny() {
+    if (!mounted) return;
+
+    final banners = ref.read(bannersProvider).data ?? [];
+    final index = banners.indexWhere((banner) => banner.popup);
+    if (index == -1) return;
+
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      useRootNavigator: true,
+      backgroundColor: Colors.black,
+      builder: (_) => SizedBox(
+        height: MediaQuery.sizeOf(context).height * 0.95,
+        child: StoriesScreen(banners: banners, initialIndex: index),
+      ),
+    );
+  }
 
   void _onActiveOrderTap(BuildContext context, OrderEntity order) {
     if (order.link != null) {
@@ -51,7 +82,7 @@ class HomePage extends ConsumerWidget {
   }
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final banners = ref.watch(bannersProvider);
     final catalogs = ref.watch(catalogsProvider);
     final user = ref.watch(userProvider);

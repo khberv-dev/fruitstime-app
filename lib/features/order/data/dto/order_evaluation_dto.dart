@@ -50,6 +50,8 @@ class OrderEvaluationItemDto {
 
 class OrderEvaluationDto {
   final List<OrderEvaluationItemDto> items;
+  final int productsCount;
+  final int productTypesCount;
   final int subtotal;
   final List<OrderDiscountDto> discounts;
   final int discountTotal;
@@ -58,6 +60,8 @@ class OrderEvaluationDto {
 
   OrderEvaluationDto({
     required this.items,
+    required this.productsCount,
+    required this.productTypesCount,
     required this.subtotal,
     required this.discounts,
     required this.discountTotal,
@@ -69,6 +73,8 @@ class OrderEvaluationDto {
     items: (data['items'] as List<dynamic>)
         .map((e) => OrderEvaluationItemDto.parse(e as Map<String, dynamic>))
         .toList(),
+    productsCount: data['productsCount'],
+    productTypesCount: data['productTypesCount'],
     subtotal: data['subtotal'],
     discounts: (data['discounts'] as List<dynamic>)
         .map((e) => OrderDiscountDto.parse(e as Map<String, dynamic>))
@@ -80,6 +86,8 @@ class OrderEvaluationDto {
 
   OrderEvaluationEntity toEntity() => OrderEvaluationEntity(
     items: items.map((e) => e.toEntity()).toList(),
+    productsCount: productsCount,
+    productTypesCount: productTypesCount,
     subtotal: subtotal,
     discounts: discounts.map((e) => e.toEntity()).toList(),
     discountTotal: discountTotal,
