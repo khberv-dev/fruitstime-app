@@ -6,6 +6,7 @@ import 'package:fruitstime/core/theme/app_radius.dart';
 import 'package:fruitstime/core/theme/app_spacing.dart';
 import 'package:fruitstime/features/app/presentation/ui/app_screen.dart';
 import 'package:fruitstime/features/auth/presentation/ui/controller/login_user_provider.dart';
+import 'package:fruitstime/features/auth/presentation/ui/forgot_password_screen.dart';
 import 'package:fruitstime/l10n/app_localizations.dart';
 import 'package:fruitstime/utils/lib.dart';
 import 'package:fruitstime/utils/messanger.dart';
@@ -41,6 +42,10 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
     void onGotoRegisterClick() {
       context.replace('/register');
+    }
+
+    void onForgotPasswordClick() {
+      context.push(ForgotPasswordScreen.path);
     }
 
     ref.listen(loginUserProvider, (_, state) {
@@ -110,6 +115,13 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     obscureText: true,
                     validator: (value) =>
                         value!.length > 7 ? null : localization.passwordValidationError,
+                  ),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: TextButton(
+                      onPressed: onForgotPasswordClick,
+                      child: Text(localization.forgotPasswordLink),
+                    ),
                   ),
                 ],
               ),

@@ -39,4 +39,8 @@ class AuthRepository {
 
     return response.data as Map<String, dynamic>;
   }
+
+  Future<void> resetPassword({required String otpId, required String password}) async {
+    await _client.post('auth/reset-password/$otpId', data: {'password': password});
+  }
 }

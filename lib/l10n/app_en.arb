@@ -867,5 +867,53 @@
   "loyaltyInfoTiersTitle": "Discount tiers",
   "@loyaltyInfoTiersTitle": {
     "description": "Section title listing referral status tiers and their discount percentages on the loyalty info sheet"
+  },
+  "forgotPasswordLink": "Forgot password?",
+  "@forgotPasswordLink": {
+    "description": "Link on the login screen leading to the password reset flow"
+  },
+  "forgotPasswordTitle": "Reset password",
+  "@forgotPasswordTitle": {
+    "description": "Title of the forgot-password phone entry screen"
+  },
+  "forgotPasswordSubtitle": "Enter your registered phone number and we'll send you a verification code",
+  "@forgotPasswordSubtitle": {
+    "description": "Subtitle of the forgot-password phone entry screen"
+  },
+  "newPasswordTitle": "Set new password",
+  "@newPasswordTitle": {
+    "description": "Title of the set-new-password screen"
+  },
+  "newPasswordLabel": "New password",
+  "@newPasswordLabel": {
+    "description": "New password field label"
+  },
+  "confirmPasswordLabel": "Confirm password",
+  "@confirmPasswordLabel": {
+    "description": "Confirm password field label"
+  },
+  "passwordMismatchError": "Passwords do not match",
+  "@passwordMismatchError": {
+    "description": "Validation error when password and confirm password fields differ"
+  },
+  "resetPasswordButton": "Reset password",
+  "@resetPasswordButton": {
+    "description": "Button to submit the new password on the set-new-password screen"
+  },
+  "resetPasswordSuccessMessage": "Password updated. Please sign in.",
+  "@resetPasswordSuccessMessage": {
+    "description": "Message shown after a successful password reset, before returning to login"
+  },
+  "loginToOrderTitle": "Sign in to place your order",
+  "@loginToOrderTitle": {
+    "description": "Title of the login prompt shown in the cart when the user isn't authenticated"
+  },
+  "loginToOrderSubtitle": "Log in or create an account to check out and track your orders",
+  "@loginToOrderSubtitle": {
+    "description": "Subtitle of the login prompt shown in the cart when the user isn't authenticated"
+  },
+  "loginToOrderButton": "Login",
+  "@loginToOrderButton": {
+    "description": "Button on the cart login prompt that navigates to the login screen"
   }
 }

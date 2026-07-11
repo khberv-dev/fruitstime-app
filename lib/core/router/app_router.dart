@@ -1,9 +1,12 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fruitstime/features/app/presentation/ui/app_screen.dart';
 import 'package:fruitstime/features/assistant/presentation/ui/chat_screen.dart';
+import 'package:fruitstime/features/auth/presentation/ui/forgot_password_screen.dart';
 import 'package:fruitstime/features/auth/presentation/ui/login_screen.dart';
+import 'package:fruitstime/features/auth/presentation/ui/new_password_screen.dart';
 import 'package:fruitstime/features/auth/presentation/ui/otp_screen.dart';
 import 'package:fruitstime/features/auth/presentation/ui/register_screen.dart';
+import 'package:fruitstime/features/auth/presentation/ui/reset_otp_screen.dart';
 import 'package:fruitstime/features/init/presentation/ui/onboarding_screen.dart';
 import 'package:fruitstime/features/init/presentation/ui/select_locale_screen.dart';
 import 'package:fruitstime/features/init/presentation/ui/splash_screen.dart';
@@ -28,6 +31,9 @@ final _appRouter = GoRouter(
     GoRoute(path: LoginScreen.path, builder: (_, _) => LoginScreen()),
     GoRoute(path: RegisterScreen.path, builder: (_, _) => RegisterScreen()),
     GoRoute(path: OtpScreen.path, builder: (_, _) => OtpScreen()),
+    GoRoute(path: ForgotPasswordScreen.path, builder: (_, _) => ForgotPasswordScreen()),
+    GoRoute(path: ResetOtpScreen.path, builder: (_, _) => ResetOtpScreen()),
+    GoRoute(path: NewPasswordScreen.path, builder: (_, _) => NewPasswordScreen()),
     GoRoute(path: ChatScreen.path, builder: (_, _) => ChatScreen()),
     GoRoute(path: SearchScreen.path, builder: (_, _) => SearchScreen()),
     GoRoute(path: OrdersScreen.path, builder: (_, _) => OrdersScreen()),

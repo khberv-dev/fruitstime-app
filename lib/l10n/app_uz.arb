@@ -868,5 +868,53 @@
   "loyaltyInfoTiersTitle": "Chegirma darajalari",
   "@loyaltyInfoTiersTitle": {
     "description": "Section title listing referral status tiers and their discount percentages on the loyalty info sheet"
+  },
+  "forgotPasswordLink": "Parolni unutdingizmi?",
+  "@forgotPasswordLink": {
+    "description": "Link on the login screen leading to the password reset flow"
+  },
+  "forgotPasswordTitle": "Parolni tiklash",
+  "@forgotPasswordTitle": {
+    "description": "Title of the forgot-password phone entry screen"
+  },
+  "forgotPasswordSubtitle": "Hisobingizga bog'langan telefon raqamni kiriting, biz tasdiqlash kodini yuboramiz",
+  "@forgotPasswordSubtitle": {
+    "description": "Subtitle of the forgot-password phone entry screen"
+  },
+  "newPasswordTitle": "Yangi parol",
+  "@newPasswordTitle": {
+    "description": "Title of the set-new-password screen"
+  },
+  "newPasswordLabel": "Yangi parol",
+  "@newPasswordLabel": {
+    "description": "New password field label"
+  },
+  "confirmPasswordLabel": "Parolni tasdiqlang",
+  "@confirmPasswordLabel": {
+    "description": "Confirm password field label"
+  },
+  "passwordMismatchError": "Parollar mos kelmadi",
+  "@passwordMismatchError": {
+    "description": "Validation error when password and confirm password fields differ"
+  },
+  "resetPasswordButton": "Parolni tiklash",
+  "@resetPasswordButton": {
+    "description": "Button to submit the new password on the set-new-password screen"
+  },
+  "resetPasswordSuccessMessage": "Parol yangilandi. Iltimos, tizimga kiring.",
+  "@resetPasswordSuccessMessage": {
+    "description": "Message shown after a successful password reset, before returning to login"
+  },
+  "loginToOrderTitle": "Buyurtma berish uchun tizimga kiring",
+  "@loginToOrderTitle": {
+    "description": "Title of the login prompt shown in the cart when the user isn't authenticated"
+  },
+  "loginToOrderSubtitle": "Buyurtma berish va uni kuzatib borish uchun tizimga kiring yoki ro'yxatdan o'ting",
+  "@loginToOrderSubtitle": {
+    "description": "Subtitle of the login prompt shown in the cart when the user isn't authenticated"
+  },
+  "loginToOrderButton": "Kirish",
+  "@loginToOrderButton": {
+    "description": "Button on the cart login prompt that navigates to the login screen"
   }
 }

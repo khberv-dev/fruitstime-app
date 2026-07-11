@@ -89,4 +89,17 @@ class CacheServiceImpl implements CacheService {
 
   @override
   void clearSessionId() => _sharedPreferences.remove(sessionIdKey);
+
+  @override
+  bool hasSeenPopupBanner(String id) {
+    return (_sharedPreferences.getStringList(seenPopupBannerIdsKey) ?? const []).contains(id);
+  }
+
+  @override
+  void markPopupBannerSeen(String id) {
+    final seenIds = _sharedPreferences.getStringList(seenPopupBannerIdsKey) ?? const [];
+    if (seenIds.contains(id)) return;
+
+    _sharedPreferences.setStringList(seenPopupBannerIdsKey, [...seenIds, id]);
+  }
 }

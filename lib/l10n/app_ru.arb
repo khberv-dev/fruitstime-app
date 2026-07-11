@@ -867,5 +867,53 @@
   "loyaltyInfoTiersTitle": "Уровни скидок",
   "@loyaltyInfoTiersTitle": {
     "description": "Section title listing referral status tiers and their discount percentages on the loyalty info sheet"
+  },
+  "forgotPasswordLink": "Забыли пароль?",
+  "@forgotPasswordLink": {
+    "description": "Link on the login screen leading to the password reset flow"
+  },
+  "forgotPasswordTitle": "Сброс пароля",
+  "@forgotPasswordTitle": {
+    "description": "Title of the forgot-password phone entry screen"
+  },
+  "forgotPasswordSubtitle": "Введите номер телефона, привязанный к аккаунту, и мы отправим код подтверждения",
+  "@forgotPasswordSubtitle": {
+    "description": "Subtitle of the forgot-password phone entry screen"
+  },
+  "newPasswordTitle": "Новый пароль",
+  "@newPasswordTitle": {
+    "description": "Title of the set-new-password screen"
+  },
+  "newPasswordLabel": "Новый пароль",
+  "@newPasswordLabel": {
+    "description": "New password field label"
+  },
+  "confirmPasswordLabel": "Подтвердите пароль",
+  "@confirmPasswordLabel": {
+    "description": "Confirm password field label"
+  },
+  "passwordMismatchError": "Пароли не совпадают",
+  "@passwordMismatchError": {
+    "description": "Validation error when password and confirm password fields differ"
+  },
+  "resetPasswordButton": "Сбросить пароль",
+  "@resetPasswordButton": {
+    "description": "Button to submit the new password on the set-new-password screen"
+  },
+  "resetPasswordSuccessMessage": "Пароль обновлён. Пожалуйста, войдите в систему.",
+  "@resetPasswordSuccessMessage": {
+    "description": "Message shown after a successful password reset, before returning to login"
+  },
+  "loginToOrderTitle": "Войдите, чтобы оформить заказ",
+  "@loginToOrderTitle": {
+    "description": "Title of the login prompt shown in the cart when the user isn't authenticated"
+  },
+  "loginToOrderSubtitle": "Войдите или зарегистрируйтесь, чтобы оформить заказ и отслеживать его статус",
+  "@loginToOrderSubtitle": {
+    "description": "Subtitle of the login prompt shown in the cart when the user isn't authenticated"
+  },
+  "loginToOrderButton": "Войти",
+  "@loginToOrderButton": {
+    "description": "Button on the cart login prompt that navigates to the login screen"
   }
 }

@@ -1,5 +1,7 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:fruitstime/core/data/cache/cache_service_impl.dart';
 import 'package:fruitstime/core/theme/app_spacing.dart';
 import 'package:fruitstime/features/app/presentation/controller/bottom_navbar_provider.dart';
 import 'package:fruitstime/features/auth/presentation/ui/controller/user_provider.dart';
@@ -52,9 +54,14 @@ class _HomePageState extends ConsumerState<HomePage> {
   void _showPopupBannerIfAny() {
     if (!mounted) return;
 
+    final cache = ref.read(cacheProvider);
     final banners = ref.read(bannersProvider).data ?? [];
-    final index = banners.indexWhere((banner) => banner.popup);
+    final index = banners.indexWhere(
+      (banner) => banner.popup && (kDebugMode || !cache.hasSeenPopupBanner(banner.id)),
+    );
     if (index == -1) return;
+
+    cache.markPopupBannerSeen(banners[index].id);
 
     showModalBottomSheet(
       context: context,

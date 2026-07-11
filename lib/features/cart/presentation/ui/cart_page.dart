@@ -15,6 +15,7 @@ import 'package:fruitstime/features/cart/presentation/ui/widget/cart_items_list.
 import 'package:fruitstime/features/cart/presentation/ui/widget/empty_cart.dart';
 import 'package:fruitstime/features/cart/presentation/ui/widget/fulfillment_toggle.dart';
 import 'package:fruitstime/features/cart/presentation/ui/widget/goto_pay_button.dart';
+import 'package:fruitstime/features/cart/presentation/ui/widget/login_to_order_card.dart';
 import 'package:fruitstime/features/cart/presentation/ui/widget/payment_type_selector.dart';
 import 'package:fruitstime/features/cart/presentation/ui/widget/summary_card.dart';
 import 'package:fruitstime/features/order/data/enum/order_type.dart';
@@ -33,6 +34,7 @@ class CartPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final localization = AppLocalizations.of(context)!;
+    final user = ref.watch(userProvider);
     final cart = ref.watch(cartProvider);
     final cartCount = ref.read(cartProvider.notifier).totalProductsCount();
     final cartTypesCount = ref.read(cartProvider.notifier).totalProductsTypesCount();
@@ -104,31 +106,35 @@ class CartPage extends ConsumerWidget {
                           onPopCartClick: onPopProductCartClick,
                         ),
                         SizedBox(height: AppSpacing.lg),
-                        FulfillmentToggle(),
-                        SizedBox(height: AppSpacing.lg),
-                        isDelivery ? CartDeliverySelector() : CartBranchSelector(),
-                        SizedBox(height: AppSpacing.lg),
-                        TextField(
-                          decoration: InputDecoration(labelText: localization.orderNoteHint),
-                        ),
-                        SizedBox(height: AppSpacing.lg),
-                        PaymentTypeSelector(),
-                        SizedBox(height: AppSpacing.lg),
-                        SummaryCard(
-                          totalItemCount: cartCount,
-                          totalItemTypeCount: cartTypesCount,
-                          totalCartPrice: cartPrice,
-                        ),
-                        SizedBox(height: AppSpacing.lg),
-                        GotoPayButton(
-                          label: localization.sendOrderButton,
-                          onPressed:
-                              (createOrderState.isLoading ||
-                                  (isDelivery && selectedAddress == null) ||
-                                  evaluationAsync.isLoading)
-                              ? null
-                              : onPaymentClick,
-                        ),
+                        if (user.data == null) ...[
+                          LoginToOrderCard(onLoginClick: () => context.push(LoginScreen.path)),
+                        ] else ...[
+                          FulfillmentToggle(),
+                          SizedBox(height: AppSpacing.lg),
+                          isDelivery ? CartDeliverySelector() : CartBranchSelector(),
+                          SizedBox(height: AppSpacing.lg),
+                          TextField(
+                            decoration: InputDecoration(labelText: localization.orderNoteHint),
+                          ),
+                          SizedBox(height: AppSpacing.lg),
+                          PaymentTypeSelector(),
+                          SizedBox(height: AppSpacing.lg),
+                          SummaryCard(
+                            totalItemCount: cartCount,
+                            totalItemTypeCount: cartTypesCount,
+                            totalCartPrice: cartPrice,
+                          ),
+                          SizedBox(height: AppSpacing.lg),
+                          GotoPayButton(
+                            label: localization.sendOrderButton,
+                            onPressed:
+                                (createOrderState.isLoading ||
+                                    (isDelivery && selectedAddress == null) ||
+                                    evaluationAsync.isLoading)
+                                ? null
+                                : onPaymentClick,
+                          ),
+                        ],
                       ],
                     ),
                   )

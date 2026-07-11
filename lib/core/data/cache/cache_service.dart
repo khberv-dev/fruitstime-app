@@ -32,4 +32,8 @@ abstract interface class CacheService {
   void setSessionId(String id);
 
   void clearSessionId();
+
+  bool hasSeenPopupBanner(String id);
+
+  void markPopupBannerSeen(String id);
 }
